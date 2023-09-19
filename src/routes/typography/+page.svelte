@@ -1,5 +1,13 @@
 <script lang="ts">
-	const data = [
+	type DataItem = {
+		header: {
+			stylename: string;
+			styledata: string;
+		};
+		tailwind: string;
+	};
+
+	const data: DataItem[] = [
 		{
 			header: {
 				stylename: 'Display 2xl',
@@ -72,3 +80,60 @@
 		}
 	];
 </script>
+
+<div class="flex flex-col items-start justify-start p-4 antialiased">
+	<h2 class="text-xl">Inter</h2>
+	<h1 class="text-5xl">Ag</h1>
+	<p>
+		ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+		abcdefghijklmnopqrstuvwxyz <br />
+		0123456789 <br />
+		!@#$%^&*()
+	</p>
+</div>
+
+<div class=" m-4 overflow-x-scroll inline-block max-w-max">
+	<div class="grid grid-cols-4 gap-6">
+		{#each data as item}
+			<div class="col-span-4 sticky top-0 mt-10 pb-2 border-b border-gray-200">
+				<div class="flex justify-between">
+					<div class="flex">
+						<div class="mr-4">{item.header.stylename}</div>
+						<div class="border border-black rounded-md antialiased">
+							&lt;/&gt; class="{item.tailwind}"
+						</div>
+					</div>
+					<div>{item.header.styledata}</div>
+				</div>
+			</div>
+			<div class="{item.tailwind} untld-text-regular}">
+				{item.header.stylename} <br />
+				Regular
+			</div>
+			<div class="{item.tailwind} untld-text-medium">
+				{item.header.stylename} <br />
+				Medium
+			</div>
+			<div class="{item.tailwind} untld-text-semibold">
+				{item.header.stylename} <br />
+				Semibold
+			</div>
+			<div class="{item.tailwind} untld-text-bold">
+				{item.header.stylename} <br />
+				Bold
+			</div>
+			<div class="border border-black rounded-md antialiased">
+				&lt;/&gt; class="untld-text-regular"
+			</div>
+			<div class="border border-black rounded-md antialiased">
+				&lt;/&gt; class="untld-text-medium"
+			</div>
+			<div class="border border-black rounded-md antialiased">
+				&lt;/&gt; class="untld-text-semibold"
+			</div>
+			<div class="border border-black rounded-md antialiased">
+				&lt;/&gt; class="untld-text-bold"
+			</div>
+		{/each}
+	</div>
+</div>
