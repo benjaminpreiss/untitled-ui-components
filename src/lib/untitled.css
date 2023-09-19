@@ -1,10 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 @layer base {
-	.btn-blue {
-		@apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+	.untld-display-2xl { 
+		@apply text-7xl	leading-[5.625rem] tracking-[-0.09rem] antialiased
 	}
-	.btn-blue {
-		@apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+	.untld-display-xl { 
+		@apply text-6xl	leading-[4.5rem] tracking-[-0.075rem] antialiased
+	}
+	.untld-display-lg { 
+		@apply text-5xl	leading-[3.75rem] tracking-[-0.06rem] antialiased
+	}
+	.untld-display-md { 
+		@apply text-4xl	leading-[2.75rem] tracking-[-0.045rem] antialiased
+	}
+	.untld-display-sm { 
+		@apply text-3xl	leading-[2.375rem] antialiased
+	}
+	.untld-display-xs { 
+		@apply text-2xl	leading-[2rem] antialiased
+	}
+	.untld-text-xl { 
+		@apply text-xl leading-[1.875rem] antialiased
+	}
+	.untld-text-lg { 
+		@apply text-lg leading-[1.75rem] antialiased
+	}
+	.untld-text-md { 
+		@apply text-base leading-[1.5rem] antialiased
+	}
+	.untld-text-sm { 
+		@apply text-sm leading-[1.25rem] antialiased
+	}
+	.untld-text-xs { 
+		@apply text-xs leading-[1.125rem] antialiased
 	}
 }
