@@ -1,1 +1,1 @@
-<h1 class="btn-blue bg-slate-300">Hello world!</h1>
+<h1 class="btn-blue bg-untitled-primary-200">Hello world!</h1>

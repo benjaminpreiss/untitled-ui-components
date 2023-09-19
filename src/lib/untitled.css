@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 @layer base {
 	.btn-blue {
 		@apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
