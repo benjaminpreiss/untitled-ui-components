@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 @layer base {
+	.untld-text-regular { 
+		@apply font-normal antialiased
+	}
+	.untld-text-medium{ 
+		@apply font-medium antialiased
+	}
+	.untld-text-semibold { 
+		@apply font-semibold antialiased
+	}
+	.untld-text-bold { 
+		@apply font-bold antialiased
+	}
 	.untld-display-2xl { 
 		@apply text-7xl	leading-[5.625rem] tracking-[-0.09rem] antialiased
 	}
