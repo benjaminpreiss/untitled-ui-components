@@ -286,8 +286,8 @@
     },
     {
       "type": "text",
-      "version": 647,
-      "versionNonce": 1251072484,
+      "version": 665,
+      "versionNonce": 388865124,
       "isDeleted": false,
       "id": "Luk67n7eKRuL4_6moxc9A",
       "fillStyle": "hachure",
@@ -300,8 +300,8 @@
       "y": 170.35554940522974,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 213.03981018066406,
-      "height": 100,
+      "width": 295.6797180175781,
+      "height": 75,
       "seed": 987271034,
       "groupIds": [],
       "roundness": null,
@@ -311,23 +311,23 @@
           "type": "arrow"
         }
       ],
-      "updated": 1695132942020,
+      "updated": 1695134792359,
       "link": null,
       "locked": false,
       "fontSize": 20,
       "fontFamily": 1,
-      "text": "typograph_container: \nflex\noverflow hidden\nscroll horizontal",
+      "text": "typography-content-container: \noverflow hidden\nscroll horizontal",
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "typograph_container: \nflex\noverflow hidden\nscroll horizontal",
+      "originalText": "typography-content-container: \noverflow hidden\nscroll horizontal",
       "lineHeight": 1.25,
-      "baseline": 93
+      "baseline": 68
     },
     {
       "type": "arrow",
-      "version": 1802,
-      "versionNonce": 1585773924,
+      "version": 1838,
+      "versionNonce": 1468297188,
       "isDeleted": false,
       "id": "K-t5HjoyYKDEtgF6gF1BV",
       "fillStyle": "hachure",
@@ -336,19 +336,19 @@
       "roughness": 1,
       "opacity": 100,
       "angle": 0,
-      "x": 1766.2152920433605,
-      "y": 269.9274802311496,
+      "x": 1810.3172210184873,
+      "y": 257.08990369389045,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 504.22687990210443,
-      "height": 220.45412106678623,
+      "width": 539.7399643201077,
+      "height": 233.2916976040454,
       "seed": 1831628730,
       "groupIds": [],
       "roundness": {
         "type": 2
       },
       "boundElements": [],
-      "updated": 1695132942022,
+      "updated": 1695134792360,
       "link": null,
       "locked": false,
       "startBinding": {
@@ -370,8 +370,8 @@
           0
         ],
         [
-          -504.22687990210443,
-          220.45412106678623
+          -539.7399643201077,
+          233.2916976040454
         ]
       ]
     },
