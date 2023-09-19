@@ -92,10 +92,12 @@
 	</p>
 </div>
 
-<div class=" m-4 overflow-x-scroll inline-block max-w-max">
-	<div class="grid grid-cols-4 gap-6">
+<div class="w-full p-4 inline-block overflow-hidden">
+	<div class="grid grid-cols-min gap-6 overflow-x-scroll w-full relative">
 		{#each data as item}
-			<div class="col-span-4 sticky top-0 mt-10 pb-2 border-b border-gray-200">
+			<div
+				class=" col-span-4sticky w-[calc(100vw-2rem)] left-0 mt-10 pb-2 border-b border-gray-200"
+			>
 				<div class="flex justify-between">
 					<div class="flex">
 						<div class="mr-4">{item.header.stylename}</div>
@@ -106,7 +108,7 @@
 					<div>{item.header.styledata}</div>
 				</div>
 			</div>
-			<div class="{item.tailwind} untld-text-regular}">
+			<div class="{item.tailwind} untld-text-regular">
 				{item.header.stylename} <br />
 				Regular
 			</div>
