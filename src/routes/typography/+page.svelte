@@ -81,7 +81,9 @@
 	];
 </script>
 
-<div class="flex flex-col items-start justify-start m-10 p-4 antialiased space-y-4">
+<div
+	class="flex flex-col items-start justify-start m-10 p-4 antialiased space-y-4 text-untld-gray-900"
+>
 	<div class="space-y-1 mb-6">
 		<h1 class="untld-display-lg untld-text-regular">Inter</h1>
 		<h2 class="text-[7rem] untld-text-regular">Ag</h2>
@@ -98,55 +100,65 @@
 	<div class="grid grid-cols-min gap-10 overflow-x-scroll relative">
 		{#each data as item}
 			<div
-				class=" col-span-4 sticky w-[calc(100vw-5.5em)] left-0 mt-10 pb-2 border-b border-gray-200"
+				class=" col-span-4 sticky w-[calc(100vw-5.5em)] left-0 mt-10 pb-2 border-b border-untld-gray-300"
 			>
 				<div class="flex justify-between">
 					<div class="flex">
-						<div class="mr-4 text-[1rem] leading-[1.5rem] untld-text-medium">
+						<div class="mr-4 text-[1rem] leading-[1.5rem] untld-text-medium text-untld-gray-600">
 							{item.header.stylename}
 						</div>
 						<div
-							class="border border-black rounded-full py-0.25 px-2 untld-text-medium untld-text-sm"
+							class="border border-untld-gray-600 text-untld-gray-700 rounded-full py-0.25 px-2 untld-text-medium untld-text-sm"
 						>
 							&lt;/&gt; class="{item.tailwind}"
 						</div>
 					</div>
-					<div class="untld-text-md untld-text-regular">{item.header.styledata}</div>
+					<div class="untld-text-md untld-text-regular text-untld-gray-600">
+						{item.header.styledata}
+					</div>
 				</div>
 			</div>
 			<div class="flex flex-col items-start space-y-8 mr-20">
-				<div class="{item.tailwind} untld-text-regular whitespace-nowrap">
+				<div class="{item.tailwind} untld-text-regular whitespace-nowrap text-untld-gray-900">
 					<p>{item.header.stylename}</p>
 					<p>Regular</p>
 				</div>
-				<div class="border border-black rounded-full py-0.25 px-2 untld-text-sm untld-text-medium">
+				<div
+					class="border border-untld-gray-600 text-untld-gray-700 rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
+				>
 					&lt;/&gt; class="untld-text-regular"
 				</div>
 			</div>
 			<div class="flex flex-col items-start space-y-8 mr-20">
-				<div class="{item.tailwind} untld-text-medium whitespace-nowrap">
+				<div class="{item.tailwind} untld-text-medium whitespace-nowrap text-untld-gray-900">
 					<p>{item.header.stylename}</p>
 					<p>Medium</p>
 				</div>
-				<div class="border border-black rounded-full py-0.25 px-2 untld-text-sm untld-text-medium">
+				<div
+					class="border border-untld-gray-600 text-untld-gray-700 rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
+				>
 					&lt;/&gt; class="untld-text-medium"
 				</div>
 			</div>
 			<div class="flex flex-col items-start space-y-8 mr-20">
-				<div class="{item.tailwind} untld-text-semibold whitespace-nowrap">
+				<div class="{item.tailwind} untld-text-semibold whitespace-nowrap text-untld-gray-900">
 					<p>{item.header.stylename}</p>
 					<p>Semibold</p>
 				</div>
-				<div class="border border-black rounded-full py-0.25 px-2 untld-text-sm untld-text-medium">
+				<div
+					class="border border-untld-gray-600 text-untld-gray-700rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
+				>
 					&lt;/&gt; class="untld-text-semibold"
 				</div>
 			</div>
 			<div class="flex flex-col items-start space-y-8 mr-20">
-				<div class="{item.tailwind} untld-text-bold whitespace-nowrap">
+				<div class="{item.tailwind} untld-text-bold whitespace-nowrap text-untld-gray-900">
 					<p>{item.header.stylename}</p>
 					<p>Bold</p>
 				</div>
-				<div class="border border-black rounded-full py-0.25 px-2 untld-text-sm untld-text-medium">
+				<div
+					class="border border-untld-gray-600 text-untld-gray-700 rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
+				>
 					&lt;/&gt; class="untld-text-bold"
 				</div>
 			</div>
