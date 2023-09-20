@@ -37,13 +37,9 @@ export default {
 			  },
 			colors: {
 			
-<<<<<<< HEAD
-=======
-			}
->>>>>>> 9dde825e5d091ab6442e4a449ceb9739e991c9e3
 		}
 	},
 	// For now we need this safelist, we won't need this in every project described in our docs. We only need this for the docs page
-	safelist:[...allClassNames],
+	safelist:[...allClassNames, 'bg-untld-black'],
 	plugins: [untitledPlugin],
 };

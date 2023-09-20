@@ -178,7 +178,7 @@
 				{#each Object.entries(colors.base) as [color, hexCode], innerIndex (innerIndex)}
 					<div
 						style="animation-delay: {innerIndex + innerIndex * 150}ms;"
-						class="w-[14rem] animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+						class="w-[15rem] animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 					>
 						<div
 							class="w-full rounded-t-md h-[52%] bg-untld-{color
@@ -200,7 +200,7 @@
 									navigator.clipboard.writeText(
 										`untld-${color.replace(/\s+/g, '-').toLocaleLowerCase()}`
 									)}
-								class="flex peer space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
+								class="flex peer space-y-0 space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
 							>
 								<img src="/tailwind-icon.svg" alt="tailwind-icon" />
 								<span>{`tailwind: 'untld-${color.replace(/\s+/g, '-').toLocaleLowerCase()}'`}</span>
@@ -237,7 +237,7 @@
 							style="animation-delay: {innerIndex + innerIndex * 150}ms;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[14rem]'}  animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'}  animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 						>
 							<div
 								class="w-full rounded-t-md h-[52%] bg-untld-{colorGroup
@@ -263,7 +263,7 @@
 										navigator.clipboard.writeText(
 											`untld-${colorGroup.replace(/\s+/g, '-').toLocaleLowerCase()}-${shade}`
 										)}
-									class="flex peer space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
+									class="flex space-y-0 peer space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
 								>
 									<img src="/tailwind-icon.svg" alt="tailwind-icon" />
 									<span
@@ -306,14 +306,14 @@
 						<p class="untld-text-md untld-text-regular text-untld-gray-600">
 							{colorDescriptions.secondary[colorGroup]?.description ?? ''}
 						</p>
-						<div class="w-full h-full bg-untld-white" />
+						<div class="w-full h-full bg-untld-white pb-20 absolute" />
 					</div>
 					{#each Object.entries(shades) as [shade, hexCode], innerIndex (innerIndex)}
 						<div
 							style="animation-delay: {innerIndex + innerIndex * 150}ms;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[14rem]'} animate-fadeIn opacity-0 delay-500 w-[14rem] h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 						>
 							<div
 								class="w-full rounded-t-md h-[52%] bg-untld-{colorGroup
@@ -339,7 +339,7 @@
 										navigator.clipboard.writeText(
 											`untld-${colorGroup.replace(/\s+/g, '-').toLocaleLowerCase()}-${shade}`
 										)}
-									class="flex peer space-x-2 items-center untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 untld-text-xs border-[1.5px] rounded-full"
+									class="flex space-y-0 flex-row items-center justify-center peer space-x-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 untld-text-xs border-[1.5px] rounded-full"
 								>
 									<img src="/tailwind-icon.svg" alt="tailwind-icon" />
 									<span
