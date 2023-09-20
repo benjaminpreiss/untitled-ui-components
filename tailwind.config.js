@@ -18,9 +18,25 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
+			gridTemplateColumns: {
+				'colors': '10rem repeat(8, minmax(0, 1fr)) 16rem repeat(3, minmax(0, 1fr))'
+			},
+				animation: {
+					fadeIn: 'fadeIn 1.5s forwards',
+				},
+				keyframes: {
+					fadeIn: {
+						'0%': {
+							opacity: 0
+						},
+						'100%': {
+							opacity: 1
+						}
+					}
+				},
+			  },
 			colors: {
 			
-			}
 		}
 	},
 	// For now we need this safelist, we won't need this in every project described in our docs. We only need this for the docs page
