@@ -1,4 +1,4 @@
-@import 'lib/untitled.css';
+@import '$lib/untitled.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

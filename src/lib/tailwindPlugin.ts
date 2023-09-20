@@ -2,7 +2,14 @@ import plugin from 'tailwindcss/plugin.js';
 import defaultTheme from 'tailwindcss/defaultTheme.js';
 
 export default plugin(
-	function ({ matchUtilities, theme }) {
+	function ({ addBase, matchUtilities, theme }) {
+		addBase({
+			'@font-face': {
+				'font-family': 'Inter',
+				src: "url('assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf')",
+				'font-weight': '1 999'
+			}
+		});
 		matchUtilities(
 			{
 				extend: (value) => ({
