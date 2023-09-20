@@ -1,0 +1,364 @@
+<script lang="ts">
+	import { browser } from '$app/environment';
+	import { colors } from '$lib/tailwindPlugin.js';
+	import { flip } from 'svelte/animate';
+	import { fade } from 'svelte/transition';
+
+	type ColorDescription = {
+		title: string;
+		description: string;
+	};
+	type ColorGroup = {
+		[colorName: string]: ColorDescription;
+	};
+
+	export const colorDescriptions: { base: ColorGroup; primary: ColorGroup; secondary: ColorGroup } =
+		{
+			base: {
+				Base: {
+					title: 'Base',
+					description:
+						'These are base black and white color styles to quickly swap out if you need to.'
+				}
+			},
+			primary: {
+				Gray: {
+					title: 'Gray',
+					description:
+						'Gray is a neutral color and is the foundation of the color system. Almost everything in UI design — text, form fields, backgrounds, dividers — are usually gray.'
+				},
+				Primary: {
+					title: 'Primary',
+					description:
+						'The primary color is your "brand" color, and is used across all interactive elements such as buttons, links, inputs, etc. This color can define the overall feel and can elicit emotion.'
+				},
+				Error: {
+					title: 'Error',
+					description:
+						'Error colors are used across error states and in "destructive" actions. They communicate a destructive/negative action, such as removing a user from your team.'
+				},
+				Warning: {
+					title: 'Warning',
+					description: `Warning colors can communicate that an action is potentially destructive or "on-hold". These colors are commonly used in confirmations to grab the users' attention.`
+				},
+				Success: {
+					title: 'Success',
+					description: `Success colors communicate a positive action, positive trend, or a successful confirmation. If you're using green as your primary color, it can be helpful to introduce a different hue for your success green.`
+				}
+
+				// ... add more color group descriptions as needed
+			},
+			secondary: {
+				'Gray blue': {
+					title: 'Gray Blue',
+					description: 'Description for the Gray Blue color group...'
+				},
+				'Gray cool': {
+					title: 'Gray Cool',
+					description: 'Description for the Gray Cool color group...'
+				},
+				'Gray modern': {
+					title: 'Gray Modern',
+					description: 'Description for the Gray Modern color group...'
+				},
+				'Gray neutral': {
+					title: 'Gray Neutral',
+					description: 'Description for the Gray Neutral color group...'
+				},
+				'Gray iron': {
+					title: 'Gray Iron',
+					description: 'Description for the Gray Iron color group...'
+				},
+				'Gray true': {
+					title: 'Gray True',
+					description: 'Description for the Gray True color group...'
+				},
+				'Gray warm': {
+					title: 'Gray Warm',
+					description: 'Description for the Gray Warm color group...'
+				},
+				Moss: {
+					title: 'Moss',
+					description: 'Description for the Moss color group...'
+				},
+				Green: {
+					title: 'Green',
+					description: 'Description for the Green color group...'
+				},
+				'Green light': {
+					title: 'Green light',
+					description: 'Description for the Green light color group...'
+				},
+				Teal: {
+					title: 'Teal',
+					description: 'Description for the Teal color group...'
+				},
+				Cyan: {
+					title: 'Cyan',
+					description: 'Description for the Cyan color group...'
+				},
+				'Blue light': {
+					title: 'Blue Light',
+					description: 'Description for the Blue Light color group...'
+				},
+				Blue: {
+					title: 'Blue',
+					description: 'Description for the Blue color group...'
+				},
+				'Blue dark': {
+					title: 'Blue Dark',
+					description: 'Description for the Blue Dark color group...'
+				},
+				Indigo: {
+					title: 'Indigo',
+					description: 'Description for the Indigo color group...'
+				},
+				Violet: {
+					title: 'Violet',
+					description: 'Description for the Violet color group...'
+				},
+				Purple: {
+					title: 'Purple',
+					description: 'Description for the Purple color group...'
+				},
+				Fuchsia: {
+					title: 'Fuchsia',
+					description: 'Description for the Fuchsia color group...'
+				},
+				Pink: {
+					title: 'Pink',
+					description: 'Description for the Pink color group...'
+				},
+				Rosé: {
+					title: 'Rosé',
+					description: 'Description for the Rosé color group...'
+				},
+				'Orange dark': {
+					title: 'Orange Dark',
+					description: 'Description for the Orange Dark color group...'
+				},
+				Orange: {
+					title: 'Orange',
+					description: 'Description for the Orange color group...'
+				},
+				Yellow: {
+					title: 'Yellow',
+					description: 'Description for the Yellow color group...'
+				}
+			}
+		};
+</script>
+
+{#if browser}
+	<div class="h-full min-h-[100vh] pl-16 w-full overflow-hidden py-12">
+		<div class="max-w-4xl my-12">
+			<h3 class="text-untld-gray-900 untld-display-xs untld-text-semibold">Primary colors</h3>
+			<span class="untld-text-lg untld-text-regular antialiased text-untld-gray-600"
+				>These are the main colors that make up the majority of the colors used in the design
+				system.</span
+			>
+		</div>
+		<div
+			class="grid gap-4 mr-4 grid-cols-3 w-fit mb-4 overflow-x-auto no-scrollbar snap-x snap-mandatory"
+		/>
+		<div class="overflow-x-auto lg:overflow-hidden no-scrollbar snap-x snap-mandatory pb-12">
+			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
+				<div
+					style="animation-delay: 100ms;"
+					class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+				>
+					<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
+						{colorDescriptions.base.Base?.title ?? ''}
+					</h4>
+					<p class="untld-text-md untld-text-regular text-untld-gray-600">
+						{colorDescriptions.base.Base?.description ?? ''}
+					</p>
+					<div class="w-full h-full bg-untld-white" />
+				</div>
+				{#each Object.entries(colors.base) as [color, hexCode], innerIndex (innerIndex)}
+					<div
+						style="animation-delay: {innerIndex + innerIndex * 150}ms;"
+						class="w-[14rem] animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+					>
+						<div
+							class="w-full rounded-t-md h-[52%] bg-untld-{color
+								.replace(/\s+/g, '-')
+								.toLocaleLowerCase()}"
+						/>
+						<div class="flex flex-col h-[48%] p-2 justify-end">
+							<span class="untld-text-lg text-untld-gray-900 untld-text-medium">
+								{color}
+							</span>
+							<span class="untld-text-md text-untld-gray-600 untld-text-regular">
+								{hexCode}
+							</span>
+						</div>
+
+						<div class="w-full mt-6">
+							<button
+								on:click={() =>
+									navigator.clipboard.writeText(
+										`untld-${color.replace(/\s+/g, '-').toLocaleLowerCase()}`
+									)}
+								class="flex peer space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
+							>
+								<img src="/tailwind-icon.svg" alt="tailwind-icon" />
+								<span>{`tailwind: 'untld-${color.replace(/\s+/g, '-').toLocaleLowerCase()}'`}</span>
+							</button>
+							<div
+								class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
+                                 whitespace-nowrap"
+							>
+								Copied!
+							</div>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+
+		<div class="overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory pb-12">
+			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
+				{#each Object.entries(colors.primary) as [colorGroup, shades], outerIndex (outerIndex)}
+					<div
+						style="animation-delay: {outerIndex + outerIndex * 100}ms;"
+						class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+					>
+						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
+							{colorDescriptions.primary[colorGroup]?.title ?? ''}
+						</h4>
+						<p class="untld-text-md untld-text-regular text-untld-gray-600">
+							{colorDescriptions.primary[colorGroup]?.description ?? ''}
+						</p>
+						<div class="w-full h-full bg-untld-white" />
+					</div>
+					{#each Object.entries(shades) as [shade, hexCode], innerIndex (innerIndex)}
+						<div
+							style="animation-delay: {innerIndex + innerIndex * 150}ms;"
+							class="{shade === '600'
+								? 'w-full'
+								: 'w-[14rem]'}  animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+						>
+							<div
+								class="w-full rounded-t-md h-[52%] bg-untld-{colorGroup
+									.replace(/\s+/g, '-')
+									.toLocaleLowerCase()}-{shade}"
+							/>
+							<div class="flex flex-col h-[48%] p-2 justify-end">
+								<span class="untld-text-lg text-untld-gray-900 untld-text-medium">
+									{shade}
+								</span>
+								<span class="untld-text-md text-untld-gray-600 untld-text-regular">
+									{hexCode}
+								</span>
+							</div>
+							{#if shade === '600'}
+								<div
+									class="absolute top-0 right-0 m-2 w-3 h-3 rounded-full ring-untld-white/40 bg-untld-white ring-2 ring-offset-0"
+								/>
+							{/if}
+							<div class="w-full mt-6">
+								<button
+									on:click={() =>
+										navigator.clipboard.writeText(
+											`untld-${colorGroup.replace(/\s+/g, '-').toLocaleLowerCase()}-${shade}`
+										)}
+									class="flex peer space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
+								>
+									<img src="/tailwind-icon.svg" alt="tailwind-icon" />
+									<span
+										>{`tailwind: 'untld-${colorGroup
+											.replace(/\s+/g, '-')
+											.toLocaleLowerCase()}-${shade}'`}</span
+									>
+								</button>
+								<div
+									class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
+                                 whitespace-nowrap"
+								>
+									Copied!
+								</div>
+							</div>
+						</div>
+					{/each}
+				{/each}
+			</div>
+		</div>
+
+		<div class="max-w-4xl my-14 space-y-1">
+			<h3 class="text-untld-gray-900 untld-display-xs untld-text-semibold">Secondary colors</h3>
+			<p class="untld-text-lg untld-text-regular antialiased">
+				Along with primary colors, it's helpful to have a selection of secondary colors to use in
+				components such as pills, alerts and labels. These secondary colors should be used sparingly
+				or as accents, while the primary color(s) should take precedence.
+			</p>
+		</div>
+		<div class="overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory pb-12">
+			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
+				{#each Object.entries(colors.secondary) as [colorGroup, shades], outerIndex (outerIndex)}
+					<div
+						style="animation-delay: {outerIndex + outerIndex * 100}ms;"
+						class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+					>
+						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
+							{colorDescriptions.secondary[colorGroup]?.title ?? ''}
+						</h4>
+						<p class="untld-text-md untld-text-regular text-untld-gray-600">
+							{colorDescriptions.secondary[colorGroup]?.description ?? ''}
+						</p>
+						<div class="w-full h-full bg-untld-white" />
+					</div>
+					{#each Object.entries(shades) as [shade, hexCode], innerIndex (innerIndex)}
+						<div
+							style="animation-delay: {innerIndex + innerIndex * 150}ms;"
+							class="{shade === '600'
+								? 'w-full'
+								: 'w-[14rem]'} animate-fadeIn opacity-0 delay-500 w-[14rem] h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+						>
+							<div
+								class="w-full rounded-t-md h-[52%] bg-untld-{colorGroup
+									.replace(/\s+/g, '-')
+									.toLocaleLowerCase()}-{shade}"
+							/>
+							<div class="flex flex-col h-[48%] p-2 justify-end">
+								<span class="untld-text-lg text-untld-gray-900 untld-text-medium">
+									{shade}
+								</span>
+								<span class="untld-text-md text-untld-gray-600 untld-text-regular">
+									{hexCode}
+								</span>
+							</div>
+							{#if shade === '600'}
+								<div
+									class="absolute top-0 right-0 m-2 w-3 h-3 rounded-full ring-untld-white/40 bg-untld-white ring-2 ring-offset-0"
+								/>
+							{/if}
+							<div class="w-full mt-6">
+								<button
+									on:click={() =>
+										navigator.clipboard.writeText(
+											`untld-${colorGroup.replace(/\s+/g, '-').toLocaleLowerCase()}-${shade}`
+										)}
+									class="flex peer space-x-2 items-center untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 untld-text-xs border-[1.5px] rounded-full"
+								>
+									<img src="/tailwind-icon.svg" alt="tailwind-icon" />
+									<span
+										>{`tailwind: 'untld-${colorGroup
+											.replace(/\s+/g, '-')
+											.toLocaleLowerCase()}-${shade}'`}</span
+									>
+								</button>
+								<div
+									class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
+                             whitespace-nowrap"
+								>
+									Copied!
+								</div>
+							</div>
+						</div>
+					{/each}
+				{/each}
+			</div>
+		</div>
+	</div>
+{/if}
