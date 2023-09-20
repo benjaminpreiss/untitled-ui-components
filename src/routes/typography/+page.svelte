@@ -81,10 +81,12 @@
 	];
 </script>
 
-<div class="flex flex-col items-start justify-start p-4 antialiased">
-	<h2 class="text-xl">Inter</h2>
-	<h1 class="text-5xl">Ag</h1>
-	<p>
+<div class="flex flex-col items-start justify-start m-10 p-4 antialiased space-y-4">
+	<div class="space-y-1 mb-6">
+		<h1 class="text-5xl">Inter</h1>
+		<h2 class="text-[7rem]">Ag</h2>
+	</div>
+	<p class="text-5xl">
 		ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
 		abcdefghijklmnopqrstuvwxyz <br />
 		0123456789 <br />
@@ -92,8 +94,8 @@
 	</p>
 </div>
 
-<div class="w-full p-4 inline-block overflow-hidden">
-	<div class="grid grid-cols-min gap-6 overflow-x-scroll w-full relative">
+<div class="w-full m-10 p-4 inline-block overflow-hidden">
+	<div class="grid grid-cols-min gap-10 overflow-x-scroll relative">
 		{#each data as item}
 			<div
 				class=" col-span-4 sticky w-[calc(100vw-2rem)] left-0 mt-10 pb-2 border-b border-gray-200"
@@ -101,40 +103,48 @@
 				<div class="flex justify-between">
 					<div class="flex">
 						<div class="mr-4">{item.header.stylename}</div>
-						<div class="border border-black rounded-md antialiased">
+						<div class="border border-black rounded-full py-0.25 px-2">
 							&lt;/&gt; class="{item.tailwind}"
 						</div>
 					</div>
 					<div>{item.header.styledata}</div>
 				</div>
 			</div>
-			<div class="{item.tailwind} untld-text-regular">
-				{item.header.stylename} <br />
-				Regular
+			<div class="flex flex-col items-start space-y-8 mr-20">
+				<div class="{item.tailwind} untld-text-regular whitespace-nowrap">
+					<p>{item.header.stylename}</p>
+					<p>Regular</p>
+				</div>
+				<div class="border border-black rounded-full py-0.25 px-2">
+					&lt;/&gt; class="untld-text-regular"
+				</div>
 			</div>
-			<div class="{item.tailwind} untld-text-medium">
-				{item.header.stylename} <br />
-				Medium
+			<div class="flex flex-col items-start space-y-8 mr-20">
+				<div class="{item.tailwind} untld-text-medium whitespace-nowrap">
+					<p>{item.header.stylename}</p>
+					<p>Medium</p>
+				</div>
+				<div class="border border-black rounded-full py-0.25 px-2">
+					&lt;/&gt; class="untld-text-medium"
+				</div>
 			</div>
-			<div class="{item.tailwind} untld-text-semibold">
-				{item.header.stylename} <br />
-				Semibold
+			<div class="flex flex-col items-start space-y-8 mr-20">
+				<div class="{item.tailwind} untld-text-semibold whitespace-nowrap">
+					<p>{item.header.stylename}</p>
+					<p>Semibold</p>
+				</div>
+				<div class="border border-black rounded-full py-0.25 px-2">
+					&lt;/&gt; class="untld-text-semibold"
+				</div>
 			</div>
-			<div class="{item.tailwind} untld-text-bold">
-				{item.header.stylename} <br />
-				Bold
-			</div>
-			<div class="border border-black rounded-md antialiased">
-				&lt;/&gt; class="untld-text-regular"
-			</div>
-			<div class="border border-black rounded-md antialiased">
-				&lt;/&gt; class="untld-text-medium"
-			</div>
-			<div class="border border-black rounded-md antialiased">
-				&lt;/&gt; class="untld-text-semibold"
-			</div>
-			<div class="border border-black rounded-md antialiased">
-				&lt;/&gt; class="untld-text-bold"
+			<div class="flex flex-col items-start space-y-8 mr-20">
+				<div class="{item.tailwind} untld-text-bold whitespace-nowrap">
+					<p>{item.header.stylename}</p>
+					<p>Bold</p>
+				</div>
+				<div class="border border-black rounded-full py-0.25 px-2">
+					&lt;/&gt; class="untld-text-bold"
+				</div>
 			</div>
 		{/each}
 	</div>
