@@ -83,10 +83,10 @@
 
 <div class="flex flex-col items-start justify-start m-10 p-4 antialiased space-y-4">
 	<div class="space-y-1 mb-6">
-		<h1 class="text-5xl">Inter</h1>
-		<h2 class="text-[7rem]">Ag</h2>
+		<h1 class="untld-display-lg untld-text-regular">Inter</h1>
+		<h2 class="text-[7rem] untld-text-regular">Ag</h2>
 	</div>
-	<p class="text-5xl">
+	<p class="untld-display-lg untld-text-regular">
 		ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
 		abcdefghijklmnopqrstuvwxyz <br />
 		0123456789 <br />
@@ -102,12 +102,16 @@
 			>
 				<div class="flex justify-between">
 					<div class="flex">
-						<div class="mr-4">{item.header.stylename}</div>
-						<div class="border border-black rounded-full py-0.25 px-2">
+						<div class="mr-4 text-[1rem] leading-[1.5rem] untld-text-medium">
+							{item.header.stylename}
+						</div>
+						<div
+							class="border border-black rounded-full py-0.25 px-2 untld-text-medium untld-text-sm"
+						>
 							&lt;/&gt; class="{item.tailwind}"
 						</div>
 					</div>
-					<div>{item.header.styledata}</div>
+					<div class="untld-text-md untld-text-regular">{item.header.styledata}</div>
 				</div>
 			</div>
 			<div class="flex flex-col items-start space-y-8 mr-20">
@@ -115,7 +119,7 @@
 					<p>{item.header.stylename}</p>
 					<p>Regular</p>
 				</div>
-				<div class="border border-black rounded-full py-0.25 px-2">
+				<div class="border border-black rounded-full py-0.25 px-2 untld-text-sm untld-text-medium">
 					&lt;/&gt; class="untld-text-regular"
 				</div>
 			</div>
@@ -124,7 +128,7 @@
 					<p>{item.header.stylename}</p>
 					<p>Medium</p>
 				</div>
-				<div class="border border-black rounded-full py-0.25 px-2">
+				<div class="border border-black rounded-full py-0.25 px-2 untld-text-sm untld-text-medium">
 					&lt;/&gt; class="untld-text-medium"
 				</div>
 			</div>
@@ -133,7 +137,7 @@
 					<p>{item.header.stylename}</p>
 					<p>Semibold</p>
 				</div>
-				<div class="border border-black rounded-full py-0.25 px-2">
+				<div class="border border-black rounded-full py-0.25 px-2 untld-text-sm untld-text-medium">
 					&lt;/&gt; class="untld-text-semibold"
 				</div>
 			</div>
@@ -142,7 +146,7 @@
 					<p>{item.header.stylename}</p>
 					<p>Bold</p>
 				</div>
-				<div class="border border-black rounded-full py-0.25 px-2">
+				<div class="border border-black rounded-full py-0.25 px-2 untld-text-sm untld-text-medium">
 					&lt;/&gt; class="untld-text-bold"
 				</div>
 			</div>
