@@ -1,49 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 @layer base {
+	.untld-font-base {
+		@apply space-y-[1em] antialiased
+	}
 	.untld-text-regular { 
-		@apply font-normal antialiased
+		@apply font-normal
 	}
 	.untld-text-medium{ 
-		@apply font-medium antialiased
+		@apply font-medium 
 	}
 	.untld-text-semibold { 
-		@apply font-semibold antialiased
+		@apply font-semibold 
 	}
 	.untld-text-bold { 
-		@apply font-bold antialiased
+		@apply font-bold 
 	}
 	.untld-display-2xl { 
-		@apply text-7xl	leading-[5.625rem] tracking-[-0.09rem] antialiased
+		@apply text-7xl	leading-[5.625rem] tracking-[-0.09rem] untld-font-base
 	}
 	.untld-display-xl { 
-		@apply text-6xl	leading-[4.5rem] tracking-[-0.075rem] antialiased
+		@apply text-6xl	leading-[4.5rem] tracking-[-0.075rem] untld-font-base
 	}
 	.untld-display-lg { 
-		@apply text-5xl	leading-[3.75rem] tracking-[-0.06rem] antialiased
+		@apply text-5xl	leading-[3.75rem] tracking-[-0.06rem] untld-font-base
 	}
 	.untld-display-md { 
-		@apply text-4xl	leading-[2.75rem] tracking-[-0.045rem] antialiased
+		@apply text-4xl	leading-[2.75rem] tracking-[-0.045rem] untld-font-base
 	}
 	.untld-display-sm { 
-		@apply text-3xl	leading-[2.375rem] antialiased
+		@apply text-3xl	leading-[2.375rem] untld-font-base
 	}
 	.untld-display-xs { 
-		@apply text-2xl	leading-[2rem] antialiased
+		@apply text-2xl	leading-[2rem] untld-font-base
 	}
 	.untld-text-xl { 
-		@apply text-xl leading-[1.875rem] antialiased
+		@apply text-xl leading-[1.875rem] untld-font-base
 	}
 	.untld-text-lg { 
-		@apply text-lg leading-[1.75rem] antialiased
+		@apply text-lg leading-[1.75rem] untld-font-base
 	}
 	.untld-text-md { 
-		@apply text-base leading-[1.5rem] antialiased
+		@apply text-base leading-[1.5rem] untld-font-base
 	}
 	.untld-text-sm { 
-		@apply text-sm leading-[1.25rem] antialiased
+		@apply text-sm leading-[1.25rem] untld-font-base
 	}
 	.untld-text-xs { 
-		@apply text-xs leading-[1.125rem] antialiased
+		@apply text-xs leading-[1.125rem] untld-font-base
 	}
 }
