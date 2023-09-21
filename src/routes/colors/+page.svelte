@@ -12,6 +12,10 @@
 		[colorName: string]: ColorDescription;
 	};
 
+	let type: string = 'primary'; // default type
+	// todo temporary until real dropdown has been build
+	let isDropdownOpen = false;
+
 	export const colorDescriptions: { base: ColorGroup; primary: ColorGroup; secondary: ColorGroup } =
 		{
 			base: {
@@ -147,6 +151,38 @@
 				}
 			}
 		};
+	// this functions sets one of the app colors to the chosen color, and scrolls to them
+	function setNewColors(
+		shades: {
+			25: string;
+			50: string;
+			100: string;
+			200: string;
+			300: string;
+			400: string;
+			500: string;
+			600: string;
+			700: string;
+			800: string;
+			900: string;
+		},
+		colorGroup: string,
+		type: string
+	) {
+		colorGroup = colorGroup.toLocaleLowerCase().replace(' ', '-');
+		const computedStyles = getComputedStyle(document.documentElement);
+		const elementToScrollTo = document.querySelector('#' + type.toLowerCase());
+		if (elementToScrollTo) {
+			elementToScrollTo.scrollIntoView({
+				behavior: 'smooth', // for a smooth scrolling effect
+				block: 'center' // aligns the top of the element with the top of the viewport
+			});
+		}
+		Object.keys(shades).forEach((shade) => {
+			const value = computedStyles.getPropertyValue(`--color-untld-${colorGroup}-${shade}`).trim();
+			document.documentElement.style.setProperty(`--color-untld-${type}-${shade}`, value);
+		});
+	}
 </script>
 
 {#if browser}
@@ -158,10 +194,13 @@
 				system.</span
 			>
 		</div>
+
 		<div
 			class="grid gap-4 mr-4 grid-cols-3 w-fit mb-4 overflow-x-auto no-scrollbar snap-x snap-mandatory"
 		/>
-		<div class="overflow-x-auto lg:overflow-hidden no-scrollbar snap-x snap-mandatory pb-12">
+		<div
+			class="overflow-x-auto overflow-y-hidden lg:overflow-hidden no-scrollbar snap-x snap-mandatory pb-12"
+		>
 			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
 				<div
 					style="animation-delay: 100ms;"
@@ -205,6 +244,7 @@
 								<img src="/tailwind-icon.svg" alt="tailwind-icon" />
 								<span>{`tailwind: 'untld-${color.replace(/\s+/g, '-').toLocaleLowerCase()}'`}</span>
 							</button>
+							<!-- temporary copy button -->
 							<div
 								class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
                                  whitespace-nowrap"
@@ -221,6 +261,7 @@
 			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.primary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
+						id={colorGroup.toLowerCase()}
 						style="animation-delay: {outerIndex + outerIndex * 100}ms;"
 						class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
 					>
@@ -272,6 +313,7 @@
 											.toLocaleLowerCase()}-${shade}'`}</span
 									>
 								</button>
+								<!-- temporary copy button -->
 								<div
 									class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
                                  whitespace-nowrap"
@@ -298,7 +340,7 @@
 				{#each Object.entries(colors.secondary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
 						style="animation-delay: {outerIndex + outerIndex * 100}ms;"
-						class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+						class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 bg-untld-white left-0"
 					>
 						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
 							{colorDescriptions.secondary[colorGroup]?.title ?? ''}
@@ -307,7 +349,40 @@
 							{colorDescriptions.secondary[colorGroup]?.description ?? ''}
 						</p>
 						<div class="w-full h-full bg-untld-white pb-20 absolute" />
+						<!-- temporary menu -->
+						<div class="absolute left-0 top-1/2">
+							<div class="relative group inline-block">
+								<!-- Main Button -->
+								<div
+									class="group untld-text-medium untild-text-lg untild-text-bold text-untld-gray-800 rounded-lg pr-4 py-2"
+								>
+									set as:
+								</div>
+								<!-- temporary Dropdown Menu -->
+								<div
+									class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-lg `}
+								>
+									<div
+										class=" flex"
+										role="menu"
+										aria-orientation="vertical"
+										aria-labelledby="options-menu"
+									>
+										{#each ['gray', 'primary', 'warning', 'error', 'success'] as colorType}
+											<button
+												class="block px-4 py-2 untld-text-sm text-untld-gray-600 hover:text-untld-white hover:bg-untld-gray-900"
+												role="menuitem"
+												on:click={() => setNewColors(shades, colorGroup, colorType)}
+											>
+												{colorType.charAt(0).toUpperCase() + colorType.slice(1)}
+											</button>
+										{/each}
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+
 					{#each Object.entries(shades) as [shade, hexCode], innerIndex (innerIndex)}
 						<div
 							style="animation-delay: {innerIndex + innerIndex * 150}ms;"
@@ -348,6 +423,7 @@
 											.toLocaleLowerCase()}-${shade}'`}</span
 									>
 								</button>
+								<!-- temporary copy button -->
 								<div
 									class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
                              whitespace-nowrap"
