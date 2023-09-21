@@ -82,10 +82,10 @@
 </script>
 
 <div
-	class="flex flex-col items-start justify-start m-10 p-4 antialiased space-y-4 text-untld-gray-900"
+	class="flex flex-col items-start justify-start mt-[10.5rem] antialiased gap-16 px-[9.31rem] text-untld-gray-900"
 >
-	<div class="space-y-1 mb-6">
-		<h1 class="untld-display-lg untld-text-regular">Inter</h1>
+	<div class="space-y-1 mb-16">
+		<h1 class="untld-display-lg untld-text-regular mb-4">Inter</h1>
 		<h2 class="text-[7rem] untld-text-regular">Ag</h2>
 	</div>
 	<p class="untld-display-lg untld-text-regular">
@@ -96,15 +96,15 @@
 	</p>
 </div>
 
-<div class="w-full m-10 p-4 inline-block overflow-hidden">
+<div class="w-full my-[10rem] inline-block overflow-hidden px-[9.31rem]">
 	<div class="grid grid-cols-min gap-10 overflow-x-scroll relative">
 		{#each data as item}
 			<div
-				class=" col-span-4 sticky w-[calc(100vw-5.5em)] left-0 mt-10 pb-2 border-b border-untld-gray-300"
+				class=" col-span-4 sticky w-[calc(100vw-19rem)] left-0 pb-2 border-b border-untld-gray-300"
 			>
 				<div class="flex justify-between">
 					<div class="flex">
-						<div class="mr-4 text-[1rem] leading-[1.5rem] untld-text-medium text-untld-gray-600">
+						<div class="text-[1rem] leading-[1.5rem] untld-text-medium text-untld-gray-600 pr-2">
 							{item.header.stylename}
 						</div>
 						<div
@@ -118,50 +118,25 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-col items-start space-y-8 mr-20">
-				<div class="{item.tailwind} untld-text-regular whitespace-nowrap text-untld-gray-900">
-					<p>{item.header.stylename}</p>
-					<p>Regular</p>
+			{@const badges = [
+				{ class: 'untld-text-regular', text: 'Regular' },
+				{ class: 'untld-text-medium', text: 'Medium' },
+				{ class: 'untld-text-semibold', text: 'Semibold' },
+				{ class: 'untld-text-bold', text: 'Bold' }
+			]}
+			{#each badges as badge}
+				<div class="flex flex-col items-start space-y-8 mb-[5rem]">
+					<div class="{item.tailwind} {badge.class} whitespace-nowrap text-untld-gray-900">
+						<p>{item.header.stylename}</p>
+						<p>{badge.text}</p>
+					</div>
+					<div
+						class="border border-untld-gray-600 text-untld-gray-700 rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
+					>
+						&lt;/&gt; class="{badge.class}"
+					</div>
 				</div>
-				<div
-					class="border border-untld-gray-600 text-untld-gray-700 rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
-				>
-					&lt;/&gt; class="untld-text-regular"
-				</div>
-			</div>
-			<div class="flex flex-col items-start space-y-8 mr-20">
-				<div class="{item.tailwind} untld-text-medium whitespace-nowrap text-untld-gray-900">
-					<p>{item.header.stylename}</p>
-					<p>Medium</p>
-				</div>
-				<div
-					class="border border-untld-gray-600 text-untld-gray-700 rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
-				>
-					&lt;/&gt; class="untld-text-medium"
-				</div>
-			</div>
-			<div class="flex flex-col items-start space-y-8 mr-20">
-				<div class="{item.tailwind} untld-text-semibold whitespace-nowrap text-untld-gray-900">
-					<p>{item.header.stylename}</p>
-					<p>Semibold</p>
-				</div>
-				<div
-					class="border border-untld-gray-600 text-untld-gray-700rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
-				>
-					&lt;/&gt; class="untld-text-semibold"
-				</div>
-			</div>
-			<div class="flex flex-col items-start space-y-8 mr-20">
-				<div class="{item.tailwind} untld-text-bold whitespace-nowrap text-untld-gray-900">
-					<p>{item.header.stylename}</p>
-					<p>Bold</p>
-				</div>
-				<div
-					class="border border-untld-gray-600 text-untld-gray-700 rounded-full py-0.25 px-2 untld-text-sm untld-text-medium"
-				>
-					&lt;/&gt; class="untld-text-bold"
-				</div>
-			</div>
+			{/each}
 		{/each}
 	</div>
 </div>
