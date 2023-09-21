@@ -96,7 +96,7 @@
 	</p>
 </div>
 
-<div class="w-full my-[15rem] inline-block overflow-hidden pl-[9.31rem]">
+<div class="w-full my-[10rem] inline-block overflow-hidden pl-[9.31rem]">
 	<div class="grid grid-cols-min gap-10 overflow-x-scroll relative">
 		{#each data as item}
 			<div
