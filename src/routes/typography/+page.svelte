@@ -81,6 +81,7 @@
 	];
 </script>
 
+<!-- TODO Johanna: fix margin: margin only top and padding to the sides -->
 <div
 	class="flex flex-col items-start justify-start m-10 p-4 antialiased space-y-4 text-untld-gray-900"
 >
@@ -96,9 +97,11 @@
 	</p>
 </div>
 
+<!-- TODO Johanna: fix margin: margin only top and padding to the sides -->
 <div class="w-full m-10 p-4 inline-block overflow-hidden">
 	<div class="grid grid-cols-min gap-10 overflow-x-scroll relative">
 		{#each data as item}
+			<!-- TODO Johanna: Recalculate width based on rem with the brand new padding :) -->
 			<div
 				class=" col-span-4 sticky w-[calc(100vw-5.5em)] left-0 mt-10 pb-2 border-b border-untld-gray-300"
 			>
@@ -118,6 +121,8 @@
 					</div>
 				</div>
 			</div>
+			{@const badges = [{ class: 'untld-text-medium', text: 'Medium' }]}
+			<!-- TODO Johanna Please loop over the following items by extending the top element -->
 			<div class="flex flex-col items-start space-y-8 mr-20">
 				<div class="{item.tailwind} untld-text-regular whitespace-nowrap text-untld-gray-900">
 					<p>{item.header.stylename}</p>
