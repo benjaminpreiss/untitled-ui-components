@@ -1,5 +1,6 @@
 import plugin from 'tailwindcss/plugin.js';
 import defaultTheme from 'tailwindcss/defaultTheme.js';
+import { root } from 'postcss';
 
 export const colors = {
 	base: {
@@ -389,29 +390,74 @@ export const colors = {
 	}
 };
 
-function hexToRGB(h: string) {
-	let r = 0,
-		g = 0,
-		b = 0;
+function hexToRgb(hex: string): string {
+	// Parse the hex string, excluding the initial '#' (using slice(1)), as a base 16 (hexadecimal) number.
+	// This will give us a number where the red channel is in the highest byte,
+	// the green in the middle byte, and the blue in the lowest byte.
+	// the parseInt converts the hex string from a 16-base string into a 10-base string
+	const completeInt = parseInt(hex.slice(1), 16);
+	// To extract the red channel:
+	// 1. We shift the number 16 bits to the right (using '>> 16'). This moves the red byte to the lowest position.
+	// 2. We then bitwise AND with 255 (binary 11111111) to keep only the last 8 bits.
+	const r = (completeInt >> 16) & 255;
+	// Similar to the red channel, but only shift 8 bits to the right to get the green byte to the lowest position.
+	const g = (completeInt >> 8) & 255;
+	// For the blue channel, since it's already in the lowest byte, we don't need to shift.
+	// We just mask the lowest 8 bits to get the blue value.
+	const b = completeInt & 255;
 
-	// 3 digits
-	if (h.length == 4) {
-		r = '0x' + h[1] + h[1];
-		g = '0x' + h[2] + h[2];
-		b = '0x' + h[3] + h[3];
-
-		// 6 digits
-	} else if (h.length == 7) {
-		r = '0x' + h[1] + h[2];
-		g = '0x' + h[3] + h[4];
-		b = '0x' + h[5] + h[6];
-	}
-
-	return 'rgb(' + +r + ',' + +g + ',' + +b + ')';
+	return `'${r}, ${g}, ${b}'`;
 }
 
-function getColorFunction(varName: string) {
-	return ({ opacityVariable, opacityValue }) => {
+function convertAllHexColorsToRGB(object: any, parentKey?: string): any {
+	const newObj: any = {};
+	for (const key in object) {
+		if (typeof object[key] === 'string' && object[key].startsWith('#')) {
+			newObj[key] = `'--color-untld-${parentKey
+				?.toLowerCase()
+				.replace(' ', '-')}-${key.toLocaleLowerCase()}': ${hexToRgb(object[key])}`.replace('"', '');
+		} else if (typeof object[key] === 'object' && object[key] !== null) {
+			newObj[key] = convertAllHexColorsToRGB(object[key], key);
+		} else {
+			newObj[key] = object[key];
+		}
+	}
+
+	return newObj;
+}
+// takes the values out of the object and adds them to a root object, used to define the css variables on the :root element
+function extractRootVariables(object: any): any {
+	const root = {};
+
+	const processValue = (value: string) => {
+		const split = value.split(':');
+		const key = split[0].replace(/'/g, '').trim();
+		const val = split[1].replace(/'/g, '').trim().replace('"', '');
+		root[key] = val;
+	};
+
+	for (const values of Object.values(object)) {
+		if (typeof values === 'string') {
+			processValue(values);
+		} else {
+			for (const childValues of Object.values(values)) {
+				if (typeof childValues === 'string') processValue(childValues);
+				else {
+					for (const grandChildValues of Object.values(childValues)) {
+						if (typeof grandChildValues === 'string') processValue(grandChildValues);
+					}
+				}
+			}
+		}
+	}
+	return root;
+}
+
+const colorsAsVars = convertAllHexColorsToRGB(colors);
+const rootVariables = extractRootVariables(colorsAsVars);
+
+function getVarColorFunction(varName: string) {
+	return ({ opacityVariable, opacityValue }: { opacityVariable: string; opacityValue: string }) => {
 		if (opacityValue !== undefined) {
 			return `rgba(var(${varName}), ${opacityValue})`;
 		}
@@ -422,9 +468,40 @@ function getColorFunction(varName: string) {
 	};
 }
 
-// Iterate over colors above and rewrite hex definitions to css variable definitions
-//const colorsAsVars =
+const rootVariablesKeys = Object.keys(rootVariables);
+// Initialize an object named `colorsConfig` with default values for 'untld-black' and 'untld-white'.
+const untld: { [key: string]: any } = {
+	// todo fix this tomorrow
+	black: 'black', // Setting a static value 'black' for the key 'untld-black'
+	white: 'white' // Setting a static value 'white' for the key 'untld-white'
+};
 
+// For each key in the `rootVariables` object...
+rootVariablesKeys.forEach((key) => {
+	// We're using a regular expression to extract two pieces of information from the key:
+	// 1. The color name (e.g., "gray-modern", "gray-neutral")
+	// 2. The shade (e.g., "50", "100", "200")
+	const matches = key.match(/--color-untld-([a-z-]+)-(\d+)/);
+	// If the regular expression found a match...
+	if (matches) {
+		// Extract the color name and shade from the matched results
+		const colorName = matches[1]; // e.g., "gray-modern"
+		const shade = matches[2]; // e.g., "50"
+		// If the `colorsConfig` object doesn't already have an entry for this color name...
+		if (!untld[colorName]) {
+			// Create a new entry for this color name, initialized as an empty object.
+			untld[colorName] = {};
+		}
+		// Set the shade value for the color in the `colorsConfig` object.
+		// The value is determined by calling the `getVarColorFunction()` with the key.
+		untld[colorName][shade] = getVarColorFunction(key);
+		// Log the current state of `colorsConfig` to the console.
+		return untld;
+	}
+});
+
+// Iterate over colors above and rewrite hex definitions to css variable definitions including the rgb value
+//const colorsAsVars =
 export default plugin(
 	function ({ addBase }) {
 		addBase({
@@ -432,53 +509,18 @@ export default plugin(
 				'font-family': 'Inter',
 				src: "url('assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf')",
 				'font-weight': '1 999'
+			},
+			// add css variables to the root, so we can manipulate the colors within the docs, users will be able to do so as well
+			':root': {
+				...rootVariables
 			}
-			// TODO Nadiem: this is an example for how to define color vars
-			// E.g. --untld-primary-50: ...
-			/* ':root': {
-				'--color-untld-primary-50': '255, 115, 179'
-			} */
 		});
 	},
 	{
 		theme: {
 			extend: {
 				colors: {
-					// TODO Nadiem: this is an example on how to expose the new colors as tailwind classes
-					/* 'untld-primary': {
-						50: getColorFunction('--color-untld-primary-25')
-					}, */
-					'untld-black': colors.base.Black,
-					'untld-white': colors.base.White,
-					'untld-gray': colors.primary.Gray,
-					'untld-primary': colors.primary.Primary,
-					'untld-warning': colors.primary.Warning,
-					'untld-error': colors.primary.Error,
-					'untld-success': colors.primary.Success,
-					'untld-gray-blue': colors.secondary['Gray blue'],
-					'untld-gray-cool': colors.secondary['Gray cool'],
-					'untld-gray-modern': colors.secondary['Gray modern'],
-					'untld-gray-neutral': colors.secondary['Gray neutral'],
-					'untld-gray-iron': colors.secondary['Gray iron'],
-					'untld-gray-true': colors.secondary['Gray true'],
-					'untld-gray-warm': colors.secondary['Gray warm'],
-					'untld-moss': colors.secondary.Moss,
-					'untld-green-light': colors.secondary['Green light'],
-					'untld-green': colors.secondary.Green,
-					'untld-teal': colors.secondary.Teal,
-					'untld-cyan': colors.secondary.Cyan,
-					'untld-blue-light': colors.secondary['Blue light'],
-					'untld-blue': colors.secondary.Blue,
-					'untld-blue-dark': colors.secondary['Blue dark'],
-					'untld-indigo': colors.secondary.Indigo,
-					'untld-violet': colors.secondary.Violet,
-					'untld-purple': colors.secondary.Purple,
-					'untld-fuchsia': colors.secondary.Fuchsia,
-					'untld-pink': colors.secondary.Pink,
-					'untld-rosé': colors.secondary.Rosé,
-					'untld-orange-dark': colors.secondary['Orange dark'],
-					'untld-orange': colors.secondary.Orange,
-					'untld-yellow': colors.secondary.Yellow
+					untld
 				},
 				fontFamily: {
 					sans: ['Inter', ...defaultTheme.fontFamily.sans]
