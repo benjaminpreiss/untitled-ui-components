@@ -296,7 +296,7 @@ export const colors = {
 			900: '#491C96'
 		},
 		Purple: {
-			25: '#FAFAFF',
+			25: '#FAFAFF', // var(--css-variable)
 			50: '#F4F3FF',
 			100: '#EBE9FE',
 			200: '#D9D6FE',
@@ -389,28 +389,65 @@ export const colors = {
 	}
 };
 
+function hexToRGB(h: string) {
+	let r = 0,
+		g = 0,
+		b = 0;
+
+	// 3 digits
+	if (h.length == 4) {
+		r = '0x' + h[1] + h[1];
+		g = '0x' + h[2] + h[2];
+		b = '0x' + h[3] + h[3];
+
+		// 6 digits
+	} else if (h.length == 7) {
+		r = '0x' + h[1] + h[2];
+		g = '0x' + h[3] + h[4];
+		b = '0x' + h[5] + h[6];
+	}
+
+	return 'rgb(' + +r + ',' + +g + ',' + +b + ')';
+}
+
+function getColorFunction(varName: string) {
+	return ({ opacityVariable, opacityValue }) => {
+		if (opacityValue !== undefined) {
+			return `rgba(var(${varName}), ${opacityValue})`;
+		}
+		if (opacityVariable !== undefined) {
+			return `rgba(var(${varName}), var(${opacityVariable}, 1))`;
+		}
+		return `rgb(var(${varName}))`;
+	};
+}
+
+// Iterate over colors above and rewrite hex definitions to css variable definitions
+//const colorsAsVars =
+
 export default plugin(
-	function ({ addBase, matchUtilities, theme }) {
+	function ({ addBase }) {
 		addBase({
 			'@font-face': {
 				'font-family': 'Inter',
 				src: "url('assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf')",
 				'font-weight': '1 999'
 			}
+			// TODO Nadiem: this is an example for how to define color vars
+			// E.g. --untld-primary-50: ...
+			/* ':root': {
+				'--color-untld-primary-50': '255, 115, 179'
+			} */
 		});
-		matchUtilities(
-			{
-				extend: (value) => ({
-					tabSize: value
-				})
-			},
-			{ values: theme('tabSize') }
-		);
 	},
 	{
 		theme: {
 			extend: {
 				colors: {
+					// TODO Nadiem: this is an example on how to expose the new colors as tailwind classes
+					/* 'untld-primary': {
+						50: getColorFunction('--color-untld-primary-25')
+					}, */
 					'untld-black': colors.base.Black,
 					'untld-white': colors.base.White,
 					'untld-gray': colors.primary.Gray,
