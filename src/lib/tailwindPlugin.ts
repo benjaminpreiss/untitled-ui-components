@@ -390,6 +390,10 @@ export const colors = {
 	}
 };
 
+type ColorObject = {
+	[key: string]: string | ColorObject;
+};
+
 function hexToRgb(hex: string): string {
 	// Parse the hex string, excluding the initial '#' (using slice(1)), as a base 16 (hexadecimal) number.
 	// This will give us a number where the red channel is in the highest byte,
@@ -408,48 +412,47 @@ function hexToRgb(hex: string): string {
 
 	return `'${r}, ${g}, ${b}'`;
 }
+function convertAllHexColorsToRGB(obj: ColorObject, parentKey?: string): ColorObject {
+	const formatKey = (key: string): string => {
+		const formattedParentKey = parentKey ? `${parentKey.toLowerCase().replace(' ', '-')}-` : '';
+		return `--color-untld-${formattedParentKey}${key.toLowerCase()}`;
+	};
 
-function convertAllHexColorsToRGB(object: any, parentKey?: string): any {
-	const newObj: any = {};
-	for (const key in object) {
-		if (typeof object[key] === 'string' && object[key].startsWith('#')) {
-			newObj[key] = `'--color-untld-${parentKey
-				?.toLowerCase()
-				.replace(' ', '-')}-${key.toLocaleLowerCase()}': ${hexToRgb(object[key])}`.replace('"', '');
-		} else if (typeof object[key] === 'object' && object[key] !== null) {
-			newObj[key] = convertAllHexColorsToRGB(object[key], key);
+	const newObj: ColorObject = {};
+
+	for (const [key, value] of Object.entries(obj)) {
+		if (typeof value === 'string' && value.startsWith('#')) {
+			newObj[key] = `'${formatKey(key)}': ${hexToRgb(value)}`.replace('"', '');
+		} else if (typeof value === 'object') {
+			newObj[key] = convertAllHexColorsToRGB(value, key);
 		} else {
-			newObj[key] = object[key];
+			newObj[key] = value;
 		}
 	}
 
 	return newObj;
 }
-// takes the values out of the object and adds them to a root object, used to define the css variables on the :root element
-function extractRootVariables(object: { [s: string]: unknown } | ArrayLike<unknown>) {
-	const root = {};
 
-	const processValue = (value: string) => {
-		const split = value.split(':');
-		const key = split[0].replace(/'/g, '').trim();
-		const val = split[1].replace(/'/g, '').trim().replace('"', '');
-		root[key] = val;
-	};
+type StringMap = {
+	[key: string]: string | StringMap;
+};
 
-	for (const values of Object.values(object)) {
-		if (typeof values === 'string') {
-			processValue(values);
-		} else {
-			for (const childValues of Object.values(values)) {
-				if (typeof childValues === 'string') processValue(childValues);
-				else {
-					for (const grandChildValues of Object.values(childValues)) {
-						if (typeof grandChildValues === 'string') processValue(grandChildValues);
-					}
-				}
+function extractRootVariables(obj: StringMap): Record<string, string> {
+	const root: Record<string, string> = {};
+
+	function processObject(object: StringMap): void {
+		for (const value of Object.values(object)) {
+			if (typeof value === 'string') {
+				const [key, val] = value.split(':').map((str) => str.replace(/['"]/g, '').trim());
+				root[key] = val;
+			} else {
+				processObject(value);
 			}
 		}
 	}
+
+	processObject(obj);
+
 	return root;
 }
 
@@ -457,7 +460,10 @@ const colorsAsVars = convertAllHexColorsToRGB(colors);
 const rootVariables = extractRootVariables(colorsAsVars);
 
 function getVarColorFunction(varName: string) {
-	return ({ opacityVariable, opacityValue }: { opacityVariable: string; opacityValue: string }) => {
+	return ({
+		opacityVariable,
+		opacityValue
+	}: { opacityVariable?: string; opacityValue?: string } = {}) => {
 		if (opacityValue !== undefined) {
 			return `rgba(var(${varName}), ${opacityValue})`;
 		}
