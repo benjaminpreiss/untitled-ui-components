@@ -31,7 +31,10 @@ export default {
 			},
 			// THIS IS NOT A NECESSARY CONFIGURATION FOR THE ENDUSER
 			animation: {
-				fadeIn: 'fadeIn 1.5s forwards'
+				fadeIn: 'fadeIn 1.5s forwards',
+				fadeInFast: 'fadeIn 0.5s forwards',
+				fadeInSlow: 'fadeIn 2s forwards',
+				fadeInFromTop: 'fadeInFromTop 1s forwards'
 			},
 			// THIS IS NOT A NECESSARY CONFIGURATION FOR THE ENDUSER
 			keyframes: {
@@ -41,6 +44,20 @@ export default {
 					},
 					'100%': {
 						opacity: 1
+					}
+				},
+				fadeInFromTop: {
+					'0%': {
+						opacity: 0,
+						transform: 'translateY(-200px)'
+					},
+					'50%': {
+						opacity: 0.75,
+						transform: 'translateX(0)'
+					},
+					'100%': {
+						opacity: 1,
+						transform: 'translateX(0)'
 					}
 				}
 			}

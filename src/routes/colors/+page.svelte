@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { colors } from '$lib/tailwindPlugin.js';
+	import animationObserver from '$lib/animationObserver.js';
 
 	type ColorDescription = {
 		title: string;
@@ -181,7 +182,13 @@
 
 {#if browser}
 	<div class="h-full min-h-[100vh] pl-16 w-full overflow-hidden py-12">
-		<div class="max-w-4xl my-12">
+		<div
+			use:animationObserver={{
+				animation: 'animate-fadeInSlow',
+				threshold: 0.1
+			}}
+			class="max-w-4xl my-12 opacity-0"
+		>
 			<h3 class="text-untld-gray-900 untld-display-xs untld-text-semibold">Primary colors</h3>
 			<span class="untld-text-lg untld-text-regular antialiased text-untld-gray-600"
 				>These are the main colors that make up the majority of the colors used in the design
@@ -197,8 +204,11 @@
 		>
 			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
 				<div
-					style="animation-delay: 100ms;"
-					class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+					use:animationObserver={{
+						animation: 'animate-fadeInFromTop',
+						threshold: 0.1
+					}}
+					class=" col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
 				>
 					<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
 						{colorDescriptions.base.Base?.title ?? ''}
@@ -210,8 +220,12 @@
 				</div>
 				{#each Object.entries(colors.base) as [color, hexCode], innerIndex (innerIndex)}
 					<div
-						style="animation-delay: {innerIndex + innerIndex * 150}ms;"
-						class="w-[15rem] animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+						use:animationObserver={{
+							animation: 'animate-fadeInFromTop',
+							threshold: 0.1
+						}}
+						style="animation-delay: {innerIndex * 0.1}s;"
+						class="w-[15rem] opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 					>
 						<div
 							class="w-full rounded-t-md h-[52%] bg-untld-{color
@@ -256,8 +270,12 @@
 				{#each Object.entries(colors.primary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
 						id={colorGroup.toLowerCase()}
-						style="animation-delay: {outerIndex + outerIndex * 100}ms;"
-						class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+						use:animationObserver={{
+							animation: 'animate-fadeInFromTop',
+							threshold: 0.1
+						}}
+						style="animation-delay: {outerIndex * 0.1}s;"
+						class=" col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
 					>
 						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
 							{colorDescriptions.primary[colorGroup]?.title ?? ''}
@@ -268,11 +286,16 @@
 						<div class="w-full h-full bg-untld-white" />
 					</div>
 					{#each Object.entries(shades) as [shade, hexCode], innerIndex (innerIndex)}
+						<!-- added a small test animation -->
 						<div
-							style="animation-delay: {innerIndex + innerIndex * 150}ms;"
+							use:animationObserver={{
+								animation: 'animate-fadeIn',
+								threshold: 0.01
+							}}
+							style="animation-delay: {(innerIndex / 2) * 0.15}s;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[15rem]'}  animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} opacity-0 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 						>
 							<div
 								class="w-full rounded-t-md h-[52%] bg-untld-{colorGroup
@@ -322,8 +345,22 @@
 		</div>
 
 		<div class="max-w-4xl my-14 space-y-1">
-			<h3 class="text-untld-gray-900 untld-display-xs untld-text-semibold">Secondary colors</h3>
-			<p class="untld-text-lg untld-text-regular antialiased">
+			<h3
+				use:animationObserver={{
+					animation: 'animate-fadeInFromTop',
+					threshold: 0.01
+				}}
+				class="text-untld-gray-900 untld-display-xs untld-text-semibold"
+			>
+				Secondary colors
+			</h3>
+			<p
+				use:animationObserver={{
+					animation: 'animate-fadeInSlow',
+					threshold: 0.01
+				}}
+				class="untld-text-lg untld-text-regular antialiased"
+			>
 				Along with primary colors, it's helpful to have a selection of secondary colors to use in
 				components such as pills, alerts and labels. These secondary colors should be used sparingly
 				or as accents, while the primary color(s) should take precedence.
@@ -333,8 +370,12 @@
 			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.secondary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
-						style="animation-delay: {outerIndex + outerIndex * 100}ms;"
-						class="animate-fadeIn col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 bg-untld-white left-0"
+						use:animationObserver={{
+							animation: 'animate-fadeInFromTop',
+							threshold: 0.1
+						}}
+						style="animation-delay: {0.5}s;"
+						class=" col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 bg-untld-white left-0"
 					>
 						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
 							{colorDescriptions.secondary[colorGroup]?.title ?? ''}
@@ -373,10 +414,14 @@
 
 					{#each Object.entries(shades) as [shade, hexCode], innerIndex (innerIndex)}
 						<div
-							style="animation-delay: {innerIndex + innerIndex * 150}ms;"
+							use:animationObserver={{
+								animation: 'animate-fadeIn',
+								threshold: 0.01
+							}}
+							style="animation-delay: {(innerIndex / 2) * 0.15}s;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[15rem]'} animate-fadeIn opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 						>
 							<div
 								class="w-full rounded-t-md h-[52%] bg-untld-{colorGroup
