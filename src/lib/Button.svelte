@@ -134,7 +134,10 @@
 		}
 	};
 
-	/* TODO: check if heights are automatically set to the right heiht with the given text-size and padding, if so , delete commented heights */
+	/* TODO: check if heights are automatically set to the right heiht with the given text-size and padding, if so , delete commented heights
+	 * heights are all the same except for the icon-only button, which is smaller than the same sizes for the buttons with text
+	 * also they seem to be placed slightly higher than the buttons with text, given the same padding etc.
+	 */
 	const styleSizes = {
 		sm: {
 			/* height: 'h-36', */
