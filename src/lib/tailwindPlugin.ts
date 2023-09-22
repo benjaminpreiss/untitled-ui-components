@@ -426,7 +426,7 @@ function convertAllHexColorsToRGB(object: any, parentKey?: string): any {
 	return newObj;
 }
 // takes the values out of the object and adds them to a root object, used to define the css variables on the :root element
-function extractRootVariables(object: any): any {
+function extractRootVariables(object: { [s: string]: unknown } | ArrayLike<unknown>) {
 	const root = {};
 
 	const processValue = (value: string) => {
@@ -469,39 +469,33 @@ function getVarColorFunction(varName: string) {
 }
 
 const rootVariablesKeys = Object.keys(rootVariables);
-// Initialize an object named `colorsConfig` with default values for 'untld-black' and 'untld-white'.
-const untld: { [key: string]: any } = {
-	// todo fix this tomorrow
-	black: 'black', // Setting a static value 'black' for the key 'untld-black'
-	white: 'white' // Setting a static value 'white' for the key 'untld-white'
-};
 
-// For each key in the `rootVariables` object...
+// Initialize an empty object named `untld`.
+const untld: { [key: string]: any } = {};
+
 rootVariablesKeys.forEach((key) => {
-	// We're using a regular expression to extract two pieces of information from the key:
-	// 1. The color name (e.g., "gray-modern", "gray-neutral")
-	// 2. The shade (e.g., "50", "100", "200")
-	const matches = key.match(/--color-untld-([a-z-]+)-(\d+)/);
-	// If the regular expression found a match...
+	// Handle colors that match the following regex: (mainly primary and secondary colors, should also contain é)
+	const matches = key.match(/--color-untld-([\p{L}-]+)-(\d+)/u);
 	if (matches) {
-		// Extract the color name and shade from the matched results
-		const colorName = matches[1]; // e.g., "gray-modern"
-		const shade = matches[2]; // e.g., "50"
-		// If the `colorsConfig` object doesn't already have an entry for this color name...
+		// Handle colors with shades
+		const colorName = matches[1];
+		const shade = matches[2];
 		if (!untld[colorName]) {
-			// Create a new entry for this color name, initialized as an empty object.
 			untld[colorName] = {};
 		}
-		// Set the shade value for the color in the `colorsConfig` object.
-		// The value is determined by calling the `getVarColorFunction()` with the key.
 		untld[colorName][shade] = getVarColorFunction(key);
-		// Log the current state of `colorsConfig` to the console.
-		return untld;
+	} else {
+		// Handle potential base colors without a shade and include letters like é
+		const baseMatch = key.match(/--color-untld-([a-z\p{L}-]+)/u);
+		if (baseMatch) {
+			const baseColorName = baseMatch[1];
+			if (!untld[baseColorName]) {
+				const splitBaseColorName = baseColorName.split('-');
+				untld[splitBaseColorName[1]] = getVarColorFunction(key);
+			}
+		}
 	}
 });
-
-// Iterate over colors above and rewrite hex definitions to css variable definitions including the rgb value
-//const colorsAsVars =
 export default plugin(
 	function ({ addBase }) {
 		addBase({
