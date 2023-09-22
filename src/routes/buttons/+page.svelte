@@ -75,7 +75,7 @@
 		class="grid grid-cols-min grid-auto-cols-[minmax(450px, 1fr)] gap-4 overflow-x-scroll relative"
 	>
 		<div class="sticky left-0 col-span-1 pb-2 border-b border-untld-gray-300 untld-text-sm">
-			All icon types
+			All icon types and sizes
 		</div>
 		{#each destructives as destructive}
 			{#each hierarchies as h}
