@@ -44,7 +44,7 @@
 	<div
 		class="grid grid-cols-min grid-auto-cols-[minmax(450px, 1fr)] gap-4 overflow-x-scroll relative"
 	>
-		<div class="sticky left-0 col-span-1 pb-2 border-b border-untld-gray-300 untld-text-sm">
+		<div class="sticky left-0 col-span-1 pt-20 pb-2 border-b border-untld-gray-300 untld-text-sm">
 			Disabled buttons
 		</div>
 		<div
@@ -67,20 +67,13 @@
 				</div>
 			{/each}
 		{/each}
-	</div>
-</div>
-
-<div class="w-full my-[4rem] inline-block overflow-hidden px-[9.31rem]">
-	<div
-		class="grid grid-cols-min grid-auto-cols-[minmax(450px, 1fr)] gap-4 overflow-x-scroll relative"
-	>
-		<div class="sticky left-0 col-span-1 pb-2 border-b border-untld-gray-300 untld-text-sm">
+		<div class="sticky left-0 col-span-1 pt-20 pb-2 border-b border-untld-gray-300 untld-text-sm">
 			All icon types and sizes
 		</div>
 		{#each destructives as destructive}
 			{#each hierarchies as h}
 				<div
-					class="sticky w-[calc(100vw-19rem)] left-0 col-span-6 pb-2 border-b border-untld-gray-300 untld-text-sm"
+					class="sticky w-[calc(100vw-19rem)] left-0 col-span-7 pb-2 border-b border-untld-gray-300 untld-text-sm"
 				>
 					Hierarchy: {h}
 				</div>
