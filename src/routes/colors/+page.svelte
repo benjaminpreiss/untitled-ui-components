@@ -348,18 +348,18 @@
 			<h3
 				use:animationObserver={{
 					animation: 'animate-fadeInFromTop',
-					threshold: 0.01
+					threshold: 0.5
 				}}
-				class="text-untld-gray-900 untld-display-xs untld-text-semibold"
+				class="text-untld-gray-900 opacity-0 untld-display-xs untld-text-semibold"
 			>
 				Secondary colors
 			</h3>
 			<p
 				use:animationObserver={{
 					animation: 'animate-fadeInSlow',
-					threshold: 0.01
+					threshold: 0.5
 				}}
-				class="untld-text-lg untld-text-regular antialiased"
+				class="untld-text-lg opacity-0 untld-text-regular antialiased"
 			>
 				Along with primary colors, it's helpful to have a selection of secondary colors to use in
 				components such as pills, alerts and labels. These secondary colors should be used sparingly
