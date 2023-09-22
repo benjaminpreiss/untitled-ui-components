@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment';
 	import { colors } from '$lib/tailwindPlugin.js';
 	import animationObserver from '$lib/animationObserver.js';
+	import { draggable } from '$lib/draggable.js';
 
 	type ColorDescription = {
 		title: string;
@@ -265,7 +266,10 @@
 			</div>
 		</div>
 
-		<div class="overflow-x-auto no-scrollbar snap-x snap-mandatory pb-28">
+		<div
+			use:draggable
+			class="active:cursor-grabbing overflow-x-auto no-scrollbar snap-x snap-mandatory pb-28"
+		>
 			<div class="grid gap-x-6 gap-y-20 mt-8 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.primary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
@@ -275,7 +279,7 @@
 							threshold: 0.1
 						}}
 						style="animation-delay: {outerIndex * 0.1}s;"
-						class=" col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+						class="non-draggable active:cursor-default col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
 					>
 						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
 							{colorDescriptions.primary[colorGroup]?.title ?? ''}
@@ -366,7 +370,10 @@
 				or as accents, while the primary color(s) should take precedence.
 			</p>
 		</div>
-		<div class="overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory pb-12">
+		<div
+			use:draggable
+			class="active:cursor-grabbing overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory pb-12"
+		>
 			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.secondary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
@@ -375,7 +382,7 @@
 							threshold: 0.1
 						}}
 						style="animation-delay: {0.5}s;"
-						class=" col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 bg-untld-white left-0"
+						class="non-draggable active:cursor-default col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 bg-untld-white left-0"
 					>
 						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
 							{colorDescriptions.secondary[colorGroup]?.title ?? ''}
