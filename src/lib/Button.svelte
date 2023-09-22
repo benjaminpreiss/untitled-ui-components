@@ -18,6 +18,7 @@
 	export let hierarchy: hierarchy = 'primary';
 	export let destructive: boolean = false;
 	export let icon: icon;
+	export let disabled: boolean = false;
 
 	/* TODO: Add boxshadow colors and sizes for all and for focused */
 	const styleColors = {
@@ -164,6 +165,7 @@
     {stylePaddings[icon ? 'icon' : icon ? 'icon-only' : 'dot'][size].padding}
     border rounded-[0.5rem] border-solid shadow-sm focus:shadow-lg
     inline-flex justify-center items-center gap-[0.5rem]"
+	{disabled}
 >
 	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) -->
 	<div
