@@ -273,22 +273,26 @@
 			<div class="grid gap-x-6 gap-y-20 mt-8 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.primary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
-						id={colorGroup.toLowerCase()}
-						use:animationObserver={{
-							animation: 'animate-fadeInFromTop',
-							threshold: 0.1
-						}}
-						style="animation-delay: {outerIndex * 0.1}s;"
-						class="non-draggable active:cursor-default col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+						class="non-draggable active:cursor-default col-span-2 opacity-100 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 left-0"
 					>
-						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
-							{colorDescriptions.primary[colorGroup]?.title ?? ''}
-						</h4>
-						<p class="untld-text-md untld-text-regular text-untld-gray-600">
-							{colorDescriptions.primary[colorGroup]?.description ?? ''}
-						</p>
-						<div class="w-full h-full bg-untld-white" />
+						<div class="w-full h-full bg-untld-white py-32 absolute" />
+						<div
+							use:animationObserver={{
+								animation: 'animate-fadeInFromTop',
+								threshold: 0.1
+							}}
+							style="animation-delay: {0.5}s;"
+							class="relative w-full h-full opacity-0"
+						>
+							<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
+								{colorDescriptions.primary[colorGroup]?.title ?? ''}
+							</h4>
+							<p class="untld-text-md untld-text-regular text-untld-gray-600">
+								{colorDescriptions.primary[colorGroup]?.description ?? ''}
+							</p>
+						</div>
 					</div>
+
 					{#each Object.entries(shades) as [shade, hexCode], innerIndex (innerIndex)}
 						<!-- added a small test animation -->
 						<div
@@ -377,42 +381,47 @@
 			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.secondary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
-						use:animationObserver={{
-							animation: 'animate-fadeInFromTop',
-							threshold: 0.1
-						}}
-						style="animation-delay: {0.5}s;"
-						class="non-draggable active:cursor-default col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 bg-untld-white left-0"
+						class="non-draggable active:cursor-default col-span-2 opacity-100 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 left-0"
 					>
-						<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
-							{colorDescriptions.secondary[colorGroup]?.title ?? ''}
-						</h4>
-						<p class="untld-text-md untld-text-regular text-untld-gray-600">
-							{colorDescriptions.secondary[colorGroup]?.description ?? ''}
-						</p>
-						<div class="w-full h-full bg-untld-white pb-20 absolute" />
-						<!-- temporary menu -->
-						<div class="absolute left-0 top-1/2">
-							<div class="relative group inline-block">
-								<!-- Main Button -->
-								<div class="group bg-untld-white untld-text-sm text-untld-gray-600 py-2">
-									set color as:
-								</div>
-								<!-- temporary Dropdown Menu -->
-								<div class="w-full h-1 bg-transparent" />
-								<div
-									class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-lg `}
-								>
-									<div class=" flex" role="menu">
-										{#each ['gray', 'primary', 'warning', 'error', 'success'] as colorType}
-											<button
-												class="block px-4 py-2 untld-text-sm text-untld-gray-600 hover:text-untld-white hover:bg-untld-gray-900"
-												role="menuitem"
-												on:click={() => setNewColors(shades, colorGroup, colorType)}
-											>
-												{colorType.charAt(0).toUpperCase() + colorType.slice(1)}
-											</button>
-										{/each}
+						<div class="w-full h-full bg-untld-white py-32 absolute" />
+
+						<div
+							use:animationObserver={{
+								animation: 'animate-fadeInFromTop',
+								threshold: 0.1
+							}}
+							style="animation-delay: {0.5}s;"
+							class="relative w-full h-full opacity-0"
+						>
+							<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
+								{colorDescriptions.secondary[colorGroup]?.title ?? ''}
+							</h4>
+							<p class="untld-text-md untld-text-regular text-untld-gray-600">
+								{colorDescriptions.secondary[colorGroup]?.description ?? ''}
+							</p>
+							<!-- temporary menu -->
+							<div class="absolute left-0 bottom-0">
+								<div class="relative group inline-block">
+									<!-- Main Button -->
+									<div class="group bg-untld-white untld-text-sm text-untld-gray-600 py-2">
+										set color as:
+									</div>
+									<!-- temporary Dropdown Menu -->
+									<div class="w-full h-1 bg-transparent" />
+									<div
+										class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-lg `}
+									>
+										<div class=" flex" role="menu">
+											{#each ['gray', 'primary', 'warning', 'error', 'success'] as colorType}
+												<button
+													class="block px-4 py-2 untld-text-sm text-untld-gray-600 hover:text-untld-white hover:bg-untld-gray-900"
+													role="menuitem"
+													on:click={() => setNewColors(shades, colorGroup, colorType)}
+												>
+													{colorType.charAt(0).toUpperCase() + colorType.slice(1)}
+												</button>
+											{/each}
+										</div>
 									</div>
 								</div>
 							</div>
