@@ -273,6 +273,7 @@
 			<div class="grid gap-x-6 gap-y-20 mt-8 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.primary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
+						id={colorGroup.toLowerCase()}
 						class="non-draggable active:cursor-default col-span-2 opacity-100 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 left-0"
 					>
 						<div class="w-full h-full bg-untld-white py-32 absolute" />
@@ -381,6 +382,7 @@
 			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.secondary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
+						id={colorGroup.toLowerCase()}
 						class="non-draggable active:cursor-default col-span-2 opacity-100 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 left-0"
 					>
 						<div class="w-full h-full bg-untld-white py-32 absolute" />
