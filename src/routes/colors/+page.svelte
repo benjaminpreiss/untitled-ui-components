@@ -10,8 +10,6 @@
 		[colorName: string]: ColorDescription;
 	};
 
-	let type: string = 'primary'; // default type
-
 	export const colorDescriptions: { base: ColorGroup; primary: ColorGroup; secondary: ColorGroup } =
 		{
 			base: {
@@ -357,12 +355,7 @@
 								<div
 									class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-lg `}
 								>
-									<div
-										class=" flex"
-										role="menu"
-										aria-orientation="vertical"
-										aria-labelledby="options-menu"
-									>
+									<div class=" flex" role="menu">
 										{#each ['gray', 'primary', 'warning', 'error', 'success'] as colorType}
 											<button
 												class="block px-4 py-2 untld-text-sm text-untld-gray-600 hover:text-untld-white hover:bg-untld-gray-900"
