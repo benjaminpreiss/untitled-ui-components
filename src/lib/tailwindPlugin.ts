@@ -1,6 +1,5 @@
 import plugin from 'tailwindcss/plugin.js';
 import defaultTheme from 'tailwindcss/defaultTheme.js';
-import { root } from 'postcss';
 
 export const colors = {
 	base: {
