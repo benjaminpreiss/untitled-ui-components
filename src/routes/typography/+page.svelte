@@ -100,7 +100,7 @@
 	<div class="grid grid-cols-min gap-10 overflow-x-scroll relative">
 		{#each data as item}
 			<div
-				class=" col-span-4 sticky w-[calc(100vw-19rem)] left-0 pb-2 border-b border-untld-gray-300"
+				class="col-span-4 sticky w-[calc(100vw-19rem)] left-0 pb-2 border-b border-untld-gray-300"
 			>
 				<div class="flex justify-between">
 					<div class="flex">
