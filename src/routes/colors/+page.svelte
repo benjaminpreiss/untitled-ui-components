@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { colors } from '$lib/tailwindPlugin.js';
-	import { flip } from 'svelte/animate';
-	import { fade } from 'svelte/transition';
 
 	type ColorDescription = {
 		title: string;
@@ -13,8 +11,6 @@
 	};
 
 	let type: string = 'primary'; // default type
-	// todo temporary until real dropdown has been build
-	let isDropdownOpen = false;
 
 	export const colorDescriptions: { base: ColorGroup; primary: ColorGroup; secondary: ColorGroup } =
 		{
