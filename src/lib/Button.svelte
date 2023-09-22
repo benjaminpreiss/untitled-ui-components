@@ -19,51 +19,105 @@
 	export let icon: icon;
 
     /* TODO: What colors for shadow and focused shadow?*/
-    const styles = {
+    const styleColors = {
         destructive: {
-            primary: {
-                coloring: 'bg-untld-primary-600 hover:bg-untld-primary-700 text-untld-base-white border-untld-primary-600 shadow-{color} focused:shadow-{color} disabled:bg-untld-primary-200 '
+            'primary': {
+                coloring: 'bg-untld-primary-600 text-untld-base-white border-untld-primary-600 shadow-untld-{color} hover:bg-untld-primary-700 focused:shadow-untld-{color} disabled:bg-untld-primary-200 '
             }
             'secondary-gray': { 
-                coloring: 'bg-untld-base-white text-untld-gray-700 border-untld-gray-300 shadow-{color} hover:bg-untld-gray-50 hover:text-untld-gray-800 focused:shadow-{color} disabled:bg-untld-base-white focused:shadow-{color} disabled:text-untld-gray-300'
+                coloring: 'bg-untld-base-white text-untld-gray-700 border-untld-gray-300 shadow-untld-{color} hover:bg-untld-gray-50 hover:text-untld-gray-800 focused:shadow-untld-{color} disabled:text-untld-gray-300'
             }
             'secondary-color': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'bg-untld-primary-50 text-untld-primary-700 border-untld-primary-50 shadow-untld-{color} hover:bg-untld-primary-100 hover:text-untld-primary-800 focused:shadow-untld-{color} disabled:bg-untld-primary-25 disabled:text-untld-primary-300'
             }
             'tertiary-gray': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'text-untld-gray-600 shadow-untld-{color} hover:bg-untld-gray-50 hover:text-untld-gray-700 focused:shadow-untld-{color} disabled:text-untld-gray-300'
             }
             'tertiary-color': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'text-untld-primary-700 shadow-untld-{color} hover:bg-untld-primary-50 hover:text-untld-primary-800 focused:shadow-untld-{color} disabled:text-untld-gray-300'
             }
             'link-gray': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'text-untld-gray-600 shadow-untld-{color} hover:text-untld-gray-700 disabled:text-untld-gray-300'
             }
             'link-color': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'text-untld-primary-700 shadow-untld-{color} hover:text-untld-primary-800 disabled:text-untld-gray-300'
             }
         } 
-        notDestructive: {
-            primary: {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+        nonDestructive: {
+            'primary': {
+                coloring: 'bg-untld-error-600 text-untld-base-white border-untld-error-600 shadow-untld-{color} hover:bg-untld-error-700 focused:shadow-untld-{color} disabled:bg-untld-error-200 '
             }
-            'secondary-gray': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+            'secondary-gray': { 
+                coloring: 'bg-untld-base-white text-untld-error-700 border-untld-error-300 shadow-untld-{color} hover:bg-untld-error-50 hover:text-untld-error-800 focused:shadow-untld-{color} disabled:text-untld-error-300'
             }
             'secondary-color': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'bg-untld-error-50 text-untld-error-700 border-untld-error-50 shadow-untld-{color} hover:bg-untld-error-100 hover:text-untld-error-800 focused:shadow-untld-{color} disabled:bg-untld-error-25 disabled:text-untld-error-300'
             }
             'tertiary-gray': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'text-untld-error-600 shadow-untld-{color} hover:bg-untld-error-50 hover:text-untld-error-700 focused:shadow-untld-{color} disabled:text-untld-error-300'
             }
             'tertiary-color': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'text-untld-error-700 shadow-untld-{color} hover:bg-untld-error-50 hover:text-untld-error-800 focused:shadow-untld-{color} disabled:text-untld-error-300'
             }
             'link-gray': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'text-untld-error-700 shadow-untld-{color} hover:text-untld-error-800 disabled:text-untld-error-300'
             }
             'link-color': {
-                coloring: 'bg-{color} text-{color} border-{color} shadow-{color} hover:bg-{color}'
+                coloring: 'text-untld-error-700 shadow-untld-{color} hover:text-untld-error-800 disabled:text-untld-error-300'
+            }
+        }
+    }
+
+    const stylePaddings = {
+        'icon': {
+            'sm': {
+                padding: 'px-[0.875rem] py-[0.5rem]'
+            }
+            'md': {
+                padding: 'px-[1rem] py-[0.625rem]'
+            }
+            'lg': {
+                padding: 'px-[1.125rem] py-[0.625rem]'
+            }
+            'xl': {
+                padding: 'px-[1.25rem] py-[0.75rem]'
+            }
+            '2xl': {
+                padding: 'px-[1.75rem] py-[1rem]'
+            }
+        }
+        'icon-only': {
+            'sm': {
+                padding: 'p-[0.5rem]'
+            }
+            'md': {
+                padding: 'p-[0.625rem]'
+            }
+            'lg': {
+                padding: 'p-[0.75rem]'
+            }
+            'xl': {
+                padding: 'p-[0.875rem]'
+            }
+            '2xl': {
+                padding: 'p-[1rem]'
+            }
+        }
+        'dot': {
+            'sm': {
+                padding: 'px-[0.875] py-[0.5rem]'
+            }
+            'md': {
+                padding: 'px-[1rem] py-[0.625rem]'
+            } 
+            'lg': {
+                padding: 'px-[1.125rem] py-[0.625rem]'
+            }
+            'xl': {
+                padding: 'px-[1.25rem] py-[0.75rem]'
+            }
+            '2xl': {
+                padding: 'px-[1.75rem] py-[1rem]'
             }
         }
     }
@@ -83,34 +137,10 @@
 		: size === '2xl'
 		? 'h-60'
 		: ''}
-        {!destructive
-		? hierarchy === 'primary'
-			? ''
-			: hierarchy === 'secondary-gray'
-			? ''
-			: hierarchy === 'secondary-color'
-			? ''
-			: hierarchy === 'tertiary-gray'
-			? ''
-			: hierarchy === 'tertiary-color'
-			? ''
-			: hierarchy === 'link-gray'
-			? '' // link-color below
-			: ''
-		: hierarchy === 'primary' && destructive === true
-		? ''
-		: hierarchy === 'secondary-gray' && destructive === true
-		? ''
-		: hierarchy === 'secondary-color' && destructive === true
-		? ''
-		: hierarchy === 'tertiary-gray' && destructive === true
-		? ''
-		: hierarchy === 'tertiary-color' && destructive === true
-		? ''
-		: hierarchy === 'link-gray' && destructive === true
-		? '' // link-color below
-		: 'bg-{color} hover:bg-{color} text-{color} border-{color} shadow-{color}'} 
+        {styleColors[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
+        {stylePaddings[icon ? 'icon' : icon ? 'icon-only' : 'dot'][size].padding}
         border border-radius-[0.5rem] border-solid shadow-sm focus:shadow-lg
+        inline-flex justify-center items-center gap-[0.5rem]
     "
 >
 	<!-- TODO finish the component structure and the classes for the structure -->
