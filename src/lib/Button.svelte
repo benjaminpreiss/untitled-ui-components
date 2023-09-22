@@ -18,66 +18,62 @@
 	export let destructive: boolean = false;
 	export let icon: icon;
 
-	/* TODO: What colors for shadow and focused shadow?*/
+	/* TODO: Add boxshadow colors and sizes for all and for focused*/
 	const styleColors = {
 		destructive: {
 			primary: {
 				coloring:
-					'bg-untld-primary-600 text-untld-base-white border-untld-primary-600 shadow-untld-{color} hover:bg-untld-primary-700 focused:shadow-untld-{color} disabled:bg-untld-primary-200 '
+					'bg-untld-primary-600 text-untld-base-white border-untld-primary-600 hover:bg-untld-primary-700 disabled:bg-untld-primary-200'
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-base-white text-untld-gray-700 border-untld-gray-300 shadow-untld-{color} hover:bg-untld-gray-50 hover:text-untld-gray-800 focused:shadow-untld-{color} disabled:text-untld-gray-300'
+					'bg-untld-base-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300'
 			},
 			'secondary-color': {
 				coloring:
-					'bg-untld-primary-50 text-untld-primary-700 border-untld-primary-50 shadow-untld-{color} hover:bg-untld-primary-100 hover:text-untld-primary-800 focused:shadow-untld-{color} disabled:bg-untld-primary-25 disabled:text-untld-primary-300'
+					'bg-untld-primary-50 text-untld-primary-700 border-untld-primary-50 hover:bg-untld-primary-100 hover:text-untld-primary-800 disabled:bg-untld-primary-25 disabled:text-untld-primary-300'
 			},
 			'tertiary-gray': {
 				coloring:
-					'text-untld-gray-600 shadow-untld-{color} hover:bg-untld-gray-50 hover:text-untld-gray-700 focused:shadow-untld-{color} disabled:text-untld-gray-300'
+					'text-untld-gray-600 hover:bg-untld-gray-50 hover:text-untld-gray-700 disabled:text-untld-gray-300'
 			},
 			'tertiary-color': {
 				coloring:
-					'text-untld-primary-700 shadow-untld-{color} hover:bg-untld-primary-50 hover:text-untld-primary-800 focused:shadow-untld-{color} disabled:text-untld-gray-300'
+					'text-untld-primary-700 hover:bg-untld-primary-50 hover:text-untld-primary-800 disabled:text-untld-gray-300'
 			},
 			'link-gray': {
-				coloring:
-					'text-untld-gray-600 shadow-untld-{color} hover:text-untld-gray-700 disabled:text-untld-gray-300'
+				coloring: 'text-untld-gray-600 hover:text-untld-gray-700 disabled:text-untld-gray-300'
 			},
 			'link-color': {
-				coloring:
-					'text-untld-primary-700 shadow-untld-{color} hover:text-untld-primary-800 disabled:text-untld-gray-300'
+				coloring: 'text-untld-primary-700 hover:text-untld-primary-800 disabled:text-untld-gray-300'
 			}
 		},
 		nonDestructive: {
 			primary: {
 				coloring:
-					'bg-untld-error-600 text-untld-base-white border-untld-error-600 shadow-untld-{color} hover:bg-untld-error-700 focused:shadow-untld-{color} disabled:bg-untld-error-200 '
+					'bg-untld-error-600 text-untld-base-white border-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-200'
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-base-white text-untld-error-700 border-untld-error-300 shadow-untld-{color} hover:bg-untld-error-50 hover:text-untld-error-800 focused:shadow-untld-{color} disabled:text-untld-error-300'
+					'bg-untld-base-white text-untld-error-700 border-untld-error-300 hover:bg-untld-error-50 hover:text-untld-error-800 disabled:text-untld-error-300'
 			},
 			'secondary-color': {
 				coloring:
-					'bg-untld-error-50 text-untld-error-700 border-untld-error-50 shadow-untld-{color} hover:bg-untld-error-100 hover:text-untld-error-800 focused:shadow-untld-{color} disabled:bg-untld-error-25 disabled:text-untld-error-300'
+					'bg-untld-error-50 text-untld-error-700 border-untld-error-50 hover:bg-untld-error-100 hover:text-untld-error-800 disabled:bg-untld-error-25 disabled:text-untld-error-300'
 			},
 			'tertiary-gray': {
 				coloring:
-					'text-untld-error-600 shadow-untld-{color} hover:bg-untld-error-50 hover:text-untld-error-700 focused:shadow-untld-{color} disabled:text-untld-error-300'
+					'text-untld-error-600 hover:bg-untld-error-50 hover:text-untld-error-700 disabled:text-untld-error-300'
 			},
 			'tertiary-color': {
 				coloring:
-					'text-untld-error-700 shadow-untld-{color} hover:bg-untld-error-50 hover:text-untld-error-800 focused:shadow-untld-{color} disabled:text-untld-error-300'
+					'text-untld-error-700 hover:bg-untld-error-50 hover:text-untld-error-800 disabled:text-untld-error-300'
 			},
 			'link-gray': {
-				coloring:
-					'text-untld-error-700 shadow-untld-{color} hover:text-untld-error-800 disabled:text-untld-error-300'
+				coloring: 'text-untld-error-700 hover:text-untld-error-800 disabled:text-untld-error-300'
 			},
 			'link-color': {
-				coloring:
-					'text-untld-error-700 shadow-untld-{color} hover:text-untld-error-800 disabled:text-untld-error-300'
+				coloring: 'text-untld-error-700 hover:text-untld-error-800 disabled:text-untld-error-300'
 			}
 		}
 	};
@@ -136,53 +132,49 @@
 		}
 	};
 
+	/* TODO: check if heights are automatically set to the right heiht with the given text-size and padding, if so , delete commented heights */
 	const styleSizes = {
 		sm: {
-			height: 'h-36',
+			/* height: 'h-36', */
 			text: 'untld-text-sm'
 		},
 		md: {
-			height: 'h-40',
+			/* height: 'h-40', */
 			text: 'untld-text-sm'
 		},
 		lg: {
-			height: 'h-44',
+			/* height: 'h-44', */
 			text: 'untld-text-md'
 		},
 		xl: {
-			height: 'h-48',
+			/* height: 'h-48', */
 			text: 'untld-text-md'
 		},
 		'2xl': {
-			height: 'h-60',
+			/* height: 'h-60', */
 			text: 'untld-text-lg'
 		}
 	};
 </script>
 
-<!--  TODO add correct: colors,   -->
 <button
 	class="
-        {styleSizes[size].height}
-        {styleColors[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
-        {stylePaddings[icon ? 'icon' : icon ? 'icon-only' : 'dot'][size].padding}
-        border border-radius-[0.5rem] border-solid shadow-sm focus:shadow-lg
-        inline-flex justify-center items-center gap-[0.5rem]
-    "
+    {styleColors[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
+    {stylePaddings[icon ? 'icon' : icon ? 'icon-only' : 'dot'][size].padding}
+    border border-radius-[0.5rem] border-solid shadow-sm focus:shadow-lg
+    inline-flex justify-center items-center gap-[0.5rem]"
 >
-	<!-- TODO finish the component structure and the classes for the structure -->
+	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) -->
 	<div
-		src="
-            {icon.type === 'icon'
+		style="background-image: url('${icon.type === 'icon'
 			? icon.leading
 				? 'url_for_icon'
 				: ''
 			: icon.type === 'icon-only'
 			? 'url_for_icon'
-			: 'url_for_dot_icon'} 
-        "
+			: 'url_for_dot_icon'}');"
 		class="
-            {icon.type === 'icon'
+        {icon.type === 'icon'
 			? icon.leading
 				? size === '2xl'
 					? 'h-[1.5rem] w-[1.5rem]'
@@ -192,8 +184,7 @@
 			? size === '2xl'
 				? 'h-[1.5rem] w-[1.5rem]'
 				: 'h-[1.25] w-[1.25rem]'
-			: 'h-[0.625rem] w-[0.625rem]'}
-        "
+			: 'h-[0.625rem] w-[0.625rem]'}"
 	/>
 	<p
 		class="
@@ -205,17 +196,18 @@
 		Example text
 	</p>
 	<div
-		src="
-            {icon.type === 'icon' ? (icon.trailing ? 'url_for_icon' : '') : ''}
-        "
+		style="background-image: url('${icon.type === 'icon'
+			? icon.trailing
+				? 'url_for_icon'
+				: ''
+			: ''}');"
 		class="
-            {icon.type === 'icon'
+        {icon.type === 'icon'
 			? icon.trailing
 				? size === '2xl'
 					? 'h-[1.5rem] w-[1.5rem]'
 					: 'h-[1.25] w-[1.25rem]'
 				: 'hidden'
-			: 'hidden'}
-        "
+			: 'hidden'}"
 	/>
 </button>
