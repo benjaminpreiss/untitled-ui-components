@@ -257,8 +257,8 @@
 			</div>
 		</div>
 
-		<div class="overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory pb-12">
-			<div class="grid gap-x-6 gap-y-20 mt-12 mr-4 grid-cols-colors snap-start min-w-max">
+		<div class="overflow-x-auto no-scrollbar snap-x snap-mandatory pb-28">
+			<div class="grid gap-x-6 gap-y-20 mt-8 mr-4 grid-cols-colors snap-start min-w-max">
 				{#each Object.entries(colors.primary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
 						id={colorGroup.toLowerCase()}
@@ -353,12 +353,11 @@
 						<div class="absolute left-0 top-1/2">
 							<div class="relative group inline-block">
 								<!-- Main Button -->
-								<div
-									class="group untld-text-medium untild-text-lg untild-text-bold text-untld-gray-800 rounded-lg pr-4 py-2"
-								>
-									set as:
+								<div class="group bg-untld-white untld-text-sm text-untld-gray-600 py-2">
+									set color as:
 								</div>
 								<!-- temporary Dropdown Menu -->
+								<div class="w-full h-1 bg-transparent" />
 								<div
 									class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-lg `}
 								>
