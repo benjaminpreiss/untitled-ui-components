@@ -1,4 +1,5 @@
 <script lang="ts">
+	import dotIcon from '$lib/assets/icons/_Dot.svg?url';
 	type size = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 	type hierarchy =
 		| 'primary'
@@ -18,16 +19,16 @@
 	export let destructive: boolean = false;
 	export let icon: icon;
 
-	/* TODO: Add boxshadow colors and sizes for all and for focused*/
+	/* TODO: Add boxshadow colors and sizes for all and for focused */
 	const styleColors = {
-		destructive: {
+		nonDestructive: {
 			primary: {
 				coloring:
-					'bg-untld-primary-600 text-untld-base-white border-untld-primary-600 hover:bg-untld-primary-700 disabled:bg-untld-primary-200'
+					'bg-untld-primary-600 text-untld-white border-untld-primary-600 hover:bg-untld-primary-700 disabled:bg-untld-primary-200'
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-base-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300'
+					'bg-untld-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300'
 			},
 			'secondary-color': {
 				coloring:
@@ -48,14 +49,14 @@
 				coloring: 'text-untld-primary-700 hover:text-untld-primary-800 disabled:text-untld-gray-300'
 			}
 		},
-		nonDestructive: {
+		destructive: {
 			primary: {
 				coloring:
-					'bg-untld-error-600 text-untld-base-white border-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-200'
+					'bg-untld-error-600 text-untld-white border-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-200'
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-base-white text-untld-error-700 border-untld-error-300 hover:bg-untld-error-50 hover:text-untld-error-800 disabled:text-untld-error-300'
+					'bg-untld-white text-untld-error-700 border-untld-error-300 hover:bg-untld-error-50 hover:text-untld-error-800 disabled:text-untld-error-300'
 			},
 			'secondary-color': {
 				coloring:
@@ -161,30 +162,21 @@
 	class="
     {styleColors[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
     {stylePaddings[icon ? 'icon' : icon ? 'icon-only' : 'dot'][size].padding}
-    border border-radius-[0.5rem] border-solid shadow-sm focus:shadow-lg
+    border rounded-[0.5rem] border-solid shadow-sm focus:shadow-lg
     inline-flex justify-center items-center gap-[0.5rem]"
 >
 	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) -->
 	<div
-		style="background-image: url('${icon.type === 'icon'
-			? icon.leading
-				? 'url_for_icon'
-				: ''
-			: icon.type === 'icon-only'
-			? 'url_for_icon'
-			: 'url_for_dot_icon'}');"
+		style={`background-image: url('${icon.type === 'dot' ? dotIcon : icon.leading ?? ''}');`}
 		class="
-        {icon.type === 'icon'
-			? icon.leading
-				? size === '2xl'
-					? 'h-[1.5rem] w-[1.5rem]'
-					: 'h-[1.25] w-[1.25rem]'
-				: 'hidden'
-			: icon.type === 'icon-only'
+		bg-contain
+        {icon.type === 'dot'
+			? 'h-[0.625rem] w-[0.625rem]'
+			: icon.leading
 			? size === '2xl'
 				? 'h-[1.5rem] w-[1.5rem]'
-				: 'h-[1.25] w-[1.25rem]'
-			: 'h-[0.625rem] w-[0.625rem]'}"
+				: 'h-[1.25rem] w-[1.25rem]'
+			: 'hidden'}"
 	/>
 	<p
 		class="
@@ -193,20 +185,19 @@
             {styleSizes[size].text}
         "
 	>
-		Example text
+		<slot />
 	</p>
 	<div
-		style="background-image: url('${icon.type === 'icon'
-			? icon.trailing
-				? 'url_for_icon'
-				: ''
-			: ''}');"
+		style={`background-image: url('${
+			icon.type === 'dot' || icon.type === 'icon-only' ? '' : icon.trailing ?? ''
+		}');`}
 		class="
+		bg-contain
         {icon.type === 'icon'
 			? icon.trailing
 				? size === '2xl'
 					? 'h-[1.5rem] w-[1.5rem]'
-					: 'h-[1.25] w-[1.25rem]'
+					: 'h-[1.25rem] w-[1.25rem]'
 				: 'hidden'
 			: 'hidden'}"
 	/>
