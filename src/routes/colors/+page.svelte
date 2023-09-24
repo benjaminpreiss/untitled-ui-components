@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { colors } from '$lib/tailwindPlugin.js';
-	import animationObserver from '$lib/animationObserver.js';
-	import { draggable } from '$lib/draggable.js';
+	import { draggable } from '../../utils/draggable.js';
+	import animationObserver from '../../utils/animationObserver.js';
 
 	type ColorDescription = {
 		title: string;
