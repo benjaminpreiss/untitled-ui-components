@@ -1,5 +1,6 @@
 import plugin from 'tailwindcss/plugin.js';
 import defaultTheme from 'tailwindcss/defaultTheme.js';
+import { css } from 'lit';
 
 export const colors = {
 	base: {
@@ -408,55 +409,52 @@ function hexToRgb(hex: string): string {
 	// For the blue channel, since it's already in the lowest byte, we don't need to shift.
 	// We just mask the lowest 8 bits to get the blue value.
 	const b = completeInt & 255;
-
 	return `'${r}, ${g}, ${b}'`;
 }
-function convertAllHexColorsToRGB(obj: ColorObject, parentKey?: string): ColorObject {
+// try with all variables to declare and assigns
+function convertRGBColorsToCssVars(obj: ColorObject, parentKey?: string): ColorObject {
+	// still have to think of a solution to keep track of the parent keys
 	const formatKey = (key: string): string => {
 		const formattedParentKey = parentKey ? `${parentKey.toLowerCase().replace(' ', '-')}-` : '';
 		return `--color-untld-${formattedParentKey}${key.toLowerCase()}`;
 	};
-
-	const newObj: ColorObject = {};
-
-	for (const [key, value] of Object.entries(obj)) {
-		if (typeof value === 'string' && value.startsWith('#')) {
-			newObj[key] = `'${formatKey(key)}': ${hexToRgb(value)}`.replace('"', '');
-		} else if (typeof value === 'object') {
-			newObj[key] = convertAllHexColorsToRGB(value, key);
-		} else {
-			newObj[key] = value;
-		}
-	}
-
+	const newObj = Object.fromEntries(
+		Object.entries(obj).map(([key, value]) => {
+			if (typeof value === 'string' && value.startsWith('#')) {
+				return [
+					key,
+					`'${formatKey(key)}': ${hexToRgb(value)}`.replace('"', '').replace(/['"]/g, '')
+				];
+			} else if (typeof value === 'object') {
+				return [key, convertRGBColorsToCssVars(value, key)];
+			} else {
+				return [key, value];
+			}
+		})
+	);
 	return newObj;
 }
 
-type StringMap = {
-	[key: string]: string | StringMap;
-};
-
-function extractRootVariables(obj: StringMap): Record<string, string> {
-	const root: Record<string, string> = {};
-
-	function processObject(object: StringMap): void {
-		for (const value of Object.values(object)) {
-			if (typeof value === 'string') {
-				const [key, val] = value.split(':').map((str) => str.replace(/['"]/g, '').trim());
-				root[key] = val;
+const colorsAsVars = convertRGBColorsToCssVars(colors);
+// construct css variables
+const cssVariables = Object.fromEntries(
+	Object.values(colorsAsVars).flatMap((value) => {
+		return Object.values(value).flatMap((childValue) => {
+			if (typeof childValue === 'string') {
+				const splitChildValue = childValue.split(':');
+				return [[splitChildValue[0], splitChildValue[1]]];
 			} else {
-				processObject(value);
+				return Object.values(childValue).flatMap((grandChildValue) => {
+					if (typeof grandChildValue === 'string') {
+						const splitGrandChildValue = grandChildValue.split(': ');
+						return [[splitGrandChildValue[0], splitGrandChildValue[1]]];
+					}
+					return [];
+				});
 			}
-		}
-	}
-
-	processObject(obj);
-
-	return root;
-}
-
-const colorsAsVars = convertAllHexColorsToRGB(colors);
-const rootVariables = extractRootVariables(colorsAsVars);
+		});
+	})
+);
 
 function getVarColorFunction(varName: string) {
 	return ({
@@ -473,34 +471,37 @@ function getVarColorFunction(varName: string) {
 	};
 }
 
-const rootVariablesKeys = Object.keys(rootVariables);
+const untld = Object.entries(colorsAsVars).reduce((acc, [, topLevelValue]) => {
+	if (typeof topLevelValue === 'string') {
+		const splitValue = topLevelValue.split(':');
+		return { ...acc, ...getVarColorFunction(splitValue[0]) };
+	} else if (typeof topLevelValue === 'object') {
+		const midLevelObject = Object.entries(topLevelValue).reduce((midAcc, [midKey, midValue]) => {
+			if (typeof midValue === 'string') {
+				const splitValue = midValue.split(':');
+				(midAcc as Record<string, object>)[midKey.toLocaleLowerCase()] = getVarColorFunction(
+					splitValue[0]
+				);
+			} else if (typeof midValue === 'object') {
+				const bottomLevelObject = Object.entries(midValue).reduce((botAcc, [botKey, botValue]) => {
+					if (typeof botValue === 'string') {
+						const splitValue = botValue.split(':');
 
-// Initialize an empty object named `untld`.
-const untld: { [key: string]: any } = {};
-
-rootVariablesKeys.forEach((key) => {
-	// Handle colors that match the following regex: (mainly primary and secondary colors, should also contain é)
-	const matches = key.match(/--color-untld-([\p{L}-]+)-(\d+)/u);
-	if (matches) {
-		// Handle colors with shades
-		const colorName = matches[1];
-		const shade = matches[2];
-		if (!untld[colorName]) {
-			untld[colorName] = {};
-		}
-		untld[colorName][shade] = getVarColorFunction(key);
-	} else {
-		// Handle potential base colors without a shade and include letters like é
-		const baseMatch = key.match(/--color-untld-([a-z\p{L}-]+)/u);
-		if (baseMatch) {
-			const baseColorName = baseMatch[1];
-			if (!untld[baseColorName]) {
-				const splitBaseColorName = baseColorName.split('-');
-				untld[splitBaseColorName[1]] = getVarColorFunction(key);
+						(botAcc as Record<string, object>)[botKey.toLocaleLowerCase()] = getVarColorFunction(
+							splitValue[0]
+						);
+					}
+					return botAcc;
+				}, {});
+				(midAcc as Record<string, object>)[midKey.toLocaleLowerCase()] = bottomLevelObject;
 			}
-		}
+			return midAcc;
+		}, {});
+		return { ...acc, ...midLevelObject };
 	}
-});
+	return acc;
+}, {});
+
 export default plugin(
 	function ({ addBase }) {
 		addBase({
@@ -511,7 +512,7 @@ export default plugin(
 			},
 			// add css variables to the root, so we can manipulate the colors within the docs, users will be able to do so as well
 			':root': {
-				...rootVariables
+				...cssVariables
 			}
 		});
 	},
