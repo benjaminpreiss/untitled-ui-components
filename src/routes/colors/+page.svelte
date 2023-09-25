@@ -183,7 +183,7 @@
 </script>
 
 {#if browser}
-	<div class="h-full min-h-[100vh] pl-16 w-full overflow-hidden py-12">
+	<div class="h-full pl-[9.31rem] w-full overflow-hidden py-[10.5rem]">
 		<div
 			use:animationObserver={{
 				animation: 'animate-fadeInSlow',
