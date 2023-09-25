@@ -1,6 +1,5 @@
 import plugin from 'tailwindcss/plugin.js';
 import defaultTheme from 'tailwindcss/defaultTheme.js';
-import { css } from 'lit';
 
 export const colors = {
 	base: {
