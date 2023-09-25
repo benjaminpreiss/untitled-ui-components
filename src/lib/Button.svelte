@@ -1,5 +1,7 @@
 <script lang="ts">
+	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import dotIcon from '$lib/assets/icons/_Dot.svg?url';
+
 	type size = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 	type hierarchy =
 		| 'primary'
@@ -14,11 +16,17 @@
 		| { type: 'icon-only'; leading: string }
 		| { type: 'icon'; leading?: string; trailing?: string };
 
+	interface $$Props extends HTMLButtonAttributes {
+		size: size;
+		hierarchy?: hierarchy;
+		destructive?: boolean;
+		icon: icon;
+	}
+
 	export let size: size;
 	export let hierarchy: hierarchy = 'primary';
 	export let destructive: boolean = false;
 	export let icon: icon;
-	export let disabled: boolean = false;
 
 	/* TODO: Add boxshadow colors and sizes for all and for focused */
 	const styleColorsButtons = {
@@ -210,9 +218,9 @@
     {styleColorsButtons[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
     {stylePaddings[icon.type][size].padding}
     border rounded-[0.5rem] border-solid
-    inline-flex justify-center items-center gap-[0.5rem]
-	{disabled ? 'pointer-events-none' : ''}"
-	{disabled}
+    inline-flex justify-center items-center gap-[0.5rem]"
+	{...$$props}
+	on:click
 >
 	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) -->
 	<div
@@ -229,7 +237,7 @@
 				: 'h-[1.25rem] w-[1.25rem]'
 			: 'hidden'}"
 	/>
-	<p
+	<span
 		class="
             untld-text-regular
             {icon.type === 'icon-only' ? 'hidden' : ''}
@@ -237,7 +245,7 @@
         "
 	>
 		<slot />
-	</p>
+	</span>
 	<div
 		class="
 		[mask-position:center]

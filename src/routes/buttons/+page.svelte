@@ -60,7 +60,7 @@
 						{destructive}
 						hierarchy={h}
 						icon={{ type: 'icon', leading: placeholder, trailing: undefined }}
-						disabled={true}
+						disabled
 					>
 						Button
 					</Button>
@@ -82,7 +82,15 @@
 					<div>
 						{#each sizes as s}
 							<div class="p-5">
-								<Button size={s} hierarchy={h} {destructive} icon={i}>Button</Button>
+								<Button
+									size={s}
+									hierarchy={h}
+									{destructive}
+									icon={i}
+									on:click={() => console.log('on:click')}
+								>
+									Button
+								</Button>
 							</div>
 						{/each}
 					</div>
