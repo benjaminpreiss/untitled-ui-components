@@ -1,5 +1,5 @@
 <script>
-	import '../../lib/components/TestComponent/TestComponent';
+	import '../lib/components/TestComponent/TestComponent.js';
 </script>
 
 <test-component name="Barry" />

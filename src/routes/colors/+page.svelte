@@ -3,6 +3,7 @@
 	import { colors } from '$lib/tailwindPlugin.js';
 	import { draggable } from '../../utils/draggable.js';
 	import animationObserver from '../../utils/animationObserver.js';
+	import code02 from '$lib/assets/icons/code-02.svg?url';
 
 	type ColorDescription = {
 		title: string;
@@ -250,7 +251,7 @@
 									)}
 								class="flex peer space-y-0 space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
 							>
-								<img src="/tailwind-icon.svg" alt="tailwind-icon" />
+								<img src={code02} alt="code-02" />
 								<span>{`tailwind: 'untld-${color.replace(/\s+/g, '-').toLocaleLowerCase()}'`}</span>
 							</button>
 							<!-- temporary copy button -->
@@ -332,7 +333,7 @@
 										)}
 									class="flex space-y-0 peer space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
 								>
-									<img src="/tailwind-icon.svg" alt="tailwind-icon" />
+									<img src={code02} alt="icon" />
 									<span
 										>{`tailwind: 'untld-${colorGroup
 											.replace(/\s+/g, '-')
@@ -467,7 +468,7 @@
 										)}
 									class="flex space-y-0 flex-row items-center justify-center peer space-x-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 untld-text-xs border-[1.5px] rounded-full"
 								>
-									<img src="/tailwind-icon.svg" alt="tailwind-icon" />
+									<img src={code02} alt="icon" />
 									<span
 										>{`tailwind: 'untld-${colorGroup
 											.replace(/\s+/g, '-')
