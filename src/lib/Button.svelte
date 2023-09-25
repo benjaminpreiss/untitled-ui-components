@@ -21,7 +21,7 @@
 	export let disabled: boolean = false;
 
 	/* TODO: Add boxshadow colors and sizes for all and for focused */
-	const styleColors = {
+	const styleColorsButtons = {
 		nonDestructive: {
 			primary: {
 				coloring:
@@ -80,6 +80,55 @@
 		}
 	};
 
+	const styleColorsIcons = {
+		nonDestructive: {
+			primary: {
+				coloring: 'bg-untld-white'
+			},
+			'secondary-gray': {
+				coloring: 'bg-untld-gray-700 hover:bg-untld-gray-800 disabled:bg-untld-gray-300'
+			},
+			'secondary-color': {
+				coloring: 'bg-untld-primary-700 hover:bg-untld-primary-800 disabled:bg-untld-primary-300'
+			},
+			'tertiary-gray': {
+				coloring: 'bg-untld-gray-600 hover:bg-untld-gray-700 disabled:bg-untld-gray-300'
+			},
+			'tertiary-color': {
+				coloring: 'bg-untld-primary-700 hover:bg-untld-primary-800 disabled:bg-untld-gray-300'
+			},
+			'link-gray': {
+				coloring: 'bg-untld-gray-600 hover:bg-untld-gray-700 disabled:bg-untld-gray-300'
+			},
+			'link-color': {
+				coloring: 'bg-untld-primary-700 hover:bg-untld-primary-800 disabled:bg-untld-gray-300'
+			}
+		},
+		destructive: {
+			primary: {
+				coloring: 'bg-untld-white'
+			},
+			'secondary-gray': {
+				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
+			},
+			'secondary-color': {
+				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
+			},
+			'tertiary-gray': {
+				coloring: 'bg-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-300'
+			},
+			'tertiary-color': {
+				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
+			},
+			'link-gray': {
+				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
+			},
+			'link-color': {
+				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
+			}
+		}
+	};
+
 	const stylePaddings = {
 		icon: {
 			sm: {
@@ -134,41 +183,35 @@
 		}
 	};
 
-	/* TODO: check if heights are automatically set to the right heiht with the given text-size and padding, if so , delete commented heights
-	 * heights are all the same except for the icon-only button, which is smaller than the same sizes for the buttons with text
-	 * also they seem to be placed slightly higher than the buttons with text, given the same padding etc.
-	 */
 	const styleSizes = {
 		sm: {
-			/* height: 'h-36', */
 			text: 'untld-text-sm'
 		},
 		md: {
-			/* height: 'h-40', */
 			text: 'untld-text-sm'
 		},
 		lg: {
-			/* height: 'h-44', */
 			text: 'untld-text-md'
 		},
 		xl: {
-			/* height: 'h-48', */
 			text: 'untld-text-md'
 		},
 		'2xl': {
-			/* height: 'h-60', */
 			text: 'untld-text-lg'
 		}
 	};
 </script>
 
 <button
-	style="--left-icon-url:url('{icon.type === 'dot' ? dotIcon : icon.leading ?? ''}')"
+	style="--left-icon-url:url('{icon.type === 'dot'
+		? dotIcon
+		: icon.leading ?? ''}'); --right-icon-url:url('{icon.type === 'icon' ? icon.trailing : ''}') "
 	class="
-    {styleColors[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
+    {styleColorsButtons[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
     {stylePaddings[icon.type][size].padding}
-    border rounded-[0.5rem] border-solid shadow-sm focus:shadow-lg
-    inline-flex justify-center items-center gap-[0.5rem]"
+    border rounded-[0.5rem] border-solid
+    inline-flex justify-center items-center gap-[0.5rem]
+	{disabled ? 'pointer-events-none' : ''}"
 	{disabled}
 >
 	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) -->
@@ -177,7 +220,7 @@
 		[mask-position:center]
 		[mask-size:contain]
 		[mask-image:var(--left-icon-url)]
-		bg-green-600
+		{styleColorsIcons[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
         {icon.type === 'dot'
 			? 'h-[0.625rem] w-[0.625rem]'
 			: icon.leading
@@ -196,11 +239,11 @@
 		<slot />
 	</p>
 	<div
-		style={`background-image: url('${
-			icon.type === 'dot' || icon.type === 'icon-only' ? '' : icon.trailing ?? ''
-		}');`}
 		class="
-		bg-contain
+		[mask-position:center]
+		[mask-size:contain]
+		[mask-image:var(--right-icon-url)]
+		{styleColorsIcons[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
         {icon.type === 'icon'
 			? icon.trailing
 				? size === '2xl'
