@@ -163,6 +163,7 @@
 </script>
 
 <button
+	style="--left-icon-url:url('{icon.type === 'dot' ? dotIcon : icon.leading ?? ''}')"
 	class="
     {styleColors[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
     {stylePaddings[icon.type][size].padding}
@@ -172,11 +173,11 @@
 >
 	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) -->
 	<div
-		style={`mask-image:url('${
-			icon.type === 'dot' ? dotIcon : icon.leading ?? ''
-		}'); mask-position:center; mask-size:contain; `}
 		class="
-		bg-contain fill-green-600
+		[mask-position:center]
+		[mask-size:contain]
+		[mask-image:var(--left-icon-url)]
+		bg-green-600
         {icon.type === 'dot'
 			? 'h-[0.625rem] w-[0.625rem]'
 			: icon.leading
@@ -209,3 +210,6 @@
 			: 'hidden'}"
 	/>
 </button>
+
+<style>
+</style>

@@ -390,7 +390,7 @@ export const colors = {
 };
 
 export default plugin(
-	function ({ addBase, matchUtilities, theme }) {
+	function ({ addBase }) {
 		addBase({
 			'@font-face': {
 				'font-family': 'Inter',
@@ -398,14 +398,6 @@ export default plugin(
 				'font-weight': '1 999'
 			}
 		});
-		matchUtilities(
-			{
-				extend: (value) => ({
-					tabSize: value
-				})
-			},
-			{ values: theme('tabSize') }
-		);
 	},
 	{
 		theme: {
