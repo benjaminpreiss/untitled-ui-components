@@ -166,7 +166,7 @@
 		},
 		dot: {
 			sm: {
-				padding: 'px-[0.875] py-[0.5rem]'
+				padding: 'px-[0.875rem] py-[0.5rem]'
 			},
 			md: {
 				padding: 'px-[1rem] py-[0.625rem]'
