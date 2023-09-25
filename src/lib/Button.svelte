@@ -208,6 +208,7 @@
 			text: 'untld-text-lg'
 		}
 	};
+	// TODO Johanna disable blue ring on keyboard tab focus-within
 </script>
 
 <button
@@ -216,7 +217,7 @@
 		: icon.leading ?? ''}'); --right-icon-url:url('{icon.type === 'icon' ? icon.trailing : ''}') "
 	class="
 	{hierarchy === 'primary' || hierarchy === 'secondary-color' || hierarchy === 'secondary-gray'
-		? 'shadow-untld-xs focus:shadow-untld-xs-focused-4px ring-untld-primary-100'
+		? 'shadow-untld-xs focus:shadow-untld-xs-focused-4px-primary focus-visible:shadow-untld-xs-focused-4px-primary'
 		: ''}
     {styleColorsButtons[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
     {stylePaddings[icon.type][size].padding}
