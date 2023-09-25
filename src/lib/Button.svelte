@@ -28,20 +28,20 @@
 	export let destructive: boolean = false;
 	export let icon: icon;
 
-	/* TODO: Add boxshadow colors and sizes for all and for focus */
+	/* TODO: Check why focus in nondestructive secodary-gray does not work */
 	const styleColorsButtons = {
 		nonDestructive: {
 			primary: {
 				coloring:
-					'bg-untld-primary-600 text-untld-white border-untld-primary-600 hover:bg-untld-primary-700 disabled:bg-untld-primary-200 focus:shadow-primary-non-destructive'
+					'bg-untld-primary-600 text-untld-white border-untld-primary-600 hover:bg-untld-primary-700 disabled:bg-untld-primary-200 focus:shadow-untld-xs-focused-4px-primary-100 focus-visible:shadow-untld-xs-focused-4px-primary-100'
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300 focus:shadow-secondary-gray-non-destructive'
+					'bg-untld-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300 focus:untld-xs-focused-4px-secondary-gray-100 focus-visible:untld-xs-focused-4px-secondary-gray-100'
 			},
 			'secondary-color': {
 				coloring:
-					'bg-untld-primary-50 text-untld-primary-700 border-untld-primary-50 hover:bg-untld-primary-100 hover:text-untld-primary-800 disabled:bg-untld-primary-25 disabled:text-untld-primary-300 focus:shadow-secondary-color-non-destructive'
+					'bg-untld-primary-50 text-untld-primary-700 border-untld-primary-50 hover:bg-untld-primary-100 hover:text-untld-primary-800 disabled:bg-untld-primary-25 disabled:text-untld-primary-300 focus:shadow-untld-xs-focused-4px-primary-100 focus-visible:shadow-untld-xs-focused-4px-primary-100'
 			},
 			'tertiary-gray': {
 				coloring:
@@ -61,15 +61,15 @@
 		destructive: {
 			primary: {
 				coloring:
-					'bg-untld-error-600 text-untld-white border-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-200 focus:shadow-primary-destructive'
+					'bg-untld-error-600 text-untld-white border-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-200 focus:shadow-untld-xs-focused-4px-error-100 focus-visible:shadow-untld-xs-focused-4px-error-100'
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-white text-untld-error-700 border-untld-error-300 hover:bg-untld-error-50 hover:text-untld-error-800 disabled:text-untld-error-300 focus:shadow-secondary-gray-destructive'
+					'bg-untld-white text-untld-error-700 border-untld-error-300 hover:bg-untld-error-50 hover:text-untld-error-800 disabled:text-untld-error-300 focus:shadow-untld-xs-focused-4px-error-100 focus-visible:shadow-untld-xs-focused-4px-error-100'
 			},
 			'secondary-color': {
 				coloring:
-					'bg-untld-error-50 text-untld-error-700 border-untld-error-50 hover:bg-untld-error-100 hover:text-untld-error-800 disabled:bg-untld-error-25 disabled:text-untld-error-300 focus:shadow-secondary-color-destructive'
+					'bg-untld-error-50 text-untld-error-700 border-untld-error-50 hover:bg-untld-error-100 hover:text-untld-error-800 disabled:bg-untld-error-25 disabled:text-untld-error-300 focus:shadow-untld-xs-focused-4px-error-100 focus-visible:shadow-untld-xs-focused-4px-error-100'
 			},
 			'tertiary-gray': {
 				coloring:
@@ -217,7 +217,7 @@
 		: icon.leading ?? ''}'); --right-icon-url:url('{icon.type === 'icon' ? icon.trailing : ''}') "
 	class="
 	{hierarchy === 'primary' || hierarchy === 'secondary-color' || hierarchy === 'secondary-gray'
-		? 'shadow-untld-xs focus:shadow-untld-xs-focused-4px-primary focus-visible:shadow-untld-xs-focused-4px-primary'
+		? 'shadow-untld-xs'
 		: ''}
     {styleColorsButtons[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
     {stylePaddings[icon.type][size].padding}
@@ -226,7 +226,7 @@
 	{...$$props}
 	on:click
 >
-	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) -->
+	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) ?done? -->
 	<div
 		class="
 		[mask-position:center]
@@ -265,34 +265,3 @@
 			: 'hidden'}"
 	/>
 </button>
-
-<style>
-	.shadow-primary-non-destructive {
-		box-shadow: 0px 0px 0px 4px var(--untld-primary-100),
-			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
-	}
-
-	.shadow-secondary-gray-non-destructive {
-		box-shadow: 0px 0px 0px 4px var(--untld-gray-100),
-			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
-	}
-
-	.shadow-secondary-color-non-destructive {
-		box-shadow: 0px 0px 0px 4px var(--untld-primary-100),
-			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
-	}
-
-	.shadow-primary-destructive {
-		box-shadow: 0px 0px 0px 4px var(--untld-error-100),
-			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
-	}
-	.shadow-secondary-gray-destructive {
-		box-shadow: 0px 0px 0px 4px var(--untld-error-100),
-			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
-	}
-
-	.shadow-secondary-color-destructive {
-		box-shadow: 0px 0px 0px 4px var(--untld-error-100),
-			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
-	}
-</style>
