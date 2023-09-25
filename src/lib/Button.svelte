@@ -20,20 +20,20 @@
 	export let icon: icon;
 	export let disabled: boolean = false;
 
-	/* TODO: Add boxshadow colors and sizes for all and for focused */
+	/* TODO: Add boxshadow colors and sizes for all and for focus */
 	const styleColorsButtons = {
 		nonDestructive: {
 			primary: {
 				coloring:
-					'bg-untld-primary-600 text-untld-white border-untld-primary-600 hover:bg-untld-primary-700 disabled:bg-untld-primary-200'
+					'bg-untld-primary-600 text-untld-white border-untld-primary-600 hover:bg-untld-primary-700 disabled:bg-untld-primary-200 focus:shadow-primary-non-destructive'
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300'
+					'bg-untld-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300 focus:shadow-secondary-gray-non-destructive'
 			},
 			'secondary-color': {
 				coloring:
-					'bg-untld-primary-50 text-untld-primary-700 border-untld-primary-50 hover:bg-untld-primary-100 hover:text-untld-primary-800 disabled:bg-untld-primary-25 disabled:text-untld-primary-300'
+					'bg-untld-primary-50 text-untld-primary-700 border-untld-primary-50 hover:bg-untld-primary-100 hover:text-untld-primary-800 disabled:bg-untld-primary-25 disabled:text-untld-primary-300 focus:shadow-secondary-color-non-destructive'
 			},
 			'tertiary-gray': {
 				coloring:
@@ -53,15 +53,15 @@
 		destructive: {
 			primary: {
 				coloring:
-					'bg-untld-error-600 text-untld-white border-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-200'
+					'bg-untld-error-600 text-untld-white border-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-200 focus:shadow-primary-destructive'
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-white text-untld-error-700 border-untld-error-300 hover:bg-untld-error-50 hover:text-untld-error-800 disabled:text-untld-error-300'
+					'bg-untld-white text-untld-error-700 border-untld-error-300 hover:bg-untld-error-50 hover:text-untld-error-800 disabled:text-untld-error-300 focus:shadow-secondary-gray-destructive'
 			},
 			'secondary-color': {
 				coloring:
-					'bg-untld-error-50 text-untld-error-700 border-untld-error-50 hover:bg-untld-error-100 hover:text-untld-error-800 disabled:bg-untld-error-25 disabled:text-untld-error-300'
+					'bg-untld-error-50 text-untld-error-700 border-untld-error-50 hover:bg-untld-error-100 hover:text-untld-error-800 disabled:bg-untld-error-25 disabled:text-untld-error-300 focus:shadow-secondary-color-destructive'
 			},
 			'tertiary-gray': {
 				coloring:
@@ -255,4 +255,32 @@
 </button>
 
 <style>
+	.shadow-primary-non-destructive {
+		box-shadow: 0px 0px 0px 4px var(--untld-primary-100),
+			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
+	}
+
+	.shadow-secondary-gray-non-destructive {
+		box-shadow: 0px 0px 0px 4px var(--untld-gray-100),
+			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
+	}
+
+	.shadow-secondary-color-non-destructive {
+		box-shadow: 0px 0px 0px 4px var(--untld-primary-100),
+			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
+	}
+
+	.shadow-primary-destructive {
+		box-shadow: 0px 0px 0px 4px var(--untld-error-100),
+			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
+	}
+	.shadow-secondary-gray-destructive {
+		box-shadow: 0px 0px 0px 4px var(--untld-error-100),
+			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
+	}
+
+	.shadow-secondary-color-destructive {
+		box-shadow: 0px 0px 0px 4px var(--untld-error-100),
+			0px 1px 2px 0px rgba(var(--untld-gray-900), 0.05);
+	}
 </style>
