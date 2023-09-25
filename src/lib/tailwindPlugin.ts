@@ -437,6 +437,12 @@ export default plugin(
 				},
 				fontFamily: {
 					sans: ['Inter', ...defaultTheme.fontFamily.sans]
+				},
+				boxShadow: {
+					// TODO Exchange color with css var
+					// TODO Johanna set all shadows
+					'untld-xs': `0px 1px 2px 0px rgba(16, 24, 40, 0.05);`,
+					'untld-xs-focused-4px': `0px 1px 2px 0px rgba(16, 24, 40, 0.05), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);`
 				}
 			}
 		}
