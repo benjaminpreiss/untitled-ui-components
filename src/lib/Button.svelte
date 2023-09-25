@@ -212,10 +212,11 @@
 </script>
 
 <button
+	{...$$props}
 	style="--left-icon-url:url('{icon.type === 'dot'
 		? dotIcon
-		: icon.leading ?? ''}'); --right-icon-url:url('{icon.type === 'icon' ? icon.trailing : ''}') "
-	class="
+		: icon.leading ?? ''}'); --right-icon-url:url('{icon.type === 'icon' ? icon.trailing : ''}')"
+	class="{$$props.class}
 	{hierarchy === 'primary' || hierarchy === 'secondary-color' || hierarchy === 'secondary-gray'
 		? 'shadow-untld-xs'
 		: ''}
@@ -223,7 +224,6 @@
     {stylePaddings[icon.type][size].padding}
     border rounded-[0.5rem] border-solid
     inline-flex justify-center items-center gap-[0.5rem] disabled:pointer-events-none"
-	{...$$props}
 	on:click
 >
 	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) ?done? -->
