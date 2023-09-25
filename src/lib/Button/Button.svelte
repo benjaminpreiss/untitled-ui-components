@@ -2,6 +2,7 @@
 	import dotIcon from '$lib/assets/icons/_Dot.svg?url';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import BaseButton from './BaseButton.svelte';
+	import Text from './Text.svelte';
 	import type { size, hierarchy, icon } from './types.js';
 	import Icon from './Icon.svelte';
 	import { setContext } from 'svelte';
@@ -22,17 +23,13 @@
 <BaseButton {...$$props} {size} {hierarchy} {destructive}>
 	{#if icon.type === 'dot'}
 		<Icon slot="icon-left" url={dotIcon} class="[&&]:h-[0.625rem] [&&]:w-[0.625rem]" />
-		<span>
-			<slot />
-		</span>
+		<Text><slot /></Text>
 	{:else}
 		{#if icon.leading}
 			<Icon slot="icon-left" url={icon.leading} />
 		{/if}
 		{#if icon.type === 'icon'}
-			<span>
-				<slot />
-			</span>
+			<Text><slot /></Text>
 		{/if}
 		{#if icon.type === 'icon' && icon.trailing}
 			<Icon slot="icon-right" url={icon.trailing} />

@@ -93,24 +93,6 @@
 			padding: 'px-[1.75rem] py-[1rem]'
 		}
 	};
-
-	const styleSizes = {
-		sm: {
-			text: 'untld-text-sm'
-		},
-		md: {
-			text: 'untld-text-sm'
-		},
-		lg: {
-			text: 'untld-text-md'
-		},
-		xl: {
-			text: 'untld-text-md'
-		},
-		'2xl': {
-			text: 'untld-text-lg'
-		}
-	};
 	// TODO Johanna disable blue ring on keyboard tab focus-within
 </script>
 
@@ -128,15 +110,6 @@
 >
 	<slot name="icon-left" />
 	<!-- If you want to create an icon-only, just add the default slot. -->
-	<slot>
-		<span
-			class="
-            untld-text-regular
-            {styleSizes[size].text}
-        "
-		>
-			<slot name="text" />
-		</span>
-	</slot>
+	<slot />
 	<slot name="icon-right" />
 </button>
