@@ -165,16 +165,18 @@
 <button
 	class="
     {styleColors[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
-    {stylePaddings[icon ? 'icon' : icon ? 'icon-only' : 'dot'][size].padding}
+    {stylePaddings[icon.type][size].padding}
     border rounded-[0.5rem] border-solid shadow-sm focus:shadow-lg
     inline-flex justify-center items-center gap-[0.5rem]"
 	{disabled}
 >
 	<!-- TODO: add the correct urls for the icons (probably dynamic based on chosen icon) and dot (static) -->
 	<div
-		style={`background-image: url('${icon.type === 'dot' ? dotIcon : icon.leading ?? ''}');`}
+		style={`mask-image:url('${
+			icon.type === 'dot' ? dotIcon : icon.leading ?? ''
+		}'); mask-position:center; mask-size:contain; `}
 		class="
-		bg-contain
+		bg-contain fill-green-600
         {icon.type === 'dot'
 			? 'h-[0.625rem] w-[0.625rem]'
 			: icon.leading
