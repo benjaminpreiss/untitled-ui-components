@@ -476,23 +476,22 @@ const untld = Object.entries(colorsAsVars).reduce((acc, [, topLevelValue]) => {
 		return { ...acc, ...getVarColorFunction(splitValue[0]) };
 	} else if (typeof topLevelValue === 'object') {
 		const midLevelObject = Object.entries(topLevelValue).reduce((midAcc, [midKey, midValue]) => {
+			const formattedMidKey = midKey.toLocaleLowerCase().replace(/\s+/g, '-');
 			if (typeof midValue === 'string') {
 				const splitValue = midValue.split(':');
-				(midAcc as Record<string, object>)[midKey.toLocaleLowerCase()] = getVarColorFunction(
-					splitValue[0]
-				);
+				(midAcc as Record<string, object>)[formattedMidKey] = getVarColorFunction(splitValue[0]);
 			} else if (typeof midValue === 'object') {
 				const bottomLevelObject = Object.entries(midValue).reduce((botAcc, [botKey, botValue]) => {
+					const formattedBotKey = botKey.toLocaleLowerCase().replace(/\s+/g, '-');
 					if (typeof botValue === 'string') {
 						const splitValue = botValue.split(':');
-
-						(botAcc as Record<string, object>)[botKey.toLocaleLowerCase()] = getVarColorFunction(
+						(botAcc as Record<string, object>)[formattedBotKey] = getVarColorFunction(
 							splitValue[0]
 						);
 					}
 					return botAcc;
 				}, {});
-				(midAcc as Record<string, object>)[midKey.toLocaleLowerCase()] = bottomLevelObject;
+				(midAcc as Record<string, object>)[formattedMidKey] = bottomLevelObject;
 			}
 			return midAcc;
 		}, {});
