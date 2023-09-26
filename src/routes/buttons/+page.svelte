@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Button from '$lib/Button/Button.svelte';
+	import Button from '$lib/components/Button/Button.svelte';
 	import placeholder from '$lib/assets/icons/placeholder.svg?url';
 
 	// Define your types

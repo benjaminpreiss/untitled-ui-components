@@ -1,10 +1,10 @@
 <script lang="ts">
 	import dotIcon from '$lib/assets/icons/_Dot.svg?url';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
-	import BaseButton from './BaseButton.svelte';
-	import Text from './Text.svelte';
+	import ButtonWrapper from './ButtonWrapper.svelte';
+	import TextAtom from './TextAtom.svelte';
 	import type { size, hierarchy, icon } from './types.js';
-	import Icon from './Icon.svelte';
+	import IconAtom from './IconAtom.svelte';
 	import { setContext } from 'svelte';
 	interface $$Props extends HTMLButtonAttributes {
 		size: size;
@@ -20,19 +20,19 @@
 	setContext('icon', icon);
 </script>
 
-<BaseButton {...$$props} {size} {hierarchy} {destructive}>
+<ButtonWrapper {...$$props} {size} {hierarchy} {destructive}>
 	{#if icon.type === 'dot'}
-		<Icon slot="icon-left" url={dotIcon} class="[&&]:h-[0.625rem] [&&]:w-[0.625rem]" />
-		<Text><slot /></Text>
+		<IconAtom slot="icon-left" url={dotIcon} class="[&&]:h-[0.625rem] [&&]:w-[0.625rem]" />
+		<TextAtom><slot /></TextAtom>
 	{:else}
 		{#if icon.leading}
-			<Icon slot="icon-left" url={icon.leading} />
+			<IconAtom slot="icon-left" url={icon.leading} />
 		{/if}
 		{#if icon.type === 'icon'}
-			<Text><slot /></Text>
+			<TextAtom><slot /></TextAtom>
 		{/if}
 		{#if icon.type === 'icon' && icon.trailing}
-			<Icon slot="icon-right" url={icon.trailing} />
+			<IconAtom slot="icon-right" url={icon.trailing} />
 		{/if}
 	{/if}
-</BaseButton>
+</ButtonWrapper>
