@@ -395,25 +395,6 @@ export const colors = {
 	secondary: secondaryColors
 };
 
-// TODO Inspiration for Nadiem
-export const rgbColors = Object.fromEntries(
-	Object.entries(colors).map(([k1, v1]) => [
-		k1,
-		Object.fromEntries(
-			Object.entries(v1).map(([k2, v2]) => [
-				k2,
-				typeof v2 === 'string'
-					? hexToRgb(v2)
-					: Object.fromEntries(Object.entries(v2).map(([k3, v3]) => [k3, hexToRgb(v3 as string)]))
-			])
-		)
-	])
-) as typeof colors;
-
-type ColorObject = {
-	[key: string]: string | ColorObject;
-};
-
 function hexToRgb(hex: string): string {
 	// Parse the hex string, excluding the initial '#' (using slice(1)), as a base 16 (hexadecimal) number.
 	// This will give us a number where the red channel is in the highest byte,
@@ -429,52 +410,8 @@ function hexToRgb(hex: string): string {
 	// For the blue channel, since it's already in the lowest byte, we don't need to shift.
 	// We just mask the lowest 8 bits to get the blue value.
 	const b = completeInt & 255;
-	return `'${r}, ${g}, ${b}'`;
+	return `${r}, ${g}, ${b}`;
 }
-// try with all variables to declare and assigns
-function convertRGBColorsToCssVars(obj: ColorObject, parentKey?: string): ColorObject {
-	// still have to think of a solution to keep track of the parent keys
-	const formatKey = (key: string): string => {
-		const formattedParentKey = parentKey ? `${parentKey.toLowerCase().replace(' ', '-')}-` : '';
-		return `--color-untld-${formattedParentKey}${key.toLowerCase()}`;
-	};
-	const newObj = Object.fromEntries(
-		Object.entries(obj).map(([key, value]) => {
-			if (typeof value === 'string' && value.startsWith('#')) {
-				return [
-					key,
-					`'${formatKey(key)}': ${hexToRgb(value)}`.replace('"', '').replace(/['"]/g, '')
-				];
-			} else if (typeof value === 'object') {
-				return [key, convertRGBColorsToCssVars(value, key)];
-			} else {
-				return [key, value];
-			}
-		})
-	);
-	return newObj;
-}
-
-const colorsAsVars = convertRGBColorsToCssVars(colors);
-// construct css variables
-const cssVariables = Object.fromEntries(
-	Object.values(colorsAsVars).flatMap((value) => {
-		return Object.values(value).flatMap((childValue) => {
-			if (typeof childValue === 'string') {
-				const splitChildValue = childValue.split(':');
-				return [[splitChildValue[0], splitChildValue[1]]];
-			} else {
-				return Object.values(childValue).flatMap((grandChildValue) => {
-					if (typeof grandChildValue === 'string') {
-						const splitGrandChildValue = grandChildValue.split(': ');
-						return [[splitGrandChildValue[0], splitGrandChildValue[1]]];
-					}
-					return [];
-				});
-			}
-		});
-	})
-);
 
 function getVarColorFunction(varName: string) {
 	return ({
@@ -491,40 +428,75 @@ function getVarColorFunction(varName: string) {
 	};
 }
 
-const flatEntries = Object.entries(colorsAsVars).flatMap(([, topLevelValue]) => {
-	if (typeof topLevelValue === 'string') {
-		const splitValue = topLevelValue.split(':');
-		return [getVarColorFunction(splitValue[0])];
-	}
-	if (typeof topLevelValue === 'object') {
-		return Object.entries(topLevelValue).flatMap(([midKey, midValue]) => {
-			const formattedMidKey = midKey.toLocaleLowerCase().replace(/\s+/g, '-');
-			if (typeof midValue === 'string') {
-				const splitValue = midValue.split(':');
-				const obj = {};
-				(obj as Record<string, object>)[formattedMidKey] = getVarColorFunction(splitValue[0]);
-				return [obj];
-			}
-			if (typeof midValue === 'object') {
-				return Object.entries(midValue).flatMap(([botKey, botValue]) => {
-					const formattedBotKey = botKey.toLocaleLowerCase().replace(/\s+/g, '-');
-					if (typeof botValue === 'string') {
-						const splitValue = botValue.split(':');
-						const obj = {};
-						(obj as Record<string, object>)[`${formattedMidKey}-${formattedBotKey}`] =
-							getVarColorFunction(splitValue[0]);
-						return [obj];
+// change hex colors to rgb colors
+export const rgbColors = Object.fromEntries(
+	Object.entries(colors).map(([k1, v1]) => [
+		k1,
+		Object.fromEntries(
+			Object.entries(v1).map(([k2, v2]) => [
+				k2,
+				typeof v2 === 'string'
+					? hexToRgb(v2)
+					: Object.fromEntries(Object.entries(v2).map(([k3, v3]) => [k3, hexToRgb(v3 as string)]))
+			])
+		)
+	])
+) as typeof colors;
+
+// create the cssVariable root object populate the rgb colors with css variables
+export const colorsAsCssVars = Object.fromEntries(
+	Object.entries(rgbColors).map(([k1, v1]) => [
+		k1,
+		Object.fromEntries(
+			Object.entries(v1).map(([k2, v2]) => [
+				k2,
+				typeof v2 === 'string'
+					? `--color-untld-${k2.toLowerCase()} : ${v2.replace('"', ' ')}`
+					: Object.fromEntries(
+							Object.entries(v2).map(([k3, v3]) => [
+								k3,
+								`--color-untld-${k2.toLowerCase().replace(' ', '-')}-${k3.toLowerCase()} : ${(
+									v3 as string
+								).replace('"', ' ')}`
+							])
+					  )
+			])
+		)
+	])
+) as typeof colors;
+
+// create the cssVariable root object
+const cssVariables = Object.fromEntries(
+	Object.values(colorsAsCssVars).flatMap((value) => {
+		return Object.values(value).flatMap((childValue) => {
+			if (typeof childValue === 'string') {
+				const splitChildValue = childValue.split(':');
+				return [[splitChildValue[0], splitChildValue[1]]];
+			} else {
+				return Object.values(childValue).flatMap((grandChildValue) => {
+					if (typeof grandChildValue === 'string') {
+						const splitGrandChildValue = grandChildValue.split(': ');
+						return [[splitGrandChildValue[0], splitGrandChildValue[1]]];
 					}
 					return [];
 				});
 			}
-			return [];
 		});
-	}
-	return [];
-});
-
-const untld = flatEntries.reduce((acc, obj) => ({ ...acc, ...obj }));
+	})
+);
+// create the untld object and use flatmap to pull out all the correct entries
+const untld = Object.fromEntries(
+	Object.entries(colorsAsCssVars).flatMap(([, v1]) =>
+		Object.entries(v1).flatMap(([k2, v2]) =>
+			typeof v2 === 'string'
+				? [[`${k2.toLowerCase()}`, getVarColorFunction(`--color-untld-${k2.toLowerCase()}`)]]
+				: Object.entries(v2).map(([k3, v3]) => [
+						`${k2.toLowerCase()}-${k3}`,
+						getVarColorFunction(`${(v3 as string).split(' : ')[0].replace(/"/g, ' ')}`)
+				  ])
+		)
+	)
+);
 
 export default plugin(
 	function ({ addBase }) {
@@ -544,6 +516,7 @@ export default plugin(
 		theme: {
 			extend: {
 				colors: {
+					// this still gives a type error because of the opacity within the getVarColorFunction
 					untld
 				},
 				fontFamily: {
