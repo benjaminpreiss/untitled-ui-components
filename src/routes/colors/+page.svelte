@@ -226,7 +226,7 @@
 							animation: 'animate-fadeInFromTop',
 							threshold: 0.1
 						}}
-						style="animation-delay: {innerIndex * 0.1}s;"
+						style="animation-delay: {innerIndex * 0.025}s;"
 						class="w-[15rem] opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 					>
 						<div
@@ -283,7 +283,7 @@
 								animation: 'animate-fadeInFromTop',
 								threshold: 0.1
 							}}
-							style="animation-delay: {0.5}s;"
+							style="animation-delay: {0.05}s;"
 							class="relative w-full h-full opacity-0"
 						>
 							<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
@@ -302,7 +302,7 @@
 								animation: 'animate-fadeIn',
 								threshold: 0.01
 							}}
-							style="animation-delay: {(innerIndex / 2) * 0.15}s;"
+							style="animation-delay: {(innerIndex / 2) * 0.015}s;"
 							class="{shade === '600'
 								? 'w-full'
 								: 'w-[15rem]'} opacity-0 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
@@ -393,7 +393,7 @@
 								animation: 'animate-fadeInFromTop',
 								threshold: 0.1
 							}}
-							style="animation-delay: {0.5}s;"
+							style="animation-delay: {0.05}s;"
 							class="relative w-full h-full opacity-0"
 						>
 							<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
@@ -437,7 +437,7 @@
 								animation: 'animate-fadeIn',
 								threshold: 0.01
 							}}
-							style="animation-delay: {(innerIndex / 2) * 0.15}s;"
+							style="animation-delay: {(innerIndex / 2) * 0.0075}s;"
 							class="{shade === '600'
 								? 'w-full'
 								: 'w-[15rem]'} opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"

@@ -34,7 +34,7 @@ export default {
 				fadeIn: 'fadeIn 1.5s forwards',
 				fadeInFast: 'fadeIn 0.5s forwards',
 				fadeInSlow: 'fadeIn 2s forwards',
-				fadeInFromTop: 'fadeInFromTop 1s forwards'
+				fadeInFromTop: 'fadeInFromTop 0.5s forwards'
 			},
 			// THIS IS NOT A NECESSARY CONFIGURATION FOR THE ENDUSER
 			keyframes: {
