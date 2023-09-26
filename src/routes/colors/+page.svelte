@@ -210,7 +210,7 @@
 						animation: 'animate-fadeInFromTop',
 						threshold: 0.1
 					}}
-					class=" col-span-2 opacity-0 mr-8 pb-6 w-[25rem] sticky space-y-1 z-10 bg-untld-white left-0"
+					class="non-draggable col-span-2 opacity-0 mr-8 pr-10 pb-6 w-[27.5rem] sticky space-y-1 z-10 bg-untld-white left-0"
 				>
 					<h4 class="untld-text-lg untld-text-semibold text-untld-gray-900">
 						{colorDescriptions.base.Base?.title ?? ''}
@@ -227,10 +227,10 @@
 							threshold: 0.1
 						}}
 						style="animation-delay: {innerIndex * 0.025}s;"
-						class="w-[15rem] opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+						class="w-[15rem] -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 					>
 						<div
-							style="background-color:rgb(var(--color-untld-base-{color
+							style="background-color:rgb(var(--color-untld-{color
 								.replace(/\s+/g, '-')
 								.toLocaleLowerCase()}))"
 							class="w-full rounded-t-md h-[52%]"
@@ -276,7 +276,7 @@
 				{#each Object.entries(colors.primary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
 						id={colorGroup.toLowerCase()}
-						class="non-draggable active:cursor-default col-span-2 opacity-100 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 left-0"
+						class="non-draggable active:cursor-default col-span-2 opacity-100 mr-8 pr-10 pb-6 w-[27.5rem] sticky space-y-1 z-30 left-0"
 					>
 						<div class="w-full h-full bg-untld-white py-32 absolute" />
 						<div
@@ -306,7 +306,7 @@
 							style="animation-delay: {(innerIndex / 2) * 0.015}s;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[15rem]'} opacity-0 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} -ml-10 opacity-0 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 						>
 							<div
 								style="background-color:rgb(var(--color-untld-{colorGroup
@@ -386,7 +386,7 @@
 				{#each Object.entries(colors.secondary) as [colorGroup, shades], outerIndex (outerIndex)}
 					<div
 						id={colorGroup.toLowerCase()}
-						class="non-draggable active:cursor-default col-span-2 opacity-100 mr-8 pb-6 w-[25rem] sticky space-y-1 z-30 left-0"
+						class="non-draggable active:cursor-default col-span-2 opacity-100 mr-8 pr-10 pb-6 w-[27.5rem] sticky space-y-1 z-30 left-0"
 					>
 						<div class="w-full h-full bg-untld-white py-32 absolute" />
 
@@ -442,12 +442,13 @@
 							style="animation-delay: {(innerIndex / 2) * 0.0075}s;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[15rem]'} opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 						>
 							<div
-								class="w-full rounded-t-md h-[52%] bg-untld-{colorGroup
+								style="background-color:rgb(var(--color-untld-{colorGroup
 									.replace(/\s+/g, '-')
-									.toLocaleLowerCase()}-{shade}"
+									.toLocaleLowerCase()}-{shade}))"
+								class="w-full rounded-t-md h-[52%]"
 							/>
 							<div class="flex flex-col h-[48%] p-2 justify-end">
 								<span class="untld-text-lg text-untld-gray-900 untld-text-medium">
