@@ -470,35 +470,40 @@ function getVarColorFunction(varName: string) {
 	};
 }
 
-const untld = Object.entries(colorsAsVars).reduce((acc, [, topLevelValue]) => {
+const flatEntries = Object.entries(colorsAsVars).flatMap(([, topLevelValue]) => {
 	if (typeof topLevelValue === 'string') {
 		const splitValue = topLevelValue.split(':');
-		return { ...acc, ...getVarColorFunction(splitValue[0]) };
-	} else if (typeof topLevelValue === 'object') {
-		const midLevelObject = Object.entries(topLevelValue).reduce((midAcc, [midKey, midValue]) => {
+		return [getVarColorFunction(splitValue[0])];
+	}
+	if (typeof topLevelValue === 'object') {
+		return Object.entries(topLevelValue).flatMap(([midKey, midValue]) => {
 			const formattedMidKey = midKey.toLocaleLowerCase().replace(/\s+/g, '-');
 			if (typeof midValue === 'string') {
 				const splitValue = midValue.split(':');
-				(midAcc as Record<string, object>)[formattedMidKey] = getVarColorFunction(splitValue[0]);
-			} else if (typeof midValue === 'object') {
-				const bottomLevelObject = Object.entries(midValue).reduce((botAcc, [botKey, botValue]) => {
+				const obj = {};
+				(obj as Record<string, object>)[formattedMidKey] = getVarColorFunction(splitValue[0]);
+				return [obj];
+			}
+			if (typeof midValue === 'object') {
+				return Object.entries(midValue).flatMap(([botKey, botValue]) => {
 					const formattedBotKey = botKey.toLocaleLowerCase().replace(/\s+/g, '-');
 					if (typeof botValue === 'string') {
 						const splitValue = botValue.split(':');
-						(botAcc as Record<string, object>)[formattedBotKey] = getVarColorFunction(
-							splitValue[0]
-						);
+						const obj = {};
+						(obj as Record<string, object>)[`${formattedMidKey}-${formattedBotKey}`] =
+							getVarColorFunction(splitValue[0]);
+						return [obj];
 					}
-					return botAcc;
-				}, {});
-				(midAcc as Record<string, object>)[formattedMidKey] = bottomLevelObject;
+					return [];
+				});
 			}
-			return midAcc;
-		}, {});
-		return { ...acc, ...midLevelObject };
+			return [];
+		});
 	}
-	return acc;
-}, {});
+	return [];
+});
+
+const untld = flatEntries.reduce((acc, obj) => ({ ...acc, ...obj }));
 
 export default plugin(
 	function ({ addBase }) {
