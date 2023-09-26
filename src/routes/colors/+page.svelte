@@ -218,8 +218,9 @@
 					<p class="untld-text-md untld-text-regular text-untld-gray-600">
 						{colorDescriptions.base.Base?.description ?? ''}
 					</p>
-					<div class="w-full h-full bg-untld-white" />
+					<div class=" h-full bg-untld-white w-full absolute" />
 				</div>
+
 				{#each Object.entries(colors.base) as [color, hexCode], innerIndex (innerIndex)}
 					<div
 						use:animationObserver={{
