@@ -230,9 +230,10 @@
 						class="w-[15rem] opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 					>
 						<div
-							class="w-full rounded-t-md h-[52%] bg-untld-{color
+							style="background-color:rgb(var(--color-untld-base-{color
 								.replace(/\s+/g, '-')
-								.toLocaleLowerCase()}"
+								.toLocaleLowerCase()}))"
+							class="w-full rounded-t-md h-[52%]"
 						/>
 						<div class="flex flex-col h-[48%] p-2 justify-end">
 							<span class="untld-text-lg text-untld-gray-900 untld-text-medium">
@@ -308,9 +309,10 @@
 								: 'w-[15rem]'} opacity-0 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
 						>
 							<div
-								class="w-full rounded-t-md h-[52%] bg-untld-{colorGroup
+								style="background-color:rgb(var(--color-untld-{colorGroup
 									.replace(/\s+/g, '-')
-									.toLocaleLowerCase()}-{shade}"
+									.toLocaleLowerCase()}-{shade}))"
+								class="w-full rounded-t-md h-[52%]"
 							/>
 							<div class="flex flex-col h-[48%] p-2 justify-end">
 								<span class="untld-text-lg text-untld-gray-900 untld-text-medium">
