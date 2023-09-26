@@ -1,11 +1,11 @@
 <script lang="ts">
-	import dotIcon from '$lib/assets/icons/_Dot.svg?url';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import ButtonWrapper from './ButtonWrapper.svelte';
 	import TextAtom from './TextAtom.svelte';
 	import type { size, hierarchy, icon } from './types.js';
 	import IconAtom from './IconAtom.svelte';
 	import { setContext } from 'svelte';
+	import DotAtom from './DotAtom.svelte';
 	interface $$Props extends HTMLButtonAttributes {
 		size: size;
 		hierarchy?: hierarchy;
@@ -22,7 +22,7 @@
 
 <ButtonWrapper {...$$props} {size} {hierarchy} {destructive}>
 	{#if icon.type === 'dot'}
-		<IconAtom slot="icon-left" url={dotIcon} class="[&&]:h-[0.625rem] [&&]:w-[0.625rem]" />
+		<DotAtom slot="icon-left" />
 		<TextAtom><slot /></TextAtom>
 	{:else}
 		{#if icon.leading}

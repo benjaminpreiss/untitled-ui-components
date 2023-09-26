@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import type { size } from './types.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 	const size = getContext<size>('size');
+
+	interface $$Props extends HTMLAttributes<HTMLSpanElement> {}
 
 	const styleSizes = {
 		sm: {
@@ -22,11 +25,6 @@
 	};
 </script>
 
-<span
-	class="
-            untld-text-regular
-            {styleSizes[size].text}
-        "
->
+<span {...$$props} class="{$$props.class} untld-text-regular {styleSizes[size].text}">
 	<slot />
 </span>

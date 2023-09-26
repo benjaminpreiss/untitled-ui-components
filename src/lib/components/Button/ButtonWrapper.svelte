@@ -25,7 +25,7 @@
 			},
 			'secondary-gray': {
 				coloring:
-					'bg-untld-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300 focus:untld-xs-focused-4px-secondary-gray-100 focus-visible:untld-xs-focused-4px-secondary-gray-100'
+					'bg-untld-white text-untld-gray-700 border-untld-gray-300 hover:bg-untld-gray-50 hover:text-untld-gray-800 disabled:text-untld-gray-300 focus:shadow-untld-xs-focused-4px-secondary-gray-100 focus-visible:shadow-untld-xs-focused-4px-secondary-gray-100'
 			},
 			'secondary-color': {
 				coloring:
