@@ -74,6 +74,7 @@
 		: 'only:mx-[-0.75rem]'}
 		[mask-position:center]
 		[mask-size:contain]
+		[mask-repeat:no-repeat]
 		[mask-image:var(--button-icon-url)]
 		{styleColorsIcons[destructive ? 'destructive' : 'nonDestructive'][hierarchy].coloring}
         {size === '2xl' ? 'h-[1.5rem] w-[1.5rem]' : 'h-[1.25rem] w-[1.25rem]'}"
