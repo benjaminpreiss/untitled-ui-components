@@ -3,7 +3,7 @@
 	import { colors } from '$lib/tailwindPlugin.js';
 	import { draggable } from '../../utils/draggable.js';
 	import animationObserver from '../../utils/animationObserver.js';
-	import code02 from '$lib/assets/icons/code-02.svg?url';
+	import code02 from '$lib/assets/icons/development/code-02.svg?url';
 
 	type ColorDescription = {
 		title: string;
