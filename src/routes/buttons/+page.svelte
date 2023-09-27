@@ -79,21 +79,42 @@
 				</div>
 
 				{#each icons as i}
-					<div>
-						{#each sizes as s}
-							<div class="p-5">
-								<Button
-									size={s}
-									hierarchy={h}
-									{destructive}
-									icon={i}
-									on:click={() => console.log('on:click')}
-								>
-									Button
-								</Button>
+					{#if h === 'link-gray' || h === 'link-color'}
+						{#if i.type === 'dot' || i.type === 'icon'}
+							<div>
+								{#each sizes as s}
+									<div class="p-5">
+										<Button
+											size={s}
+											hierarchy={h}
+											{destructive}
+											icon={i}
+											on:click={() => console.log('on:click')}
+										>
+											Button
+										</Button>
+									</div>
+								{/each}
 							</div>
-						{/each}
-					</div>
+						{/if}
+					{/if}
+					{#if h !== 'link-gray' && h !== 'link-color'}
+						<div>
+							{#each sizes as s}
+								<div class="p-5">
+									<Button
+										size={s}
+										hierarchy={h}
+										{destructive}
+										icon={i}
+										on:click={() => console.log('on:click')}
+									>
+										Button
+									</Button>
+								</div>
+							{/each}
+						</div>
+					{/if}
 				{/each}
 			{/each}
 		{/each}
