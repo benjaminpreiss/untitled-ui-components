@@ -33,7 +33,7 @@ interface $$Props extends HTMLButtonAttributes {
 		icon?: icon;
         onClick: onClick;
 	}
-
+```
 ```svelte
 <script>
     import { BadgeWrapper, IconAtom, DotAtom } from "library"
@@ -50,7 +50,7 @@ interface $$Props extends HTMLButtonAttributes {
     <!-- <div slot="icon-left"></div> (alternative) -->
     <TextAtom />
 <BadgeWrapper>
-````
+```
 
 ```svelte BadgeWrapper
 <button>
@@ -69,11 +69,11 @@ interface $$Props extends HTMLButtonAttributes {
 <span style="--button-icon-url:url('{url}')" class="" />
 ```
 
-```md
+`
 - Icon trailing, leading and xclose are the same sizes
 - Icon country and avatar are the same sizes.
 
-# Change IconAtom or add a new BadgeIconAtom ?
+### Change IconAtom or add a new BadgeIconAtom ?
 
 Should we change the current Icon namings to `ButtonIconAtom`? Since there is a difference in props/context being passed between `BadgeIcons` and `ButtonIcons`, there is also a size difference and a style difference. Currently the `IconAtom` is getting the context from it's parent component mainly `destructive` and `hierarchy` are props a `BadgeIcon` won't have,
 
@@ -81,4 +81,5 @@ This would make the `IconAtom` relatively complex.
 I do think we could use `DotAtom` within the Badge, since it's less complex
 
 Small notice: Badges also don't seem to have a hover/focus/click style, even though there is a close button involved.
-```
+
+````
