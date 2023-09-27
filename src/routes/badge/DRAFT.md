@@ -48,7 +48,6 @@ interface $$Props extends HTMLButtonAttributes {
     <!-- <BadgeIconAtom slot="icon-left" url={icon.country} class="" /> -->
     <!-- <DotAtom slot="icon-left" class="" /> -->
     <!-- <div slot="icon-left"></div> (alternative) -->
-    <TextAtom />
 <BadgeWrapper>
 ```
 
