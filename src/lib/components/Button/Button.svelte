@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" generics="H extends hierarchy">
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import ButtonWrapper from './ButtonWrapper.svelte';
 	import TextAtom from './TextAtom.svelte';
@@ -8,15 +8,15 @@
 	import DotAtom from './DotAtom.svelte';
 	interface $$Props extends HTMLButtonAttributes {
 		size: size;
-		hierarchy?: hierarchy;
+		hierarchy: H;
 		destructive?: boolean;
-		icon: icon;
+		icon: icon<H>;
 	}
 
 	export let size: size;
-	export let hierarchy: hierarchy = 'primary';
+	export let hierarchy: H;
 	export let destructive: boolean = false;
-	export let icon: icon;
+	export let icon: icon<H>;
 	setContext('icon', icon);
 </script>
 

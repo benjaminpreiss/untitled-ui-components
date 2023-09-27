@@ -7,7 +7,8 @@ export type hierarchy =
 	| 'tertiary-color'
 	| 'link-gray'
 	| 'link-color';
-export type icon =
-	| { type: 'dot' }
-	| { type: 'icon-only'; leading: string }
-	| { type: 'icon'; leading?: string; trailing?: string };
+type iconOnly = { type: 'icon-only'; leading: string };
+type iconRegular = { type: 'dot' } | { type: 'icon'; leading?: string; trailing?: string };
+export type icon<H extends hierarchy> = H extends 'link-gray' | 'link-color'
+	? iconRegular
+	: iconOnly | iconRegular;
