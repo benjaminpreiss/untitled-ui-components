@@ -13,7 +13,7 @@ type color = 'gray' | 'primary' | 'error' | 'warning' | 'success' | 'blue gray' 
 
 type icon? =
 		| { type: 'dot' }
-         | { type: 'country'; leading?: string }
+        | { type: 'country'; leading?: string }
         // leading optional since we can provide a standard avatar icon
         | { type: 'country'; leading?: string }
         // leading optional since we can provide a standard close icon
