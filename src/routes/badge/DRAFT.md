@@ -69,6 +69,7 @@ interface $$Props extends HTMLButtonAttributes {
 <span style="--button-icon-url:url('{url}')" class="" />
 ```
 
+```md
 - Icon trailing, leading and xclose are the same sizes
 - Icon country and avatar are the same sizes.
 
@@ -80,3 +81,4 @@ This would make the `IconAtom` relatively complex.
 I do think we could use `DotAtom` within the Badge, since it's less complex
 
 Small notice: Badges also don't seem to have a hover/focus/click style, even though there is a close button involved.
+```
