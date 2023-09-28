@@ -17,7 +17,7 @@ type icon? =
         // leading optional since we can provide a standard avatar icon
         | { type: 'avatar'; leading?: string }
         // leading optional since we can provide a standard close icon
-        | { type: 'x-close'; leading?: string }
+        | { type: 'x-close'; trailing?: string }
         // leading optional since we can provide a standard country icon
 		| { type: 'icon'; leading?: string; trailing?: string}
         | { type: 'icon-only'; leading: string }
