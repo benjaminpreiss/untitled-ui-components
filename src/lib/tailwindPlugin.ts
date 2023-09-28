@@ -489,15 +489,21 @@ const untld = Object.fromEntries(
 	Object.entries(colorsAsCssVars).flatMap(([, v1]) =>
 		Object.entries(v1).flatMap(([k2, v2]) =>
 			typeof v2 === 'string'
-				? [[`${k2.toLowerCase()}`, getVarColorFunction(`--color-untld-${k2.toLowerCase()}`)]]
+				? [
+						[
+							`${k2.toLowerCase().replace(' ', '-')}`,
+							getVarColorFunction(`--color-untld-${k2.toLowerCase()}`)
+						]
+				  ]
 				: Object.entries(v2).map(([k3, v3]) => [
-						`${k2.toLowerCase()}-${k3}`,
+						`${k2.toLowerCase().replace(' ', '-')}-${k3}`,
 						getVarColorFunction(`${(v3 as string).split(' : ')[0].replace(/"/g, ' ')}`)
 				  ])
 		)
 	)
 );
 
+console.log(untld, 'untld');
 export default plugin(
 	function ({ addBase }) {
 		addBase({
