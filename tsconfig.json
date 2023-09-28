@@ -9,6 +9,8 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "NodeNext"
+		"moduleResolution": "NodeNext",
+		"experimentalDecorators": true,
+		"useDefineForClassFields": false,
 	}
 }

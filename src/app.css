@@ -12,3 +12,8 @@
 		display: none; /* for Chrome, Safari, and Opera */
 	}
 }
+
+html {
+	-webkit-tap-highlight-color: transparent;
+	scroll-behavior: smooth;
+}
