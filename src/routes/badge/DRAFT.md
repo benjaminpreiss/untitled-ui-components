@@ -15,7 +15,7 @@ type icon? =
 		| { type: 'dot' }
         | { type: 'country'; leading?: string }
         // leading optional since we can provide a standard avatar icon
-        | { type: 'country'; leading?: string }
+        | { type: 'avatar'; leading?: string }
         // leading optional since we can provide a standard close icon
         | { type: 'x-close'; leading?: string }
         // leading optional since we can provide a standard country icon
