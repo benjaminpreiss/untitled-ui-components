@@ -3,7 +3,7 @@
 Either as
 
 ```svelte
-<Badge {size} {outline} {icon} {color} {onClick} />
+<Badge {size} {outline} {icon} {color} {clickable} />
 ```
 
 ````js
@@ -24,14 +24,14 @@ type icon? =
 
 type outline? = boolean
 
-type onClick? = () => {}
+type clickable? = boolean
 
 interface $$Props extends HTMLButtonAttributes {
         size: size
         color: color
 		outline?: outline;
 		icon?: icon;
-        onClick: onClick;
+        clickable?: boolean;
 	}
 ```
 ```svelte
@@ -44,9 +44,10 @@ interface $$Props extends HTMLButtonAttributes {
     <BadgeIconAtom slot="icon-left" class="" />
     <TextAtom />
     <!-- depending on the x-close or country prop, IconAtom can contain default url -->
-    <!-- <BadgeIconAtom slot="icon-left" url={icon.xclose} class="" /> -->
-    <!-- <BadgeIconAtom slot="icon-left" url={icon.country} class="" /> -->
+    <!-- <BadgeIconAtom slot="icon-left" url={icon.trailing} class="" /> -->
     <!-- <DotAtom slot="icon-left" class="" /> -->
+    <!-- Image icon is needed for now, since mask doesn't display images only icons -->
+    <!-- <ImageIcon slot='icon-left' > -->
     <!-- <div slot="icon-left"></div> (alternative) -->
 <BadgeWrapper>
 ```
@@ -54,7 +55,6 @@ interface $$Props extends HTMLButtonAttributes {
 ```svelte BadgeWrapper
 <button>
 	<slot name="icon-left" />
-	<!-- If you want to create an icon-only, just add the default slot. -->
 	<slot />
 	<slot name="icon-right" />
 </button>
@@ -65,7 +65,7 @@ interface $$Props extends HTMLButtonAttributes {
 	export let url: string;
 </script>
 
-<span style="--button-icon-url:url('{url}')" class="" />
+<span style="--badge-icon-url:url('{url}')" class="" />
 ```
 
 `
