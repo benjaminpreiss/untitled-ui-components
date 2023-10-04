@@ -1,0 +1,11 @@
+<script lang="ts">
+	import IconAtom from './IconAtom.svelte';
+	import dotIcon from '$lib/assets/icons/general/_Dot.svg?url';
+</script>
+
+<IconAtom
+	{...$$props}
+	slot="icon-left"
+	url={dotIcon}
+	class="{$$props.class} h-[0.5rem] w-[0.5rem]"
+/>
