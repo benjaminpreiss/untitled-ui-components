@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button/Button.svelte';
-	import placeholder from '$lib/assets/icons/placeholder.svg?url';
+	import placeholder from '$lib/assets/icons/general/placeholder.svg?url';
 
 	// Define your types
 	type size = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
