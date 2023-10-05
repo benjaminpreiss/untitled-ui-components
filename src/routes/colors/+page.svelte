@@ -46,8 +46,6 @@
 					title: 'Success',
 					description: `Success colors communicate a positive action, positive trend, or a successful confirmation. If you're using green as your primary color, it can be helpful to introduce a different hue for your success green.`
 				}
-
-				// ... add more color group descriptions as needed
 			},
 			secondary: {
 				'Gray blue': {
@@ -253,10 +251,10 @@
 									)}
 								class="flex peer space-y-0 space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
 							>
-								<img class='w-3 h-3' src={code02} alt="icon" />
+								<img class="w-3 h-3" src={code02} alt="icon" />
 								<span>{`tailwind: 'untld-${color.replace(/\s+/g, '-').toLocaleLowerCase()}'`}</span>
 							</button>
-							<!-- temporary copy button -->
+							<!-- TODO exchange temporary copy button -->
 							<div
 								class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
                                  whitespace-nowrap"
@@ -298,7 +296,7 @@
 					</div>
 
 					{#each Object.entries(shades) as [shade, hexCode], innerIndex (innerIndex)}
-						<!-- added a small test animation -->
+						<!-- TODO exchange small test animation -->
 						<div
 							use:animationObserver={{
 								animation: 'animate-fadeIn',
@@ -336,14 +334,14 @@
 										)}
 									class="flex space-y-0 peer space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
 								>
-									<img class='w-3 h-3' src={code02} alt="icon" />
+									<img class="w-3 h-3" src={code02} alt="icon" />
 									<span
 										>{`tailwind: 'untld-${colorGroup
 											.replace(/\s+/g, '-')
 											.toLocaleLowerCase()}-${shade}'`}</span
 									>
 								</button>
-								<!-- temporary copy button -->
+								<!-- TODO exchange temporary copy button -->
 								<div
 									class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
                                  whitespace-nowrap"
@@ -405,14 +403,14 @@
 							<p class="untld-text-md untld-text-regular text-untld-gray-600">
 								{colorDescriptions.secondary[colorGroup]?.description ?? ''}
 							</p>
-							<!-- temporary menu -->
+							<!-- TODO exchange temporary menu -->
 							<div class="absolute left-0 bottom-0">
 								<div class="relative group inline-block">
-									<!-- Main Button -->
+									<!-- TODO exchange Main Button -->
 									<div class="group bg-untld-white untld-text-sm text-untld-gray-600 py-2">
 										set color as:
 									</div>
-									<!-- temporary Dropdown Menu -->
+									<!-- TODO exchange temporary Dropdown Menu -->
 									<div class="w-full h-1 bg-transparent" />
 									<div
 										class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-lg `}
@@ -472,14 +470,14 @@
 										)}
 									class="flex space-y-0 flex-row items-center justify-center peer space-x-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 untld-text-xs border-[1.5px] rounded-full"
 								>
-									<img class='w-3 h-3' src={code02} alt="icon" />
+									<img class="w-3 h-3" src={code02} alt="icon" />
 									<span
 										>{`tailwind: 'untld-${colorGroup
 											.replace(/\s+/g, '-')
 											.toLocaleLowerCase()}-${shade}'`}</span
 									>
 								</button>
-								<!-- temporary copy button -->
+								<!-- TODO exchange temporary copy button -->
 								<div
 									class="transition-opacity right-0 -translate-y-full peer-active:transition-none duration-0 transition-opacity-transform delay-1000 peer-active:opacity-100 peer-active:transition-opacity-transform opacity-0 absolute top-full px-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 untld-text-xs border-[1.5px] rounded-full
                              whitespace-nowrap"
