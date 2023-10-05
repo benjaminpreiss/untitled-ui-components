@@ -253,7 +253,7 @@
 									)}
 								class="flex peer space-y-0 space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
 							>
-								<img src={code02} alt="code-02" />
+								<img class='w-3 h-3' src={code02} alt="icon" />
 								<span>{`tailwind: 'untld-${color.replace(/\s+/g, '-').toLocaleLowerCase()}'`}</span>
 							</button>
 							<!-- temporary copy button -->
@@ -336,7 +336,7 @@
 										)}
 									class="flex space-y-0 peer space-x-2 items-center untld-text-medium untld-text-xs my-2 bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 border-[1.5px] rounded-full"
 								>
-									<img src={code02} alt="icon" />
+									<img class='w-3 h-3' src={code02} alt="icon" />
 									<span
 										>{`tailwind: 'untld-${colorGroup
 											.replace(/\s+/g, '-')
@@ -472,7 +472,7 @@
 										)}
 									class="flex space-y-0 flex-row items-center justify-center peer space-x-2 untld-text-medium bg-untld-white text-untld-gray-700 border-untld-gray-700 px-2 untld-text-xs border-[1.5px] rounded-full"
 								>
-									<img src={code02} alt="icon" />
+									<img class='w-3 h-3' src={code02} alt="icon" />
 									<span
 										>{`tailwind: 'untld-${colorGroup
 											.replace(/\s+/g, '-')
