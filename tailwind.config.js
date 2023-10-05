@@ -7,10 +7,6 @@ export default {
 	theme: {
 		extend: {
 			// THIS IS NOT A NECESSARY CONFIGURATION FOR THE ENDUSER
-			gridTemplateColumns: {
-				colors: '10rem repeat(8, minmax(0, 1fr)) 16rem repeat(3, minmax(0, 1fr))'
-			},
-			// THIS IS NOT A NECESSARY CONFIGURATION FOR THE ENDUSER
 			animation: {
 				fadeIn: 'fadeIn 1.5s forwards',
 				fadeInFast: 'fadeIn 0.5s forwards',

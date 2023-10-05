@@ -492,3 +492,12 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+	.grid-cols-colors {
+		grid-template-columns: 10rem /* 160px */ repeat(8, minmax(0, 1fr)) 16rem /* 256px */ repeat(
+				3,
+				minmax(0, 1fr)
+			);
+	}
+</style>
