@@ -6,6 +6,9 @@
 	import arrowUp from '$lib/assets/icons/arrows/arrow-up.svg?url';
 	import plus from '$lib/assets/icons/general/plus.svg?url';
 
+	import BadgeIconAtom from '$lib/components/Badge/IconAtom.svelte';
+	console.log(xClose);
+
 	import type { color, icon, size } from '$lib/components/Badge/types.js';
 	import { browser } from '$app/environment';
 

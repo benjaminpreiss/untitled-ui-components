@@ -97,6 +97,7 @@
 	};
 </script>
 
+<!-- TODO: move the below mask specs to tailwind class and only set css vars in style tag. Refer to iconatom in button. -->
 <span
 	{...$$props}
 	style="--badge-icon-url:url('{url}'); 

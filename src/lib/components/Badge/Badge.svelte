@@ -9,8 +9,34 @@
 	import dummyAvatar from '$lib/assets/icons/dummies/avatar.svg?url';
 	import { setContext } from 'svelte';
 	import ImageAtom from './ImageAtom.svelte';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
 
 	// todo fix the onclick as props later
+
+	/* TODO: specify props type
+	
+	interface $$Props extends HTMLButtonAttributes {
+		size: size;
+		color: color;
+		icon: icon;
+		outline: boolean;
+	}
+
+	Hint: Whenever you need a property from $$props, just cast it: 
+
+	const onClick = ($$props as $$Props)["on:click"]
+	
+	*/
+
+	/* 
+	TODO: for x-close without leading specified, import svg as raw and adjust stroke width
+	import xClose from '$lib/assets/icons/general/x-close.svg?raw';
+
+	<div>{@html xClose}</div>
+	Hint: set stroke width via tailwind class or via style tag
+	*/
+	/* TODO: for all other ICONS, use svg as mask and only adjust the color, NOT THE STROKE */
+	/* TODO: for all image */
 
 	export let size: size;
 	export let color: color;

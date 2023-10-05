@@ -13,17 +13,23 @@ type color = 'gray' | 'primary' | 'error' | 'warning' | 'success' | 'blue gray' 
 
 type icon? =
 		| { type: 'dot' }
+        // TODO: Change leading to obligatory
+        // TODO: Rename this to img
         | { type: 'country'; leading?: string }
         // leading optional since we can provide a standard avatar icon
+        // TODO: Remove this for sake of img
         | { type: 'avatar'; leading?: string }
+        // TODO: Pass obligatory onclick function, onclick: MouseEventHandler<HTMLButtonElement>
         // leading optional since we can provide a standard close icon
         | { type: 'x-close'; trailing?: string }
         // leading optional since we can provide a standard country icon
 		| { type: 'icon'; leading?: string; trailing?: string}
         | { type: 'icon-only'; leading: string }
 
-type outline? = boolean
+// TODO: Make outline default value false, and optional
+type outline?: boolean
 
+// TODO: Remove clickable
 type clickable? = boolean
 
 interface $$Props extends HTMLButtonAttributes {
@@ -39,15 +45,14 @@ interface $$Props extends HTMLButtonAttributes {
     import { BadgeWrapper, IconAtom, DotAtom } from "library"
 </script>
 
-
-<BadgeWrapper >
-    <BadgeIconAtom slot="icon-left" class="" />
+<BadgeWrapper>
+    <IconAtom slot="icon-left" class="" url="" />
     <TextAtom />
     <!-- depending on the x-close or country prop, IconAtom can contain default url -->
     <!-- <BadgeIconAtom slot="icon-left" url={icon.trailing} class="" /> -->
     <!-- <DotAtom slot="icon-left" class="" /> -->
     <!-- Image icon is needed for now, since mask doesn't display images only icons -->
-    <!-- <ImageIcon slot='icon-left' > -->
+    <ImageIcon slot='icon-left' url="" >
     <!-- <div slot="icon-left"></div> (alternative) -->
 <BadgeWrapper>
 ```

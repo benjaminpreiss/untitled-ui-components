@@ -14,11 +14,13 @@
 
 	export let clickable: boolean = false;
 
+	// TODO: Remove icon here
 	const icon: icon = getContext('icon');
 	setContext('color', color);
 	setContext('outline', outline);
 	setContext('size', size);
 
+	// TODO: Remove trailing
 	const trailing = !!(icon && ((icon.type === 'icon' && icon.trailing) || icon.type === 'x-close'));
 
 	const styleColorsButtons = {
@@ -106,6 +108,8 @@
 		}
 	};
 
+	// TODO: Unify paddings here so that they don't depend on icon
+
 	const stylePaddings = {
 		sm: {
 			padding: `${
@@ -149,7 +153,8 @@
 	};
 </script>
 
-<!-- todo check if the onClick hasOwnProperty works -->
+<!-- TODO Replace border with an inset ring! -->
+<!-- TODO check if the onClick hasOwnProperty works -->
 <button
 	{...$$props}
 	class="{$$props.class}  
