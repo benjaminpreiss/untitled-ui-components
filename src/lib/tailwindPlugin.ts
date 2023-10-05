@@ -503,7 +503,6 @@ const untld = Object.fromEntries(
 	)
 );
 
-console.log(untld, 'untld');
 export default plugin(
 	function ({ addBase }) {
 		addBase({
