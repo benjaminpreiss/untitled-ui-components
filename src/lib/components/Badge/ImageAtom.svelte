@@ -1,14 +1,19 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
+	import type { size } from './types.js';
 	interface $$Props extends HTMLAttributes<HTMLSpanElement> {
 		url: string;
+		size?: size;
 	}
 	export let url: string;
+	export let size: size = getContext<size>('size');
 </script>
 
-<!-- TODO temporary solution, how can we make sure that images passed in are also rendered? Just like icons without the ImageAtom -->
 <img
 	src={url}
 	alt="badge"
-	class="{$$props.class} h-[1rem] w-[1rem] bg-center bg-contain bg-no-repeat"
+	class="{$$props.class} {size === 'sm'
+		? ' -ml-[0.3125rem] -mr-[0.125rem]'
+		: '-ml-[0.375rem] -mr-[0.125rem]'} h-[1rem] w-[1rem] bg-center bg-contain bg-no-repeat"
 />
