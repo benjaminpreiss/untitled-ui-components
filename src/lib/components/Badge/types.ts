@@ -17,12 +17,9 @@ export type color =
 
 export type icon =
 	| { type: 'dot' }
-	| { type: 'country'; leading?: string }
-	// leading optional since we can provide a standard avatar icon
-	| { type: 'avatar'; leading?: string }
+	| { type: 'image'; leading: string }
 	// leading optional since we can provide a standard close icon
-	| { type: 'x-close'; trailing?: string }
-	// leading optional since we can provide a standard country icon
+	| { type: 'x-close'; trailing?: string; onClick: () => void }
 	| { type: 'icon'; leading?: string; trailing?: string }
 	| { type: 'icon-only'; leading: string };
 
