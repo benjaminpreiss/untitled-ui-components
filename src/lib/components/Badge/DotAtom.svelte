@@ -7,5 +7,5 @@
 	{...$$props}
 	slot="icon-left"
 	url={dotIcon}
-	class="{$$props.class} h-[0.5rem] w-[0.5rem]"
+	class="{$$props.class} [&&]:h-[0.5rem] [&&]:w-[0.5rem]"
 />
