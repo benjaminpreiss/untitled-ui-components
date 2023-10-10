@@ -3,7 +3,7 @@
 Either as
 
 ```svelte
-<Badge {size} {outline} {icon} {color} />
+<Badge {size} {badgeType} {icon} {color} {icon} {onClick} />
 ```
 
 ````js
@@ -19,7 +19,7 @@ type icon? =
     | { type: 'icon'; leading?: string; trailing: string }
     | { type: 'icon-only'; leading: string }
 
-type outline? = boolean
+export type badgeType = 'Pill color' | 'Pill outline' | 'Badge color' | 'Badge modern';
 
 interface $$Props extends HTMLButtonAttributes {
         size: size
