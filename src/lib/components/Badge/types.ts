@@ -15,6 +15,8 @@ export type color =
 	| 'rosé'
 	| 'orange';
 
+export type badgeType = 'Pill color' | 'Pill outline' | 'Badge color' | 'Badge modern';
+
 export type icon =
 	| { type: 'dot' }
 	| { type: 'image'; leading: string }

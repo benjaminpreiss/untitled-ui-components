@@ -1,7 +1,7 @@
 <script lang="ts">
 	import BadgeWrapper from './BadgeWrapper.svelte';
 	import TextAtom from './TextAtom.svelte';
-	import type { size, icon, color } from './types.js';
+	import type { size, icon, color, badgeType } from './types.js';
 	import IconAtom from './IconAtom.svelte';
 	import DotAtom from './DotAtom.svelte';
 	// TODO can remove the raw if we just go for the svg from figma
@@ -13,18 +13,18 @@
 		size: size;
 		color: color;
 		icon?: icon;
-		outline: boolean;
+		badgeType: badgeType;
 		onClick?: (() => void) | undefined;
 	}
 
 	export let size: size;
 	export let color: color;
 	export let icon: icon | undefined = undefined;
-	export let outline: boolean = false;
+	export let badgeType: badgeType = 'Pill color';
 	export let onClick: (() => void) | undefined = undefined;
 </script>
 
-<BadgeWrapper {outline} {...$$props} {size} {color}>
+<BadgeWrapper {badgeType} {...$$props} {size} {color}>
 	{#if icon}
 		{#if icon.type === 'dot'}
 			<DotAtom slot="icon-left" />
