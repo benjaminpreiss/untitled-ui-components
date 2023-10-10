@@ -2,14 +2,15 @@
 	import { getContext } from 'svelte';
 	import type { color, icon, size } from './types.js';
 	import type { HTMLAttributes } from 'svelte/elements';
+
 	interface $$Props extends HTMLAttributes<HTMLSpanElement> {
 		url: string;
 	}
-	export let url: string;
 
+	export let url: string;
 	const color = getContext<color>('color');
-	const icon = getContext<icon>('icon');
 	const outline = getContext<boolean>('outline');
+	const size = getContext<size>('size');
 
 	const styleColorsIcons = {
 		outline: {
@@ -97,19 +98,19 @@
 	};
 </script>
 
-<!-- TODO: move the below mask specs to tailwind class and only set css vars in style tag. Refer to iconatom in button. -->
 <span
-	{...$$props}
-	style="--badge-icon-url:url('{url}'); 
-	   mask-image:var(--badge-icon-url); 
-	   -webkit-mask-image:var(--badge-icon-url); 
-	   mask-position:center; 
-	   -webkit-mask-position:center; 
-	   mask-size:contain; 
-	   -webkit-mask-size:contain; 
-	   mask-repeat:no-repeat; 
-	   -webkit-mask-repeat:no-repeat;"
-	class="{$$props.class}
-	   {styleColorsIcons[outline ? 'outline' : 'noOutline'][color].coloring}
-	   {icon?.type === 'dot' ? 'h-[0.625rem] w-[0.625rem]' : 'h-[0.75rem] w-[0.75rem]'} "
+	style="--badge-icon-url:url('{url}')"
+	class="
+		{size === 'sm'
+		? '-mx-[0.125rem] only:-mx-[0.5rem] '
+		: size === 'md'
+		? `-mx-[0.125rem] first-of-type:-mr-[0.250rem] first-of-type:-ml-[0.125rem] last-of-type:-mx-[0.250rem] only:-mx-[0.250rem] only:py-2.5`
+		: `last-of-type:-mr-[0.250rem] last-of-type:-ml-[0.125rem] last-of-type:only:-mx-[0.250rem] first-of-type:-ml-[0.250rem] first-of-type:-mr-[0.125rem] -mx-[0.125rem] last-of-type:only:py-2.5  only:-mx-[0.250rem] only:py-2.5`}
+		[mask-position:center]
+		[mask-size:contain]
+		[mask-repeat:no-repeat]
+		[mask-image:var(--badge-icon-url)]
+		{styleColorsIcons[outline ? 'outline' : 'noOutline'][color].coloring}
+	   	h-[0.75rem] w-[0.75rem]
+		{$$props.class}"
 />
