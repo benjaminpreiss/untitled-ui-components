@@ -21,7 +21,7 @@
 		nonDestructive: {
 			primary: {
 				coloring:
-					'bg-untld-brand-600 text-untld-white border rounded-[0.5rem] border-solid border-untld-brand-600 hover:bg-untld-brand-700 disabled:bg-untld-brand-200 focus:shadow-untld-xs-focused-4px-brand-100 focus-visible:shadow-untld-xs-focused-4px-brand-100'
+					'bg-untld-brand-600 text-untld-white border rounded-[0.5rem] border-solid border-untld-brand-600 hover:bg-untld-brand-700 disabled:bg-untld-brand-200 focus:shadow-untld-xs-focused-4px-primary-100 focus-visible:shadow-untld-xs-focused-4px-primary-100'
 			},
 			'secondary-gray': {
 				coloring:
@@ -29,7 +29,7 @@
 			},
 			'secondary-color': {
 				coloring:
-					'bg-untld-brand-50 text-untld-brand-700 border rounded-[0.5rem] border-solid border-untld-brand-50 hover:bg-untld-brand-100 hover:text-untld-brand-800 disabled:bg-untld-brand-25 disabled:text-untld-brand-300 focus:shadow-untld-xs-focused-4px-brand-100 focus-visible:shadow-untld-xs-focused-4px-brand-100'
+					'bg-untld-brand-50 text-untld-brand-700 border rounded-[0.5rem] border-solid border-untld-brand-50 hover:bg-untld-brand-100 hover:text-untld-brand-800 disabled:bg-untld-brand-25 disabled:text-untld-brand-300 focus:shadow-untld-xs-focused-4px-primary-100 focus-visible:shadow-untld-xs-focused-4px-primary-100'
 			},
 			'tertiary-gray': {
 				coloring:
