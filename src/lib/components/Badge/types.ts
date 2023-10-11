@@ -1,6 +1,6 @@
 export type size = 'sm' | 'md' | 'lg';
 
-export type color =
+export type colors =
 	| 'gray'
 	| 'primary'
 	| 'error'
@@ -14,6 +14,15 @@ export type color =
 	| 'pink'
 	| 'rosé'
 	| 'orange';
+
+export type color<T extends badgeType, I extends icon | undefined> = T extends
+	| 'Pill color'
+	| 'Pill outline'
+	| 'Badge color'
+	? colors
+	: I extends { type: 'dot' }
+	? colors
+	: 'gray';
 
 export type badgeType = 'Pill color' | 'Pill outline' | 'Badge color' | 'Badge modern';
 
