@@ -189,7 +189,7 @@
 			}}
 			class="max-w-4xl my-12 opacity-0"
 		>
-			<h3 class="text-untld-gray-900 untld-display-xs untld-text-semibold">brand colors</h3>
+			<h3 class="text-untld-gray-900 untld-display-xs untld-text-semibold">Brand colors</h3>
 			<span class="untld-text-lg untld-text-regular antialiased text-untld-gray-600"
 				>These are the main colors that make up the majority of the colors used in the design
 				system.</span
@@ -226,7 +226,7 @@
 							threshold: 0.1
 						}}
 						style="animation-delay: {innerIndex * 0.025}s;"
-						class="w-[15rem] -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+						class="w-[15rem] -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-untld-lg rounded-md relative"
 					>
 						<div
 							style="background-color:rgb(var(--color-untld-{color
@@ -305,7 +305,7 @@
 							style="animation-delay: {(innerIndex / 2) * 0.015}s;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[15rem]'} -ml-10 opacity-0 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} -ml-10 opacity-0 h-[9.75rem] col-span-1 snap-start shadow-untld-lg rounded-md relative"
 						>
 							<div
 								style="background-color:rgb(var(--color-untld-{colorGroup
@@ -413,7 +413,7 @@
 									<!-- TODO exchange temporary Dropdown Menu -->
 									<div class="w-full h-1 bg-transparent" />
 									<div
-										class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-lg `}
+										class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-untld-lg `}
 									>
 										<div class=" flex" role="menu">
 											{#each ['gray', 'brand', 'warning', 'error', 'success'] as colorType}
@@ -441,7 +441,7 @@
 							style="animation-delay: {(innerIndex / 2) * 0.0075}s;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[15rem]'} -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-untld-lg rounded-md relative"
 						>
 							<div
 								style="background-color:rgb(var(--color-untld-{colorGroup
