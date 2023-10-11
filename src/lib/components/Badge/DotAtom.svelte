@@ -1,6 +1,11 @@
 <script lang="ts">
 	import IconAtom from './IconAtom.svelte';
 	import dotIcon from '$lib/assets/icons/general/_Dot.svg?url';
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	interface $$Props extends HTMLAttributes<HTMLSpanElement> {
+		iconColor?: string;
+	}
 </script>
 
 <IconAtom
