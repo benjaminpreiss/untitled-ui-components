@@ -20,7 +20,7 @@ const primaryColors = {
 		800: '#1D2939',
 		900: '#101828'
 	},
-	Primary: {
+	Brand: {
 		25: '#FCFAFF',
 		50: '#F9F5FF',
 		100: '#F4EBFF',
@@ -297,7 +297,7 @@ const secondaryColors = {
 		900: '#491C96'
 	},
 	Purple: {
-		25: '#FAFAFF', // var(--css-variable)
+		25: '#FAFAFF',
 		50: '#F4F3FF',
 		100: '#EBE9FE',
 		200: '#D9D6FE',
@@ -536,11 +536,11 @@ export default plugin(
 					'untld-xl': `0px 8px 8px -4px rgba(16, 24, 40, 0.03), 0px 20px 24px -4px rgba(16, 24, 40, 0.08);`,
 					'untld-2xl': `0px 24px 48px -12px rgba(16, 24, 40, 0.18);`,
 					'untld-3xl': `0px 32px 64px -12px rgba(16, 24, 40, 0.14);`,
-					'untld-xs-focused-4px-primary-100': `0px 1px 2px 0px rgba(16, 24, 40, 0.05), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) ${colors.primary.Primary[100]};`,
+					'untld-xs-focused-4px-primary-100': `0px 1px 2px 0px rgba(16, 24, 40, 0.05), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) ${colors.primary.Brand[100]};`,
 					'untld-xs-focused-4px-secondary-gray-100': `0px 1px 2px 0px rgba(16, 24, 40, 0.05), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) ${colors.primary.Gray[100]};`,
 					'untld-xs-focused-4px-error-100': `0px 1px 2px 0px rgba(16, 24, 40, 0.05), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) ${colors.primary.Error[100]};`,
-					'untld-sm-focused-4px-primary-100': `0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.10), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) ${colors.primary.Primary[100]};`,
-					'untld-sm-focused-4px-gray-100': `0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.10), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) ${colors.primary.Gray[100]};`,
+					'untld-sm-focused-4px-primary-100': `0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.10), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) ${colors.primary.Brand[100]};`,
+					'untld-sm-focused-4px-gray-100': `0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.10), var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) ${colors.primary.Gray[100]};`
 				}
 			}
 		}
