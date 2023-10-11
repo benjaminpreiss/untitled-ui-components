@@ -2,7 +2,7 @@ export type size = 'sm' | 'md' | 'lg';
 
 export type colors =
 	| 'gray'
-	| 'primary'
+	| 'brand'
 	| 'error'
 	| 'warning'
 	| 'success'

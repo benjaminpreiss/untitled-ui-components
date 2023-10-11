@@ -5,7 +5,7 @@
 
 	type color =
 		| 'gray'
-		| 'primary'
+		| 'brand'
 		| 'error'
 		| 'warning'
 		| 'success'
@@ -21,7 +21,7 @@
 
 	const colors: color[] = [
 		'gray',
-		'primary',
+		'brand',
 		'error',
 		'warning',
 		'success',

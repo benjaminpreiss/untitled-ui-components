@@ -24,10 +24,10 @@
 					'bg-untld-gray-100 text-untld-gray-700 ring-untld-gray-200 ring-[0.063rem] rounded-full',
 				iconColor: 'bg-untld-gray-500'
 			},
-			primary: {
+			brand: {
 				backgroundColor:
-					'bg-untld-primary-50 text-untld-primary-700 ring-untld-primary-200 ring-[0.063rem] rounded-full     ',
-				iconColor: 'bg-untld-primary-500'
+					'bg-untld-brand-50 text-untld-brand-700 ring-untld-brand-200 ring-[0.063rem] rounded-full     ',
+				iconColor: 'bg-untld-brand-500'
 			},
 			error: {
 				backgroundColor:
@@ -90,10 +90,10 @@
 				backgroundColor: 'text-untld-gray-600  ring-untld-gray-700 ring-[0.09375rem] rounded-full ',
 				iconColor: 'bg-untld-gray-600'
 			},
-			primary: {
+			brand: {
 				backgroundColor:
-					' text-untld-primary-600  ring-untld-primary-700 ring-[0.09375rem] rounded-full  ',
-				iconColor: 'bg-untld-primary-600'
+					' text-untld-brand-600  ring-untld-brand-700 ring-[0.09375rem] rounded-full  ',
+				iconColor: 'bg-untld-brand-600'
 			},
 			error: {
 				backgroundColor:
@@ -157,10 +157,10 @@
 					'bg-untld-gray-100 text-untld-gray-700 ring-untld-gray-200 ring-[0.063rem] rounded-lg',
 				iconColor: 'bg-untld-gray-500'
 			},
-			primary: {
+			brand: {
 				backgroundColor:
-					'bg-untld-primary-50 text-untld-primary-700 ring-untld-primary-200 ring-[0.063rem] rounded-lg     ',
-				iconColor: 'bg-untld-primary-500'
+					'bg-untld-brand-50 text-untld-brand-700 ring-untld-brand-200 ring-[0.063rem] rounded-lg     ',
+				iconColor: 'bg-untld-brand-500'
 			},
 			error: {
 				backgroundColor:
@@ -224,10 +224,10 @@
 					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
 				iconColor: 'bg-untld-gray-500'
 			},
-			primary: {
+			brand: {
 				backgroundColor:
 					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
-				iconColor: 'bg-untld-primary-500'
+				iconColor: 'bg-untld-brand-500'
 			},
 			error: {
 				backgroundColor:
