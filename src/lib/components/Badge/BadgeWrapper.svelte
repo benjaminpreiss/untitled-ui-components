@@ -1,233 +1,291 @@
 <script lang="ts">
-	import type { HTMLButtonAttributes } from 'svelte/elements';
-	import type { size, color, badgeType } from './types.js';
+	import type { DOMAttributes, HTMLButtonAttributes } from 'svelte/elements';
+	import type { size, badgeType, colors } from './types.js';
 	import { setContext } from 'svelte';
 	interface $$Props extends HTMLButtonAttributes {
 		size: size;
 		badgeType: badgeType;
-		color?: color;
-		onClick?: (() => void) | undefined;
+		color: colors;
+		onClick?: DOMAttributes<HTMLButtonElement>['on:click'];
 	}
 	export let size: size;
-	export let badgeType: badgeType = 'Pill color';
-	export let color: color = 'primary';
-	export let onClick: (() => void) | undefined = undefined;
+	export let badgeType: badgeType;
+	export let color: colors;
+	export let onClick: DOMAttributes<HTMLButtonElement>['on:click'] = undefined;
 
 	setContext('color', color);
 	setContext('badgeType', badgeType);
 	setContext('size', size);
 
-	const styleColorsButtons = {
+	const styleColorsBadges = {
 		['Pill color']: {
 			gray: {
-				coloring:
-					'bg-untld-gray-100 text-untld-gray-700 ring-untld-gray-200 ring-[0.063rem] rounded-full'
+				backgroundColor:
+					'bg-untld-gray-100 text-untld-gray-700 ring-untld-gray-200 ring-[0.063rem] rounded-full',
+				iconColor: 'bg-untld-gray-500'
 			},
 			primary: {
-				coloring:
-					'bg-untld-primary-50 text-untld-primary-700 ring-untld-primary-200 ring-[0.063rem] rounded-full     '
+				backgroundColor:
+					'bg-untld-primary-50 text-untld-primary-700 ring-untld-primary-200 ring-[0.063rem] rounded-full     ',
+				iconColor: 'bg-untld-primary-500'
 			},
 			error: {
-				coloring:
-					'bg-untld-error-50 text-untld-error-700 ring-untld-error-200 ring-[0.063rem] rounded-full    '
+				backgroundColor:
+					'bg-untld-error-50 text-untld-error-700 ring-untld-error-200 ring-[0.063rem] rounded-full    ',
+				iconColor: 'bg-untld-error-500'
 			},
 			warning: {
-				coloring:
-					'bg-untld-warning-50 text-untld-warning-700 ring-untld-warning-200 ring-[0.063rem] rounded-full '
+				backgroundColor:
+					'bg-untld-warning-50 text-untld-warning-700 ring-untld-warning-200 ring-[0.063rem] rounded-full ',
+				iconColor: 'bg-untld-warning-500'
 			},
 			success: {
-				coloring:
-					'bg-untld-success-50 text-untld-success-700  ring-untld-success-200 ring-[0.063rem] rounded-full   '
+				backgroundColor:
+					'bg-untld-success-50 text-untld-success-700  ring-untld-success-200 ring-[0.063rem] rounded-full   ',
+				iconColor: 'bg-untld-success-500'
 			},
 			'gray-blue': {
-				coloring:
-					'bg-untld-gray-blue-50 text-untld-gray-blue-600  ring-untld-gray-blue-200 ring-[0.063rem] rounded-full      '
+				backgroundColor:
+					'bg-untld-gray-blue-50 text-untld-gray-blue-600  ring-untld-gray-blue-200 ring-[0.063rem] rounded-full      ',
+				iconColor: 'bg-untld-gray-blue-500'
 			},
 			'blue-light': {
-				coloring:
-					'bg-untld-blue-light-50 text-untld-blue-light-600  ring-untld-blue-light-200 ring-[0.063rem] rounded-full    '
+				backgroundColor:
+					'bg-untld-blue-light-50 text-untld-blue-light-600  ring-untld-blue-light-200 ring-[0.063rem] rounded-full    ',
+				iconColor: 'bg-untld-blue-light-500'
 			},
 			blue: {
-				coloring:
-					'bg-untld-blue-50 text-untld-blue-700 ring-untld-blue-200 ring-[0.063rem] rounded-full   '
+				backgroundColor:
+					'bg-untld-blue-50 text-untld-blue-700 ring-untld-blue-200 ring-[0.063rem] rounded-full   ',
+				iconColor: 'bg-untld-blue-500'
 			},
 			indigo: {
-				coloring:
-					'bg-untld-indigo-50 text-untld-indigo-700 ring-untld-indigo-200 ring-[0.063rem] rounded-full  '
+				backgroundColor:
+					'bg-untld-indigo-50 text-untld-indigo-700 ring-untld-indigo-200 ring-[0.063rem] rounded-full  ',
+				iconColor: 'bg-untld-indigo-500'
 			},
 			purple: {
-				coloring:
-					'bg-untld-purple-50 text-untld-purple-700 ring-untld-purple-200 ring-[0.063rem] rounded-full   '
+				backgroundColor:
+					'bg-untld-purple-50 text-untld-purple-700 ring-untld-purple-200 ring-[0.063rem] rounded-full   ',
+				iconColor: 'bg-untld-purple-500'
 			},
 			pink: {
-				coloring:
-					'bg-untld-pink-50 text-untld-pink-700 ring-untld-pink-200 ring-[0.063rem] rounded-full  '
+				backgroundColor:
+					'bg-untld-pink-50 text-untld-pink-700 ring-untld-pink-200 ring-[0.063rem] rounded-full  ',
+				iconColor: 'bg-untld-pink-500'
 			},
 			rosé: {
-				coloring:
-					'bg-untld-rosé-50 text-untld-rosé-700 ring-untld-rosé-200 ring-[0.063rem] rounded-full    '
+				backgroundColor:
+					'bg-untld-rosé-50 text-untld-rosé-700 ring-untld-rosé-200 ring-[0.063rem] rounded-full    ',
+				iconColor: 'bg-untld-rosé-500'
 			},
 			orange: {
-				coloring:
-					'bg-untld-orange-50 text-untld-orange-700 ring-untld-orange-200 ring-[0.063rem] rounded-full   '
+				backgroundColor:
+					'bg-untld-orange-50 text-untld-orange-700 ring-untld-orange-200 ring-[0.063rem] rounded-full   ',
+				iconColor: 'bg-untld-orange-500'
 			}
 		},
 		['Pill outline']: {
 			gray: {
-				coloring: 'text-untld-gray-600  ring-untld-gray-700 ring-[0.09375rem] rounded-full '
+				backgroundColor: 'text-untld-gray-600  ring-untld-gray-700 ring-[0.09375rem] rounded-full ',
+				iconColor: 'bg-untld-gray-600'
 			},
 			primary: {
-				coloring: ' text-untld-primary-600  ring-untld-primary-700 ring-[0.09375rem] rounded-full  '
+				backgroundColor:
+					' text-untld-primary-600  ring-untld-primary-700 ring-[0.09375rem] rounded-full  ',
+				iconColor: 'bg-untld-primary-600'
 			},
 			error: {
-				coloring: 'text-untld-error-600  ring-untld-error-700 ring-[0.09375rem] rounded-full   '
+				backgroundColor:
+					'text-untld-error-600  ring-untld-error-700 ring-[0.09375rem] rounded-full   ',
+				iconColor: 'bg-untld-error-600'
 			},
 			warning: {
-				coloring:
-					' text-untld-warning-600  ring-untld-warning-700 ring-[0.09375rem] rounded-full   '
+				backgroundColor:
+					' text-untld-warning-600  ring-untld-warning-700 ring-[0.09375rem] rounded-full   ',
+				iconColor: 'bg-untld-warning-600'
 			},
 			success: {
-				coloring:
-					' text-untld-success-600  ring-untld-success-700 ring-[0.09375rem] rounded-full   '
+				backgroundColor:
+					' text-untld-success-600  ring-untld-success-700 ring-[0.09375rem] rounded-full   ',
+				iconColor: 'bg-untld-success-600'
 			},
 			'gray-blue': {
-				coloring:
-					' text-untld-gray-blue-600  ring-untld-gray-blue-700 ring-[0.09375rem] rounded-full      '
+				backgroundColor:
+					' text-untld-gray-blue-600  ring-untld-gray-blue-700 ring-[0.09375rem] rounded-full      ',
+				iconColor: 'bg-untld-gray-blue-600'
 			},
 			'blue-light': {
-				coloring:
-					' text-untld-blue-light-600  ring-untld-blue-light-700 ring-[0.09375rem] rounded-full    '
+				backgroundColor:
+					' text-untld-blue-light-600  ring-untld-blue-light-700 ring-[0.09375rem] rounded-full    ',
+				iconColor: 'bg-untld-blue-light-600'
 			},
 			blue: {
-				coloring: ' text-untld-blue-600 ring-untld-blue-700 ring-[0.09375rem] rounded-full    '
+				backgroundColor:
+					' text-untld-blue-600 ring-untld-blue-700 ring-[0.09375rem] rounded-full    ',
+				iconColor: 'bg-untld-blue-600'
 			},
 			indigo: {
-				coloring: ' text-untld-indigo-600 ring-untld-indigo-700 ring-[0.09375rem] rounded-full    '
+				backgroundColor:
+					' text-untld-indigo-600 ring-untld-indigo-700 ring-[0.09375rem] rounded-full    ',
+				iconColor: 'bg-untld-indigo-600'
 			},
 			purple: {
-				coloring: ' text-untld-purple-600 ring-untld-purple-700 ring-[0.09375rem] rounded-full    '
+				backgroundColor:
+					' text-untld-purple-600 ring-untld-purple-700 ring-[0.09375rem] rounded-full    ',
+				iconColor: 'bg-untld-purple-600'
 			},
 			pink: {
-				coloring: ' text-untld-pink-600 ring-untld-pink-700 ring-[0.09375rem] rounded-full   '
+				backgroundColor:
+					' text-untld-pink-600 ring-untld-pink-700 ring-[0.09375rem] rounded-full   ',
+				iconColor: 'bg-untld-pink-600'
 			},
 			rosé: {
-				coloring: ' text-untld-rosé-600 ring-untld-rosé-700 ring-[0.09375rem] rounded-full    '
+				backgroundColor:
+					' text-untld-rosé-600 ring-untld-rosé-700 ring-[0.09375rem] rounded-full    ',
+				iconColor: 'bg-untld-rosé-600'
 			},
 			orange: {
-				coloring: ' text-untld-orange-600 ring-untld-orange-700 ring-[0.09375rem] rounded-full    '
+				backgroundColor:
+					' text-untld-orange-600 ring-untld-orange-700 ring-[0.09375rem] rounded-full    ',
+				iconColor: 'bg-untld-orange-600'
 			}
 		},
 		['Badge color']: {
 			gray: {
-				coloring:
-					'bg-untld-gray-100 text-untld-gray-700 ring-untld-gray-200 ring-[0.063rem] rounded-lg'
+				backgroundColor:
+					'bg-untld-gray-100 text-untld-gray-700 ring-untld-gray-200 ring-[0.063rem] rounded-lg',
+				iconColor: 'bg-untld-gray-500'
 			},
 			primary: {
-				coloring:
-					'bg-untld-primary-50 text-untld-primary-700 ring-untld-primary-200 ring-[0.063rem] rounded-lg     '
+				backgroundColor:
+					'bg-untld-primary-50 text-untld-primary-700 ring-untld-primary-200 ring-[0.063rem] rounded-lg     ',
+				iconColor: 'bg-untld-primary-500'
 			},
 			error: {
-				coloring:
-					'bg-untld-error-50 text-untld-error-700 ring-untld-error-200 ring-[0.063rem] rounded-lg    '
+				backgroundColor:
+					'bg-untld-error-50 text-untld-error-700 ring-untld-error-200 ring-[0.063rem] rounded-lg    ',
+				iconColor: 'bg-untld-error-500'
 			},
 			warning: {
-				coloring:
-					'bg-untld-warning-50 text-untld-warning-700 ring-untld-warning-200 ring-[0.063rem] rounded-lg '
+				backgroundColor:
+					'bg-untld-warning-50 text-untld-warning-700 ring-untld-warning-200 ring-[0.063rem] rounded-lg ',
+				iconColor: 'bg-untld-warning-500'
 			},
 			success: {
-				coloring:
-					'bg-untld-success-50 text-untld-success-700  ring-untld-success-200 ring-[0.063rem] rounded-lg   '
+				backgroundColor:
+					'bg-untld-success-50 text-untld-success-700  ring-untld-success-200 ring-[0.063rem] rounded-lg   ',
+				iconColor: 'bg-untld-success-500'
 			},
 			'gray-blue': {
-				coloring:
-					'bg-untld-gray-blue-50 text-untld-gray-blue-600  ring-untld-gray-blue-200 ring-[0.063rem] rounded-lg      '
+				backgroundColor:
+					'bg-untld-gray-blue-50 text-untld-gray-blue-600  ring-untld-gray-blue-200 ring-[0.063rem] rounded-lg      ',
+				iconColor: 'bg-untld-gray-blue-500'
 			},
 			'blue-light': {
-				coloring:
-					'bg-untld-blue-light-50 text-untld-blue-light-600  ring-untld-blue-light-200 ring-[0.063rem] rounded-lg    '
+				backgroundColor:
+					'bg-untld-blue-light-50 text-untld-blue-light-600  ring-untld-blue-light-200 ring-[0.063rem] rounded-lg    ',
+				iconColor: 'bg-untld-blue-light-500'
 			},
 			blue: {
-				coloring:
-					'bg-untld-blue-50 text-untld-blue-700 ring-untld-blue-200 ring-[0.063rem] rounded-lg   '
+				backgroundColor:
+					'bg-untld-blue-50 text-untld-blue-700 ring-untld-blue-200 ring-[0.063rem] rounded-lg   ',
+				iconColor: 'bg-untld-blue-500'
 			},
 			indigo: {
-				coloring:
-					'bg-untld-indigo-50 text-untld-indigo-700 ring-untld-indigo-200 ring-[0.063rem] rounded-lg  '
+				backgroundColor:
+					'bg-untld-indigo-50 text-untld-indigo-700 ring-untld-indigo-200 ring-[0.063rem] rounded-lg  ',
+				iconColor: 'bg-untld-indigo-500'
 			},
 			purple: {
-				coloring:
-					'bg-untld-purple-50 text-untld-purple-700 ring-untld-purple-200 ring-[0.063rem] rounded-lg   '
+				backgroundColor:
+					'bg-untld-purple-50 text-untld-purple-700 ring-untld-purple-200 ring-[0.063rem] rounded-lg   ',
+				iconColor: 'bg-untld-purple-500'
 			},
 			pink: {
-				coloring:
-					'bg-untld-pink-50 text-untld-pink-700 ring-untld-pink-200 ring-[0.063rem] rounded-lg  '
+				backgroundColor:
+					'bg-untld-pink-50 text-untld-pink-700 ring-untld-pink-200 ring-[0.063rem] rounded-lg  ',
+				iconColor: 'bg-untld-pink-500'
 			},
 			rosé: {
-				coloring:
-					'bg-untld-rosé-50 text-untld-rosé-700 ring-untld-rosé-200 ring-[0.063rem] rounded-lg    '
+				backgroundColor:
+					'bg-untld-rosé-50 text-untld-rosé-700 ring-untld-rosé-200 ring-[0.063rem] rounded-lg    ',
+				iconColor: 'bg-untld-rosé-500'
 			},
 			orange: {
-				coloring:
-					'bg-untld-orange-50 text-untld-orange-700 ring-untld-orange-200 ring-[0.063rem] rounded-lg   '
+				backgroundColor:
+					'bg-untld-orange-50 text-untld-orange-700 ring-untld-orange-200 ring-[0.063rem] rounded-lg   ',
+				iconColor: 'bg-untld-orange-500'
 			}
 		},
 		['Badge modern']: {
 			gray: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-gray-500'
 			},
 			primary: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-primary-500'
 			},
 			error: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-error-500'
 			},
 			warning: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-gray-500'
 			},
 			success: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-success-500'
 			},
 			'gray-blue': {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-gray-blue-500'
 			},
 			'blue-light': {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-blue-light-500'
 			},
 			blue: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-blue-500'
 			},
 			indigo: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-indigo-500'
 			},
 			purple: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-purple-500'
 			},
 			pink: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg shadow-untld-xs',
+				iconColor: 'bg-untld-pink-500'
 			},
 			rosé: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg  shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg  shadow-untld-xs',
+				iconColor: 'bg-untld-rosé-500'
 			},
 			orange: {
-				coloring:
-					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg  shadow-untld-xs'
+				backgroundColor:
+					'bg-untld-white text-untld-gray-700 ring-untld-gray-300 ring-[0.063rem] rounded-lg  shadow-untld-xs',
+				iconColor: 'bg-untld-orange-500'
 			}
 		}
 	};
-
-	// todo see if I can shorten the object colors
 
 	const stylePaddings = {
 		sm: {
@@ -240,13 +298,14 @@
 			padding: 'px-[0.75rem] py-[0.25rem] gap-2'
 		}
 	};
+	setContext('iconColor', styleColorsBadges[badgeType][color].iconColor);
 </script>
 
 <button
 	{...$$props}
 	on:click={onClick}
 	class="{$$props.class}  
-    {styleColorsButtons[badgeType][color].coloring}
+    {styleColorsBadges[badgeType][color].backgroundColor}
     {stylePaddings[size].padding}
     {onClick
 		? 'pointer-events-auto'
