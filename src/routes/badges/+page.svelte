@@ -151,7 +151,7 @@
 								{size}
 								{color}
 								{badgeType}
-								icon={{ type: 'icon', trailing: 'icons/arrow-up.svg' }}>Label</Badge
+								icon={{ type: 'icon', leading: 'icons/arrow-up.svg' }}>Label</Badge
 							>
 						{/each}
 					{/each}
