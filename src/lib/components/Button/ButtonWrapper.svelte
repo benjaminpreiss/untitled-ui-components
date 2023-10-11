@@ -21,7 +21,7 @@
 		nonDestructive: {
 			primary: {
 				coloring:
-					'bg-untld-primary-600 text-untld-white border rounded-[0.5rem] border-solid border-untld-primary-600 hover:bg-untld-primary-700 disabled:bg-untld-primary-200 focus:shadow-untld-xs-focused-4px-primary-100 focus-visible:shadow-untld-xs-focused-4px-primary-100'
+					'bg-untld-brand-600 text-untld-white border rounded-[0.5rem] border-solid border-untld-brand-600 hover:bg-untld-brand-700 disabled:bg-untld-brand-200 focus:shadow-untld-xs-focused-4px-brand-100 focus-visible:shadow-untld-xs-focused-4px-brand-100'
 			},
 			'secondary-gray': {
 				coloring:
@@ -29,7 +29,7 @@
 			},
 			'secondary-color': {
 				coloring:
-					'bg-untld-primary-50 text-untld-primary-700 border rounded-[0.5rem] border-solid border-untld-primary-50 hover:bg-untld-primary-100 hover:text-untld-primary-800 disabled:bg-untld-primary-25 disabled:text-untld-primary-300 focus:shadow-untld-xs-focused-4px-primary-100 focus-visible:shadow-untld-xs-focused-4px-primary-100'
+					'bg-untld-brand-50 text-untld-brand-700 border rounded-[0.5rem] border-solid border-untld-brand-50 hover:bg-untld-brand-100 hover:text-untld-brand-800 disabled:bg-untld-brand-25 disabled:text-untld-brand-300 focus:shadow-untld-xs-focused-4px-brand-100 focus-visible:shadow-untld-xs-focused-4px-brand-100'
 			},
 			'tertiary-gray': {
 				coloring:
@@ -37,13 +37,13 @@
 			},
 			'tertiary-color': {
 				coloring:
-					'text-untld-primary-700 rounded-[0.5rem] hover:bg-untld-primary-50 hover:text-untld-primary-800 disabled:text-untld-gray-300'
+					'text-untld-brand-700 rounded-[0.5rem] hover:bg-untld-brand-50 hover:text-untld-brand-800 disabled:text-untld-gray-300'
 			},
 			'link-gray': {
 				coloring: 'text-untld-gray-600 hover:text-untld-gray-700 disabled:text-untld-gray-300'
 			},
 			'link-color': {
-				coloring: 'text-untld-primary-700 hover:text-untld-primary-800 disabled:text-untld-gray-300'
+				coloring: 'text-untld-brand-700 hover:text-untld-brand-800 disabled:text-untld-gray-300'
 			}
 		},
 		destructive: {
