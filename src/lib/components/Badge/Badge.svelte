@@ -1,27 +1,26 @@
-<script lang="ts">
+<script lang="ts" generics="T extends badgeType, I extends icon | undefined = undefined">
 	import BadgeWrapper from './BadgeWrapper.svelte';
 	import TextAtom from './TextAtom.svelte';
 	import type { size, icon, color, badgeType } from './types.js';
 	import IconAtom from './IconAtom.svelte';
 	import DotAtom from './DotAtom.svelte';
-	// TODO can remove the raw if we just go for the svg from figma
 	import ImageAtom from './ImageAtom.svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import XcloseAtom from './XcloseAtom.svelte';
+	import type { DOMAttributes } from 'svelte/elements';
 
 	interface $$Props extends HTMLButtonAttributes {
 		size: size;
-		color: color;
-		icon?: icon;
-		badgeType: badgeType;
-		onClick?: (() => void) | undefined;
+		color: color<T, I>;
+		icon?: I;
+		badgeType: T;
+		onClick?: DOMAttributes<HTMLButtonElement>['on:click'];
 	}
 
 	export let size: size;
-	export let color: color;
-	export let icon: icon | undefined = undefined;
-	export let badgeType: badgeType = 'Pill color';
-	export let onClick: (() => void) | undefined = undefined;
+	export let color: color<T, I>;
+	export let icon: I | undefined = undefined;
+	export let badgeType: badgeType;
 </script>
 
 <BadgeWrapper {badgeType} {...$$props} {size} {color}>
