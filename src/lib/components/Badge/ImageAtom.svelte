@@ -4,10 +4,9 @@
 	import type { size } from './types.js';
 	interface $$Props extends HTMLAttributes<HTMLSpanElement> {
 		url: string;
-		size?: size;
 	}
 	export let url: string;
-	export let size: size = getContext<size>('size');
+	const size = getContext<size>('size');
 </script>
 
 <img
