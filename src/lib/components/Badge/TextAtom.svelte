@@ -5,17 +5,17 @@
 
 	const styleSizes = {
 		sm: {
-			text: 'untld-text-xs'
+			text: 'untld-text-xs '
 		},
 		md: {
-			text: 'untld-text-sm'
+			text: 'untld-text-sm '
 		},
 		lg: {
-			text: 'untld-text-md leading-5 '
+			text: 'untld-text-sm  '
 		}
 	};
 </script>
 
-<span {...$$props} class="{$$props.class} untld-text-medium {styleSizes[size].text}">
+<span {...$$props} class="{$$props.class}  untld-text-medium {styleSizes[size].text}">
 	<slot />
 </span>

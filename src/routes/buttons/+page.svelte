@@ -56,6 +56,7 @@
 			{#each hierarchies as h}
 				<div class="p-5">
 					<Button
+						class="md:text-blue-500"
 						size="sm"
 						{destructive}
 						hierarchy={h}

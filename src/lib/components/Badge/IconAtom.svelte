@@ -5,11 +5,10 @@
 
 	interface $$Props extends HTMLAttributes<HTMLSpanElement> {
 		url: string;
-		iconColor?: string;
 	}
 
 	export let url: string;
-	export let iconColor = getContext<string>('iconColor');
+	let iconColor = getContext<string>('iconColor');
 	const size = getContext<size>('size');
 </script>
 

@@ -6,13 +6,12 @@
 
 	interface $$Props extends HTMLAttributes<HTMLSpanElement> {
 		url?: string;
-		iconColor?: string;
 		onClick: () => void;
 	}
 
 	export let url: string = Xclose;
 	export let onClick: () => void;
-	export let iconColor = getContext<string>('iconColor');
+	let iconColor = getContext<string>('iconColor');
 	const size = getContext<size>('size');
 </script>
 

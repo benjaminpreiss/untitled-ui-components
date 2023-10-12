@@ -3,9 +3,7 @@
 	import dotIcon from '$lib/assets/icons/general/_Dot.svg?url';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface $$Props extends HTMLAttributes<HTMLSpanElement> {
-		iconColor?: string;
-	}
+	interface $$Props extends HTMLAttributes<HTMLSpanElement> {}
 </script>
 
 <IconAtom
