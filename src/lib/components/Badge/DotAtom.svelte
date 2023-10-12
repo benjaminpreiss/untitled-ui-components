@@ -1,7 +1,7 @@
 <script lang="ts">
 	import IconAtom from './IconAtom.svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
 	import dotIcon from '$lib/assets/icons/general/_Dot.svg?url';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	interface $$Props extends HTMLAttributes<HTMLSpanElement> {}
 </script>
@@ -10,5 +10,5 @@
 	{...$$props}
 	slot="icon-left"
 	url={dotIcon}
-	class="{$$props.class} [&&]:h-[0.625rem] [&&]:w-[0.625rem]"
+	class="{$$props.class} [&&]:h-[0.5rem] [&&]:w-[0.5rem]"
 />

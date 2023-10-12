@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button/Button.svelte';
-	import placeholder from '$lib/assets/icons/placeholder.svg?url';
+	import placeholder from '$lib/assets/icons/general/placeholder.svg?url';
 
 	// Define your types
 	type size = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
@@ -56,6 +56,7 @@
 			{#each hierarchies as h}
 				<div class="p-5">
 					<Button
+						class="md:text-blue-500"
 						size="sm"
 						{destructive}
 						hierarchy={h}

@@ -40,7 +40,7 @@ export default {
 			}
 			// Overwrite default colors from untld by specifying them here
 			/* colors: {
-				"untld-primary-50": <hex-code-here>
+				"untld-brand-50": <hex-code-here>
 			} */
 		}
 	},

@@ -28,10 +28,10 @@
 					description:
 						'Gray is a neutral color and is the foundation of the color system. Almost everything in UI design — text, form fields, backgrounds, dividers — are usually gray.'
 				},
-				Primary: {
-					title: 'Primary',
+				Brand: {
+					title: 'Brand',
 					description:
-						'The primary color is your "brand" color, and is used across all interactive elements such as buttons, links, inputs, etc. This color can define the overall feel and can elicit emotion.'
+						'The brand color is your "brand" color, and is used across all interactive elements such as buttons, links, inputs, etc. This color can define the overall feel and can elicit emotion.'
 				},
 				Error: {
 					title: 'Error',
@@ -44,7 +44,7 @@
 				},
 				Success: {
 					title: 'Success',
-					description: `Success colors communicate a positive action, positive trend, or a successful confirmation. If you're using green as your primary color, it can be helpful to introduce a different hue for your success green.`
+					description: `Success colors communicate a positive action, positive trend, or a successful confirmation. If you're using green as your brand color, it can be helpful to introduce a different hue for your success green.`
 				}
 			},
 			secondary: {
@@ -189,7 +189,7 @@
 			}}
 			class="max-w-4xl my-12 opacity-0"
 		>
-			<h3 class="text-untld-gray-900 untld-display-xs untld-text-semibold">Primary colors</h3>
+			<h3 class="text-untld-gray-900 untld-display-xs untld-text-semibold">Brand colors</h3>
 			<span class="untld-text-lg untld-text-regular antialiased text-untld-gray-600"
 				>These are the main colors that make up the majority of the colors used in the design
 				system.</span
@@ -226,7 +226,7 @@
 							threshold: 0.1
 						}}
 						style="animation-delay: {innerIndex * 0.025}s;"
-						class="w-[15rem] -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+						class="w-[15rem] -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-untld-lg rounded-md relative"
 					>
 						<div
 							style="background-color:rgb(var(--color-untld-{color
@@ -305,7 +305,7 @@
 							style="animation-delay: {(innerIndex / 2) * 0.015}s;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[15rem]'} -ml-10 opacity-0 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} -ml-10 opacity-0 h-[9.75rem] col-span-1 snap-start shadow-untld-lg rounded-md relative"
 						>
 							<div
 								style="background-color:rgb(var(--color-untld-{colorGroup
@@ -372,9 +372,9 @@
 				}}
 				class="untld-text-lg opacity-0 untld-text-regular antialiased"
 			>
-				Along with primary colors, it's helpful to have a selection of secondary colors to use in
+				Along with brand colors, it's helpful to have a selection of secondary colors to use in
 				components such as pills, alerts and labels. These secondary colors should be used sparingly
-				or as accents, while the primary color(s) should take precedence.
+				or as accents, while the brand color(s) should take precedence.
 			</p>
 		</div>
 		<div
@@ -413,10 +413,10 @@
 									<!-- TODO exchange temporary Dropdown Menu -->
 									<div class="w-full h-1 bg-transparent" />
 									<div
-										class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-lg `}
+										class={`group-hover:block hidden peer-hover:block group hover:block absolute left-0 rounded-md shadow-untld-lg `}
 									>
 										<div class=" flex" role="menu">
-											{#each ['gray', 'primary', 'warning', 'error', 'success'] as colorType}
+											{#each ['gray', 'brand', 'warning', 'error', 'success'] as colorType}
 												<button
 													class="block px-4 py-2 untld-text-sm text-untld-gray-600 hover:text-untld-white hover:bg-untld-gray-900"
 													role="menuitem"
@@ -441,7 +441,7 @@
 							style="animation-delay: {(innerIndex / 2) * 0.0075}s;"
 							class="{shade === '600'
 								? 'w-full'
-								: 'w-[15rem]'} -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-lg rounded-md relative"
+								: 'w-[15rem]'} -ml-10 opacity-0 delay-500 h-[9.75rem] col-span-1 snap-start shadow-untld-lg rounded-md relative"
 						>
 							<div
 								style="background-color:rgb(var(--color-untld-{colorGroup

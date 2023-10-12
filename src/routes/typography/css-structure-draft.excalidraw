@@ -94,6 +94,7 @@
     },
     {
       "type": "text",
+
       "version": 437,
       "versionNonce": 1438922061,
       "isDeleted": false,
@@ -119,8 +120,6 @@
           "type": "arrow"
         }
       ],
-
-
       "updated": 1695300523788,
       "link": null,
       "locked": false,
@@ -187,7 +186,6 @@
     },
     {
       "type": "text",
-
       "version": 783,
       "versionNonce": 2143179267,
       "isDeleted": false,
@@ -414,6 +412,10 @@
     },
     {
       "type": "rectangle",
+      "version": 289,
+      "versionNonce": 1109904996,
+      "isDeleted": false,
+      "id": "wscvoOtbhakrw0hmcZ4IF",
       "fillStyle": "hachure",
       "strokeWidth": 1,
       "strokeStyle": "solid",

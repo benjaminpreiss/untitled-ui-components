@@ -22,19 +22,19 @@
 				coloring: 'bg-untld-gray-700 hover:bg-untld-gray-800 disabled:bg-untld-gray-300'
 			},
 			'secondary-color': {
-				coloring: 'bg-untld-primary-700 hover:bg-untld-primary-800 disabled:bg-untld-primary-300'
+				coloring: 'bg-untld-brand-700 hover:bg-untld-brand-800 disabled:bg-untld-brand-300'
 			},
 			'tertiary-gray': {
 				coloring: 'bg-untld-gray-600 hover:bg-untld-gray-700 disabled:bg-untld-gray-300'
 			},
 			'tertiary-color': {
-				coloring: 'bg-untld-primary-700 hover:bg-untld-primary-800 disabled:bg-untld-gray-300'
+				coloring: 'bg-untld-brand-700 hover:bg-untld-brand-800 disabled:bg-untld-gray-300'
 			},
 			'link-gray': {
 				coloring: 'bg-untld-gray-600 hover:bg-untld-gray-700 disabled:bg-untld-gray-300'
 			},
 			'link-color': {
-				coloring: 'bg-untld-primary-700 hover:bg-untld-primary-800 disabled:bg-untld-gray-300'
+				coloring: 'bg-untld-brand-700 hover:bg-untld-brand-800 disabled:bg-untld-gray-300'
 			}
 		},
 		destructive: {

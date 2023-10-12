@@ -12,6 +12,7 @@
 		destructive?: boolean;
 		icon: icon<H>;
 	}
+	const onClick = ($$props as $$Props)['on:click'];
 
 	export let size: size;
 	export let hierarchy: H;

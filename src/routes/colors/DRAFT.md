@@ -7,7 +7,7 @@ We build a tailwind plugin to extend the tailwind config with our own color styl
 Define the desired color on a property:
 
 ```html
-<div class="text-untitled-primary-500"></div>
+<div class="text-untitled-brand-500"></div>
 <div class="text-untitled-blue-light-500"></div>
 ```
 
