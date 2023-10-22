@@ -1,7 +1,7 @@
 export default {
 	plugins: {
-		'@pandacss/dev/postcss': {},
 		tailwindcss: {},
+		'@pandacss/dev/postcss': {},
 		autoprefixer: {}
 	}
 };

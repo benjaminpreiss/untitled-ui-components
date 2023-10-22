@@ -6,7 +6,7 @@
 	<span class="text-3xl font-bold underline"> Hello world! from tw </span>
 	<span
 		class={css({
-			textStyle: '3xl',
+			textStyle: 'untld_display_2xl',
 			fontWeight: 'bold',
 			textDecoration: 'underline',
 			color: 'untld_yellow.300'
