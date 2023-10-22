@@ -9,7 +9,8 @@
 			textStyle: 'untld_display_2xl',
 			fontWeight: 'bold',
 			textDecoration: 'underline',
-			color: 'untld_yellow.300'
+			color: 'untld_yellow.300',
+			shadow: 'untld_xs_focused_4px_secondary_gray_100'
 		})}
 	>
 		Hello Panda!
