@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { colors } from '$lib/tailwindPlugin.js';
+	import { colors } from '$lib/tailwind/plugin.js';
 	import { draggable } from '../../utils/draggable.js';
 	import animationObserver from '../../utils/animationObserver.js';
 	import code02 from '$lib/assets/icons/development/code-02.svg?url';

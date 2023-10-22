@@ -9,7 +9,7 @@
 			textStyle: '3xl',
 			fontWeight: 'bold',
 			textDecoration: 'underline',
-			color: 'yellow.300'
+			color: 'untld_yellow.300'
 		})}
 	>
 		Hello Panda!

@@ -1,4 +1,4 @@
-@import '$lib/untitled.css';
+@import './lib/untitled.css';
 /* The order here matters!! The panda layers first, as we will only be doing overrides with tailwind. */
 @layer reset, base, tokens, recipes, utilities;
 @layer tailwind.base {

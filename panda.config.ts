@@ -1,7 +1,9 @@
 import { defineConfig } from '@pandacss/dev';
+import { pandaPreset } from './src/lib/index';
 
 export default defineConfig({
 	prefix: 'panda',
+	presets: [pandaPreset],
 	// Whether to use css reset
 	preflight: true,
 

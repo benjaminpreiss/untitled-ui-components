@@ -1,7 +1,6 @@
-import untitledPlugin from './src/lib/tailwindPlugin';
+import untitledPlugin from './src/lib/tailwind/plugin';
 
 /** @type {import('tailwindcss').Config} */
-
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
