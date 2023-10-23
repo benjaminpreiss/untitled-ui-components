@@ -20,6 +20,51 @@ All you need to do is:
 - Include our preset in the pandacss config
 - Add you overwrites / extends to the pandacss config.
 
+### Integration with other frameworks
+
+#### Tailwind
+
+We ship a tailwind plugin AND a untitled.css file that provides all styles needed for
+
+- typography
+- colors
+
+Alter the tailwind config:
+
+```ts
+import untitledPlugin from './src/lib/tailwind/plugin';
+
+/** @type {import('tailwindcss').Config} */
+export default {
+	content: ['./src/**/*.{html,js,svelte,ts}'],
+	/* ... */
+	plugins: [untitledPlugin],
+	/* We need to disable the tailwind preflights as they overwrite panda styles */
+	corePlugins: {
+		preflight: false
+	}
+};
+```
+
+Then make sure your `app.css` looks like this:
+
+```css
+@import './lib/untitled.css';
+/* The order here matters!! The panda layers first, as we will only be doing overrides with tailwind. */
+@layer reset, base, tokens, recipes, utilities;
+@layer tailwind.base {
+	@tailwind base;
+}
+@layer tailwind.components {
+	@tailwind components;
+}
+@layer tailwind.utilities {
+	@tailwind utilities;
+}
+
+/*  */
+```
+
 ### Typography
 
 By default, the design system sets the untld font (Inter) on the page body (html element).

@@ -43,5 +43,8 @@ export default {
 			} */
 		}
 	},
-	plugins: [untitledPlugin]
+	plugins: [untitledPlugin],
+	corePlugins: {
+		preflight: false
+	}
 };

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { css } from 'styled-system/css';
+	import { button_buttonWrapper } from 'styled-system/recipes';
 </script>
 
 <div class="fixed inset-0 flex items-center justify-center flex-col">
@@ -15,4 +16,7 @@
 	>
 		Hello Panda!
 	</span>
+	<button class={button_buttonWrapper({ destructive: true, hierarchy: 'primary', size: '2xl' })}
+		>Hello</button
+	>
 </div>

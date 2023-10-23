@@ -15,6 +15,12 @@ const config = {
 		alias: {
 			assets: 'src/lib/assets',
 			'styled-system': './styled-system/*'
+		},
+		typescript: {
+			config: (config) => {
+				config.include.push('../styled-system');
+				return config;
+			}
 		}
 	}
 };
