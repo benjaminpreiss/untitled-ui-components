@@ -1,17 +1,10 @@
 <script lang="ts">
 	import Button from '$lib/components/Button/Button.svelte';
 	import placeholder from '$lib/assets/icons/general/placeholder.svg?url';
+	import type { hierarchy } from '$lib/components/Button/types.js';
 
 	// Define your types
 	type size = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-	type hierarchy =
-		| 'primary'
-		| 'secondary-gray'
-		| 'secondary-color'
-		| 'tertiary-gray'
-		| 'tertiary-color'
-		| 'link-gray'
-		| 'link-color';
 	type icon =
 		| { type: 'dot' }
 		| { type: 'icon-only'; leading: string }
@@ -21,12 +14,12 @@
 	const sizes: size[] = ['sm', 'md', 'lg', 'xl', '2xl'];
 	const hierarchies: hierarchy[] = [
 		'primary',
-		'secondary-gray',
-		'secondary-color',
-		'tertiary-gray',
-		'tertiary-color',
-		'link-gray',
-		'link-color'
+		'secondaryGray',
+		'secondaryColor',
+		'tertiaryGray',
+		'tertiaryColor',
+		'linkGray',
+		'linkColor'
 	];
 	const destructives: boolean[] = [false, true];
 
@@ -80,7 +73,7 @@
 				</div>
 
 				{#each icons as i}
-					{#if h === 'link-gray' || h === 'link-color'}
+					{#if h === 'linkGray' || h === 'linkColor'}
 						{#if i.type === 'dot' || i.type === 'icon'}
 							<div>
 								{#each sizes as s}
@@ -99,7 +92,7 @@
 							</div>
 						{/if}
 					{/if}
-					{#if h !== 'link-gray' && h !== 'link-color'}
+					{#if h !== 'linkGray' && h !== 'linkColor'}
 						<div>
 							{#each sizes as s}
 								<div class="p-5">

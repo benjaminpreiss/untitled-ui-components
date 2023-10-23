@@ -18,22 +18,22 @@
 			primary: {
 				coloring: 'bg-untld-white'
 			},
-			'secondary-gray': {
+			secondaryGray: {
 				coloring: 'bg-untld-gray-700 hover:bg-untld-gray-800 disabled:bg-untld-gray-300'
 			},
-			'secondary-color': {
+			secondaryColor: {
 				coloring: 'bg-untld-brand-700 hover:bg-untld-brand-800 disabled:bg-untld-brand-300'
 			},
-			'tertiary-gray': {
+			tertiaryGray: {
 				coloring: 'bg-untld-gray-600 hover:bg-untld-gray-700 disabled:bg-untld-gray-300'
 			},
-			'tertiary-color': {
+			tertiaryColor: {
 				coloring: 'bg-untld-brand-700 hover:bg-untld-brand-800 disabled:bg-untld-gray-300'
 			},
-			'link-gray': {
+			linkGray: {
 				coloring: 'bg-untld-gray-600 hover:bg-untld-gray-700 disabled:bg-untld-gray-300'
 			},
-			'link-color': {
+			linkColor: {
 				coloring: 'bg-untld-brand-700 hover:bg-untld-brand-800 disabled:bg-untld-gray-300'
 			}
 		},
@@ -41,22 +41,22 @@
 			primary: {
 				coloring: 'bg-untld-white'
 			},
-			'secondary-gray': {
+			secondaryGray: {
 				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
 			},
-			'secondary-color': {
+			secondaryColor: {
 				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
 			},
-			'tertiary-gray': {
+			tertiaryGray: {
 				coloring: 'bg-untld-error-600 hover:bg-untld-error-700 disabled:bg-untld-error-300'
 			},
-			'tertiary-color': {
+			tertiaryColor: {
 				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
 			},
-			'link-gray': {
+			linkGray: {
 				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
 			},
-			'link-color': {
+			linkColor: {
 				coloring: 'bg-untld-error-700 hover:bg-untld-error-800 disabled:bg-untld-error-300'
 			}
 		}
